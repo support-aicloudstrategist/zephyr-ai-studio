@@ -324,9 +324,41 @@ function Method() {
 }
 
 function About() {
-  return <SectionFlow><section id="about" className="relative overflow-hidden px-4 py-32 md:px-6 md:py-44"><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(216,111,189,.07),transparent_30%),radial-gradient(circle_at_20%_70%,rgba(123,223,229,.07),transparent_28%)]" /><div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[.9fr_1.1fr] md:items-center"><Reveal><div className="glass rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-xs uppercase tracking-[0.38em] text-zephyr-cyan">About</p><h2 className="mt-6 text-4xl font-black uppercase leading-[.9] tracking-[-0.06em] md:text-6xl">Impossible brand worlds.</h2></div></Reveal><Reveal delay={0.18}><p className="text-4xl font-black uppercase leading-[0.9] tracking-[-0.06em] text-white/86 md:text-7xl">Cinematic worlds for modern brands.</p></Reveal></div></section></SectionFlow>;
+  const beliefs = ['Cinema over content', 'Emotion over noise', 'Worlds over templates'];
+  return (
+    <SectionFlow>
+      <section id="about" className="relative overflow-hidden px-4 py-36 md:px-6 md:py-56">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_26%,rgba(216,111,189,.06),transparent_32%),radial-gradient(circle_at_18%_76%,rgba(123,223,229,.055),transparent_30%)]" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-zephyr-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-zephyr-black to-transparent" />
+        <div className="relative mx-auto grid max-w-7xl gap-14 md:grid-cols-[1.05fr_.95fr] md:items-end md:gap-20">
+          <Reveal>
+            <div>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-zephyr-cyan/82 md:text-xs">About Zephyr</p>
+              <h2 className="mt-8 max-w-5xl font-display text-[clamp(3.6rem,11vw,9.5rem)] font-black uppercase leading-[0.78] tracking-[-0.09em] text-white">
+                We design the world your brand deserves.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.18}>
+            <div className="space-y-8 border-l border-white/12 pl-6 md:pl-8">
+              <p className="text-2xl font-semibold leading-tight tracking-[-0.04em] text-white/82 md:text-4xl">
+                Zephyr is a cinematic studio for brands that want to be felt before they are understood.
+              </p>
+              <div className="grid gap-3">
+                {beliefs.map((item) => (
+                  <div key={item} className="border-t border-white/10 py-4 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-white/58 md:text-xs">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </SectionFlow>
+  );
 }
-
 function Pricing() {
   return <SectionFlow><section id="pricing" className="bg-[#05050c] px-4 py-36 md:px-6 md:py-48"><SectionTitle kicker="Pricing" title="Premium campaign architecture" copy="Choose the campaign scale." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(([name, price, copy, features], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8 ${i===2 ? 'border-zephyr-magenta/28 shadow-magenta' : ''}`}><p className="text-xs uppercase tracking-[0.3em] text-zephyr-cyan">{name}</p><h3 className="magenta-glow mt-6 text-4xl font-black">{price}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p><ul className="mt-8 space-y-3 text-sm text-white/72">{features.map(f => <li key={f} className="flex gap-3"><span className="text-zephyr-cyan" aria-hidden="true">✦</span><span>{f}</span></li>)}</ul></div></Reveal>)}</div></section></SectionFlow>;
 }
