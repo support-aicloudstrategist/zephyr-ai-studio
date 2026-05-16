@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import SmoothScroll from '@/components/SmoothScroll';
 import { Reveal } from '@/components/Reveal';
@@ -60,6 +60,7 @@ export default function Home() {
       <Hero />
       <ProofStrip />
       <Showreel />
+      <CinematicReveal />
       <Portfolio />
       <Services />
       <Method />
@@ -165,6 +166,41 @@ function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; 
 
 function Showreel() {
   return <section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-44"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="No empty frames — temporary Mixkit footage fills the cinematic preview until Zephyr originals are ready." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="auto" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">Fashion. Product. Story. Motion.</h3><p className="mt-4 max-w-xl text-sm leading-6 text-white/62 md:text-base">Temporary Mixkit fashion/luxury visual selected by Anushka until original Zephyr AI-generated assets are ready.</p></div></div></div></Reveal></section>;
+}
+
+function CinematicReveal() {
+  const ref = useRef<HTMLElement | null>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
+  const frameScale = useTransform(scrollYProgress, [0.18, 0.52, 0.82], [0.78, 1, 1.08]);
+  const frameRadius = useTransform(scrollYProgress, [0.2, 0.62], ['2.4rem', '0rem']);
+  const textOpacity = useTransform(scrollYProgress, [0.16, 0.34, 0.5], [0, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0.16, 0.38, 0.5], [34, 0, -42]);
+  const filmOpacity = useTransform(scrollYProgress, [0.34, 0.58, 0.84], [0.42, 0.86, 1]);
+  const veilOpacity = useTransform(scrollYProgress, [0.32, 0.7], [0.58, 0.18]);
+
+  return (
+    <section ref={ref} className="relative h-[220vh] bg-black">
+      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-4">
+        <motion.div
+          style={{ scale: frameScale, borderRadius: frameRadius }}
+          className="relative h-[74vh] w-full max-w-6xl overflow-hidden border border-white/12 bg-[#05050a] shadow-[0_36px_140px_rgba(0,0,0,.68)]"
+        >
+          <video className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-[.92] contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true">
+            <source src={showreelVideoSrc} type="video/mp4" />
+          </video>
+          <motion.div style={{ opacity: filmOpacity }} className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/18 to-black/28" />
+          <motion.div style={{ opacity: veilOpacity }} className="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,transparent_20%,rgba(0,0,0,.68)_78%)]" />
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/70 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/78 to-transparent" />
+        </motion.div>
+        <motion.div style={{ opacity: textOpacity, y: textY }} className="pointer-events-none absolute z-10 mx-auto max-w-5xl px-6 text-center">
+          <p className="text-[0.66rem] font-semibold uppercase tracking-[0.38em] text-zephyr-cyan/82 md:text-xs">The Zephyr Moment</p>
+          <h2 className="mt-5 font-display text-[clamp(2.7rem,9vw,7rem)] font-black uppercase leading-[0.84] tracking-[-0.08em] text-white">A brief becomes a world.</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/68 md:text-lg">As the frame opens, the campaign stops feeling like content — and starts feeling like cinema.</p>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
 
 function Portfolio() {
