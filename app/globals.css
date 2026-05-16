@@ -57,6 +57,29 @@ select option { background: #05050c; color: #f7f7fb; }
   filter: blur(.2px);
 }
 
+.premium-link {
+  transition: color .7s cubic-bezier(.16,1,.3,1), opacity .7s cubic-bezier(.16,1,.3,1), filter .7s cubic-bezier(.16,1,.3,1);
+}
+.premium-link:hover {
+  opacity: .96;
+  filter: drop-shadow(0 0 10px rgba(123,223,229,.18));
+}
+.premium-button {
+  transition: transform .75s cubic-bezier(.16,1,.3,1), background-color .75s cubic-bezier(.16,1,.3,1), border-color .75s cubic-bezier(.16,1,.3,1), color .75s cubic-bezier(.16,1,.3,1), box-shadow .75s cubic-bezier(.16,1,.3,1), opacity .75s cubic-bezier(.16,1,.3,1);
+}
+.premium-button:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+.premium-button:active {
+  transform: translateY(0) scale(.995);
+}
+.premium-card {
+  transition: transform .9s cubic-bezier(.16,1,.3,1), border-color .9s cubic-bezier(.16,1,.3,1), box-shadow .9s cubic-bezier(.16,1,.3,1), background .9s cubic-bezier(.16,1,.3,1), opacity .9s cubic-bezier(.16,1,.3,1);
+}
+.premium-card:hover {
+  transform: translateY(-3px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
