@@ -7,10 +7,10 @@ const sora = Sora({ subsets: ['latin'], variable: '--font-body' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-accent' });
 
 export const metadata: Metadata = {
-  title: 'Zephyr AI Studio — AI-Native Creative Studio',
+  title: 'Zephyr AI Studio — Cinematic AI Advertising',
   description: 'Cinematic AI advertising, futuristic visual storytelling, luxury product campaigns, fashion visuals, reels, and high-end creative content.',
   openGraph: {
-    title: 'Zephyr AI Studio — AI-Native Creative Studio',
+    title: 'Zephyr AI Studio — Cinematic AI Advertising',
     description: 'Luxury AI cinema house for futuristic advertising, fashion worlds, reels, and premium brand visuals.',
     type: 'website',
   },

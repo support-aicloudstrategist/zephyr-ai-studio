@@ -92,7 +92,6 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, delay: .4 }} className="scanline absolute left-1/2 top-1/2 z-20 h-px w-[92vw] origin-left -translate-x-1/2" />
       <div className="relative z-30 mx-auto max-w-7xl text-center">
-        <motion.img initial={{ opacity: 0, y: 18, scale: 0.92 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: .9, delay: .35 }} src={logoSrc} alt="Zephyr AI Studio" className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/12 object-cover shadow-[0_0_55px_rgba(0,245,255,.28)] sm:h-24 sm:w-24" />
         <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: .45 }} className="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan sm:text-xs sm:tracking-[0.55em]">Luxury AI Cinema House</motion.p>
         <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="gsap-parallax text-glow font-display text-[clamp(3.25rem,16vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
           Cinematic AI Advertising
