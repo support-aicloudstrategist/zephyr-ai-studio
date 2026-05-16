@@ -9,7 +9,9 @@ import { Reveal } from '@/components/Reveal';
 import { placeholderPortfolio, placeholderVideos } from '@/lib/placeholders';
 
 const portfolio = placeholderPortfolio;
-const logoSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/brand/zephyr-ai-studio-logo.jpg`;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
+const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
 
 const services = [
   'AI Product Advertisements',
@@ -53,9 +55,11 @@ export default function Home() {
       <Particles />
       <Navigation />
       <Hero />
+      <ProofStrip />
       <Showreel />
       <Portfolio />
       <Services />
+      <Method />
       <About />
       <Pricing />
       <Contact />
@@ -84,11 +88,11 @@ function Navigation() {
 function Hero() {
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 py-28">
-      <video className="absolute inset-0 h-screen w-screen object-cover opacity-60 saturate-150 contrast-125" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src={placeholderVideos.hero} type="video/mp4" />
+      <video className="absolute inset-0 h-screen w-screen object-cover opacity-70 saturate-150 contrast-125" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+        <source src={heroVideoSrc} type="video/mp4" />
       </video>
       <div className="gsap-hero-glow absolute left-1/2 top-1/2 h-[72vmin] w-[72vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/20 blur-[90px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,245,255,.20),transparent_27%),radial-gradient(circle_at_80%_18%,rgba(255,43,214,.20),transparent_25%),linear-gradient(180deg,rgba(3,3,6,.05),rgba(3,3,6,.52)_46%,#030306_96%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,245,255,.16),transparent_27%),radial-gradient(circle_at_80%_18%,rgba(255,43,214,.18),transparent_25%),linear-gradient(180deg,rgba(3,3,6,.16),rgba(3,3,6,.55)_46%,#030306_96%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, delay: .4 }} className="scanline absolute left-1/2 top-1/2 z-20 h-px w-[92vw] origin-left -translate-x-1/2" />
       <div className="relative z-30 mx-auto max-w-7xl text-center">
@@ -109,6 +113,10 @@ function Hero() {
   );
 }
 
+function ProofStrip() {
+  return <section aria-label="Zephyr creative promise" className="relative border-y border-white/10 bg-black/45 px-4 py-6 backdrop-blur-xl md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center md:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/10 bg-white/[.035] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
+}
+
 function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; copy?: string }) {
   return <Reveal className="mx-auto mb-12 max-w-5xl text-center md:mb-14"><p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">{kicker}</p><h2 className="text-glow font-display text-[clamp(2.75rem,11vw,6.5rem)] font-black uppercase leading-[.88] tracking-[-0.075em]">{title}</h2>{copy && <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/62 md:text-lg">{copy}</p>}</Reveal>;
 }
@@ -124,6 +132,15 @@ function Portfolio() {
 
 function Services() {
   return <section id="services" className="px-4 py-24 md:px-6 md:py-28"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={i*.03} key={s}><motion.div whileHover={{ rotateX: 4, rotateY: -4, y: -8 }} className="glass min-h-44 rounded-[1.5rem] p-6 transition hover:border-zephyr-cyan/60 hover:shadow-neon md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan to-zephyr-magenta shadow-neon" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section>;
+}
+
+function Method() {
+  const steps = [
+    ['Discover', 'Product, audience, visual language and campaign ambition are translated into a cinematic brief.'],
+    ['Design', 'Moodboards, prompts, composition rules and motion references lock the premium world before production.'],
+    ['Produce', 'AI visuals, video generation, editing direction and platform-specific cutdowns are built as one campaign system.'],
+  ];
+  return <section className="relative overflow-hidden bg-[#04040a] px-4 py-24 md:px-6 md:py-28"><div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(0,245,255,.11),transparent_34%),radial-gradient(circle_at_78%_40%,rgba(255,43,214,.16),transparent_28%)]" /><SectionTitle kicker="Process" title="From brief to brand world" copy="A repeatable creative pipeline for premium AI ads: strategy, cinematic systems, then launch assets." /><div className="relative mx-auto grid max-w-7xl gap-4 lg:grid-cols-3">{steps.map(([title, copy], i) => <Reveal delay={i*.06} key={title}><div className="glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-6xl font-black text-white/10">0{i+1}</p><h3 className="mt-8 text-3xl font-black uppercase tracking-[-0.05em] text-white">{title}</h3><p className="mt-5 text-sm leading-7 text-white/64 md:text-base">{copy}</p></div></Reveal>)}</div></section>;
 }
 
 function About() {
