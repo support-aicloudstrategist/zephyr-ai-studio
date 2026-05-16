@@ -81,10 +81,12 @@ select option { background: #05050c; color: #f7f7fb; }
 }
 
 @media (max-width: 767px) {
-  .cinema-noise::before { opacity: .014; }
-  .text-glow { text-shadow: 0 0 4px rgba(128,225,230,.08); }
-  .glass { backdrop-filter: blur(8px); }
+  .cinema-noise::before { opacity: .012; }
+  .text-glow { text-shadow: 0 0 3px rgba(128,225,230,.07); }
+  .glass { backdrop-filter: blur(7px); }
+  .premium-button { min-height: 3.25rem; }
   .premium-button:hover, .premium-card:hover { transform: none; }
+  .premium-link:hover { filter: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

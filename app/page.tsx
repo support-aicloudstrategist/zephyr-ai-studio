@@ -32,7 +32,7 @@ const prices = [
 ] as const;
 
 function useMobileMotion() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches);
 
   useEffect(() => {
     const query = window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)');
@@ -87,17 +87,52 @@ export default function Home() {
 }
 
 function Navigation() {
+  const [open, setOpen] = useState(false);
+  const navItems = ['Showreel', 'Portfolio', 'Services', 'Pricing', 'Contact'];
+
   return (
     <motion.header initial={false} className="fixed left-0 right-0 top-0 z-50 px-3 py-3 md:px-10 md:py-4">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-black/62 px-4 py-3 shadow-[0_14px_46px_rgba(0,0,0,.30)] backdrop-blur-md">
-        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex items-center gap-3">
-          <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-10 w-10 rounded-full border border-white/10 object-cover shadow-[0_0_12px_rgba(123,223,229,.10)] sm:h-12 sm:w-12" />
-          <span className="hidden font-display text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white sm:inline sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
-        </a>
-        <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs uppercase tracking-[0.2em] text-white/78 lg:flex">
-          {['Showreel', 'Portfolio', 'Services', 'Pricing', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="premium-link hover:text-zephyr-cyan">{item}</a>)}
-        </nav>
-        <a href="#contact" className="premium-button rounded-full border border-white/24 px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 shadow-none hover:border-zephyr-cyan hover:text-zephyr-cyan sm:text-xs">Start</a>
+      <div className="mx-auto max-w-7xl rounded-[1.8rem] border border-white/10 bg-black/68 px-4 py-3 shadow-[0_14px_46px_rgba(0,0,0,.30)] backdrop-blur-md md:rounded-full">
+        <div className="flex items-center justify-between">
+          <a href="#hero" aria-label="Zephyr AI Studio home" className="flex min-h-11 items-center gap-3" onClick={() => setOpen(false)}>
+            <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-10 w-10 rounded-full border border-white/10 object-cover shadow-[0_0_12px_rgba(123,223,229,.10)] sm:h-12 sm:w-12" />
+            <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
+          </a>
+          <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs uppercase tracking-[0.2em] text-white/78 lg:flex">
+            {navItems.map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="premium-link hover:text-zephyr-cyan">{item}</a>)}
+          </nav>
+          <div className="hidden lg:block">
+            <a href="#contact" className="premium-button rounded-full border border-white/24 px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 shadow-none hover:border-zephyr-cyan hover:text-zephyr-cyan sm:text-xs">Start</a>
+          </div>
+          <button type="button" aria-label="Toggle mobile menu" aria-expanded={open} onClick={() => setOpen((value) => !value)} className="premium-button flex h-11 items-center justify-center gap-2 rounded-full border border-white/18 bg-white/[.06] px-4 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 lg:hidden">
+            <span>Menu</span><span className="relative h-3.5 w-5">
+              <span className={`absolute left-0 top-0 h-px w-5 bg-white transition duration-500 ${open ? 'translate-y-[6px] rotate-45' : ''}`} />
+              <span className={`absolute left-0 top-[6px] h-px w-5 bg-white transition duration-500 ${open ? 'opacity-0' : 'opacity-100'}`} />
+              <span className={`absolute left-0 top-3 h-px w-5 bg-white transition duration-500 ${open ? '-translate-y-[6px] -rotate-45' : ''}`} />
+            </span>
+          </button>
+        </div>
+        <AnimatePresence>
+          {open && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+              className="overflow-hidden lg:hidden"
+              aria-label="Mobile navigation"
+            >
+              <div className="mt-4 grid gap-2 border-t border-white/10 pt-4">
+                {navItems.map((item) => (
+                  <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)} className="rounded-2xl border border-white/8 bg-white/[.025] px-4 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white/76">
+                    {item}
+                  </a>
+                ))}
+                <a href="#contact" onClick={() => setOpen(false)} className="rounded-2xl bg-white px-4 py-4 text-center text-sm font-black uppercase tracking-[0.2em] text-black">Start a Project</a>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
@@ -108,9 +143,9 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 function Hero() {
   const reduceMotion = useMobileMotion();
   return (
-    <section id="hero" className="relative flex min-h-[92vh] items-center justify-start overflow-hidden bg-black px-5 py-24 md:min-h-screen md:px-10 md:py-28">
+    <section id="hero" className="relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-black px-5 py-24 text-center md:min-h-screen md:justify-start md:px-10 md:py-28 md:text-left">
       <motion.video
-        className="absolute inset-0 h-screen w-screen object-cover object-center opacity-88 saturate-[.9] contrast-110"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-82 saturate-[.86] contrast-105 md:h-screen md:w-screen md:opacity-88 md:saturate-[.9] md:contrast-110"
         autoPlay
         muted
         loop
@@ -123,67 +158,69 @@ function Hero() {
       >
         <source src={heroVideoSrc} type="video/mp4" />
       </motion.video>
-      <div className="gsap-hero-depth absolute inset-[-3%] bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
-      <div className="gsap-hero-glow absolute left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.58)_36%,rgba(3,3,6,.22)_68%,rgba(3,3,6,.12)),linear-gradient(180deg,rgba(3,3,6,.20),rgba(3,3,6,.08)_34%,rgba(3,3,6,.38)_74%,#030306_99%)]" />
-      <div className="absolute inset-0 shadow-[inset_0_0_220px_rgba(0,0,0,.82)]" />
+      <div className="gsap-hero-depth absolute inset-[-3%] hidden md:block bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
+      <div className="gsap-hero-glow absolute hidden md:block left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.52),rgba(3,3,6,.42)_42%,rgba(3,3,6,.70)_78%,#030306_99%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.58)_36%,rgba(3,3,6,.22)_68%,rgba(3,3,6,.12)),linear-gradient(180deg,rgba(3,3,6,.20),rgba(3,3,6,.08)_34%,rgba(3,3,6,.38)_74%,#030306_99%)]" />
+      <div className="absolute inset-0 shadow-[inset_0_0_130px_rgba(0,0,0,.72)] md:shadow-[inset_0_0_220px_rgba(0,0,0,.82)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/75 to-transparent md:h-24" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent md:h-36" />
       <motion.div
-        initial="hidden"
-        animate="show"
+        initial={reduceMotion ? false : "hidden"}
+        animate={reduceMotion ? undefined : "show"}
         variants={{
           hidden: {},
           show: { transition: { staggerChildren: 0.18, delayChildren: 0.34 } },
         }}
-        className="relative z-30 ml-0 max-w-4xl text-left md:ml-[4vw]"
+        className="relative z-30 mx-auto max-w-[22rem] md:mx-0 md:ml-[4vw] md:max-w-4xl"
       >
         <motion.p
           variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.05, ease: heroEase }}
-          className="mb-5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-zephyr-cyan/86 sm:text-xs sm:tracking-[0.48em]"
+          className="mb-5 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-zephyr-cyan/86 sm:text-xs sm:tracking-[0.48em]"
         >
           Luxury AI Cinema House
         </motion.p>
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.35, ease: heroEase }}
-          className="text-glow font-display text-[clamp(2.75rem,16vw,8.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]"
+          className="text-glow font-display text-[clamp(2.45rem,14vw,8.8rem)] font-black uppercase leading-[0.86] tracking-[-0.075em] md:leading-[0.82] md:tracking-[-0.09em]"
         >
           Cinematic AI Advertising
         </motion.h1>
         <motion.p
           variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.2, ease: heroEase }}
-          className="mt-8 max-w-xl font-accent text-lg leading-7 text-white/82 md:text-2xl"
+          className="mx-auto mt-7 max-w-xs font-accent text-base leading-7 text-white/82 md:mx-0 md:mt-8 md:max-w-xl md:text-2xl"
         >
           Futuristic Visual Storytelling for Modern Brands
         </motion.p>
         <motion.div
           variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.15, ease: heroEase }}
-          className="mt-9 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center sm:gap-4"
+          className="mx-auto mt-8 flex max-w-xs flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4 md:mx-0 md:max-w-none md:justify-start md:mt-9"
         >
           <a href="#portfolio" className="premium-button rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">View Portfolio</a>
           <a href="#contact" className="premium-button rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
         </motion.div>
+        <div className="mt-8 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/42 md:hidden">Scroll to explore</div>
       </motion.div>
     </section>
   );
 }
 function ProofStrip() {
-  return <section aria-label="Zephyr creative promise" className="relative border-y border-white/10 bg-black/30 px-4 py-9 md:py-10 md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center md:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/8 bg-white/[.025] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
+  return <section aria-label="Zephyr creative promise" className="relative border-y border-white/10 bg-black/30 px-4 py-9 md:py-10 md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/8 bg-white/[.025] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
 }
 
 function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; copy?: string }) {
-  return <Reveal className="mx-auto mb-16 max-w-6xl text-center md:mb-24"><p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">{kicker}</p><h2 className="text-glow font-display text-[clamp(3.4rem,13vw,8.8rem)] font-black uppercase leading-[.82] tracking-[-0.09em]">{title}</h2>{copy && <p className="mx-auto mt-7 max-w-xl text-base leading-7 text-white/58 md:text-xl">{copy}</p>}</Reveal>;
+  return <Reveal className="mx-auto mb-10 max-w-6xl text-center md:mb-24"><p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">{kicker}</p><h2 className="text-glow font-display text-[clamp(2.7rem,12vw,8.8rem)] font-black uppercase leading-[.82] tracking-[-0.09em]">{title}</h2>{copy && <p className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/62 md:mt-7 md:max-w-xl md:text-xl">{copy}</p>}</Reveal>;
 }
 
 function SectionFlow({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [42, 0, -24]);
-  const opacity = useTransform(scrollYProgress, [0, 0.16, 0.88, 1], [0.88, 1, 1, 0.94]);
+  const mobile = useMobileMotion();
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], mobile ? [0, 0, 0] : [42, 0, -24]);
+  const opacity = useTransform(scrollYProgress, [0, 0.16, 0.88, 1], mobile ? [1, 1, 1, 1] : [0.88, 1, 1, 0.94]);
 
   return (
     <motion.div ref={ref} style={{ y, opacity }} className={className}>
@@ -193,7 +230,7 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.075em] md:text-8xl">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-4xl font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-8xl">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
 }
 
 function CinematicReveal() {
@@ -234,6 +271,7 @@ function CinematicReveal() {
 
 function Portfolio() {
   const [active, setActive] = useState<(typeof portfolio)[number] | null>(null);
+  const mobile = useMobileMotion();
   return (
     <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-24 md:px-6 md:py-44">
       <SectionTitle kicker="Portfolio" title="Campaign worlds, not gallery tiles" copy="Campaigns as cinema." />
@@ -243,16 +281,16 @@ function Portfolio() {
             <motion.button
               type="button"
               onClick={() => setActive(item)}
-              whileHover="hover"
+              whileHover={mobile ? undefined : "hover"}
               initial="rest"
-              animate="rest"
+              animate={mobile ? "hover" : "rest"}
               whileTap={{ scale: 0.998 }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className={`premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
             >
-              <div className="relative min-h-[360px] overflow-hidden sm:min-h-[420px] md:min-h-[560px] lg:min-h-[640px]">
+              <div className="relative min-h-[390px] overflow-hidden sm:min-h-[430px] md:min-h-[560px] lg:min-h-[640px]">
                 <motion.img
-                  variants={{ rest: { scale: 1 }, hover: { scale: 1.045 } }}
+                  variants={{ rest: { scale: 1 }, hover: { scale: mobile ? 1 : 1.045 } }}
                   transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                   src={item.image}
                   alt=""
@@ -260,7 +298,7 @@ function Portfolio() {
                   className="absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
                 />
                 <motion.div
-                  variants={{ rest: { opacity: 0.36 }, hover: { opacity: 0.54 } }}
+                  variants={{ rest: { opacity: 0.36 }, hover: { opacity: mobile ? 0.46 : 0.54 } }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                   className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}
                 />
@@ -269,12 +307,12 @@ function Portfolio() {
                 <motion.div
                   variants={{ rest: { opacity: 0, y: 28 }, hover: { opacity: 1, y: 0 } }}
                   transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-10 lg:p-12"
+                  className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-10 lg:p-12"
                 >
                   <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / High-end campaign preview</p>
-                  <h3 className="mt-4 max-w-4xl font-display text-5xl md:text-8xl font-black uppercase leading-[0.8] tracking-[-0.085em] text-white lg:text-9xl">{item.title}</h3>
-                  <p className="mt-6 max-w-lg text-base leading-7 text-white/62 md:text-lg">{item.copy}</p>
-                  <span className="mt-8 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
+                  <h3 className="mt-4 max-w-4xl font-display text-4xl font-black uppercase leading-[0.86] md:text-8xl md:leading-[0.8] tracking-[-0.085em] text-white lg:text-9xl">{item.title}</h3>
+                  <p className="mt-4 max-w-sm text-sm leading-6 text-white/68 md:mt-6 md:max-w-lg md:text-lg md:leading-7">{item.copy}</p>
+                  <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
                 </motion.div>
                 <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Zephyr concept</div>
               </div>
@@ -299,7 +337,7 @@ function Portfolio() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.992, y: 22 }}
               transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-              className="relative h-[88vh] w-full max-w-7xl overflow-hidden rounded-[2rem] border border-white/14 shadow-[0_36px_140px_rgba(0,0,0,.70)] md:rounded-[2.6rem]"
+              className="relative h-[82svh] w-full max-w-7xl overflow-hidden rounded-[1.4rem] border border-white/14 shadow-[0_24px_90px_rgba(0,0,0,.62)] md:h-[88vh] md:rounded-[2.6rem] md:shadow-[0_36px_140px_rgba(0,0,0,.70)]"
               onClick={(e) => e.stopPropagation()}
             >
               <motion.img
@@ -352,7 +390,7 @@ function About() {
           <Reveal>
             <div>
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-zephyr-cyan/82 md:text-xs">About Zephyr</p>
-              <h2 className="mt-8 max-w-5xl font-display text-[clamp(3.6rem,11vw,9.5rem)] font-black uppercase leading-[0.78] tracking-[-0.09em] text-white">
+              <h2 className="mt-8 max-w-5xl font-display text-[clamp(2.9rem,13vw,9.5rem)] font-black uppercase leading-[0.78] tracking-[-0.09em] text-white">
                 We design the world your brand deserves.
               </h2>
             </div>
