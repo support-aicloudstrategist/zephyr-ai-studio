@@ -118,9 +118,98 @@ function Showreel() {
 
 function Portfolio() {
   const [active, setActive] = useState<(typeof portfolio)[number] | null>(null);
-  return <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#070713] to-zephyr-black px-4 py-28 md:px-6 md:py-36"><SectionTitle kicker="Portfolio" title="Fullscreen campaign worlds" copy="Tap any frame to open a cinematic preview." /><div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 lg:grid-cols-3">{portfolio.map((item, i) => <Reveal delay={Math.min(i * 0.09, 0.28)} key={item.title}><motion.button type="button" onClick={() => setActive(item)} whileHover={{ y: -3 }} whileTap={{ scale: 0.995 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="group relative min-h-[390px] w-full overflow-hidden rounded-[1.55rem] border border-white/10 bg-radial-cinema p-0 text-left shadow-[inset_0_0_80px_rgba(255,255,255,.03)] outline-none md:min-h-[470px]"><img src={item.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-46 grayscale-[35%] transition duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.025] group-hover:opacity-68 group-hover:grayscale-0" /><div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-42 transition duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-52`} /><div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" /><div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/6 blur-2xl transition duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-zephyr-cyan/10" /><div className="relative z-10 flex h-full min-h-[390px] flex-col justify-between p-6 md:min-h-[470px] md:p-7"><span className="text-6xl font-black text-white/16 md:text-7xl">{item.num}</span><div><h3 className="text-2xl font-black uppercase tracking-[-0.04em] text-white transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-zephyr-cyan">{item.title}</h3><p className="mt-4 max-w-xs text-sm leading-6 text-white/68">{item.copy}</p><span className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.22em] text-zephyr-magenta">Fullscreen Preview →</span><span className="mt-2 block text-[0.58rem] uppercase tracking-[0.18em] text-white/34">Temporary {item.source}</span></div></div></motion.button></Reveal>)}</div><AnimatePresence>{active && <motion.div role="dialog" aria-modal="true" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }} className="fixed inset-0 z-[80] flex items-center justify-center bg-black/88 p-4 backdrop-blur-md" onClick={() => setActive(null)}><motion.div initial={{ scale: .96, y: 26, opacity: 0 }} animate={{ scale: 1, y: 0, opacity: 1 }} exit={{ scale: .98, y: 18, opacity: 0 }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} className="relative h-[86vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-white/15 shadow-[0_30px_120px_rgba(0,0,0,.55)]" onClick={(e) => e.stopPropagation()}><img src={active.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-75" /><div className={`absolute inset-0 bg-gradient-to-br ${active.gradient}`} /><div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" /><button type="button" onClick={() => setActive(null)} className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan">Close</button><div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10"><p className="text-sm uppercase tracking-[0.34em] text-zephyr-cyan">{active.num} / Cinematic Preview</p><h3 className="mt-3 text-5xl font-black uppercase leading-none tracking-[-0.07em] md:text-8xl">{active.title}</h3><p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-xl">{active.copy}</p><p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/42">Temporary stock-style placeholder — ready to swap with original Zephyr AI assets.</p></div></motion.div></motion.div>}</AnimatePresence></section>;
+  return (
+    <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-32 md:px-6 md:py-44">
+      <SectionTitle kicker="Portfolio" title="Campaign worlds, not gallery tiles" copy="Large-format previews designed to feel like premium launch films." />
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 md:gap-16">
+        {portfolio.map((item, i) => (
+          <Reveal delay={Math.min(i * 0.08, 0.24)} key={item.title}>
+            <motion.button
+              type="button"
+              onClick={() => setActive(item)}
+              whileHover="hover"
+              initial="rest"
+              animate="rest"
+              whileTap={{ scale: 0.998 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className={`group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
+            >
+              <div className="relative min-h-[560px] overflow-hidden md:min-h-[680px] lg:min-h-[760px]">
+                <motion.img
+                  variants={{ rest: { scale: 1 }, hover: { scale: 1.045 } }}
+                  transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                  src={item.image}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
+                />
+                <motion.div
+                  variants={{ rest: { opacity: 0.36 }, hover: { opacity: 0.54 } }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/26 to-black/8" />
+                <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-black/72 via-black/26 to-transparent" />
+                <motion.div
+                  variants={{ rest: { opacity: 0, y: 28 }, hover: { opacity: 1, y: 0 } }}
+                  transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-10 lg:p-12"
+                >
+                  <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / High-end campaign preview</p>
+                  <h3 className="mt-4 max-w-4xl font-display text-5xl font-black uppercase leading-[0.86] tracking-[-0.07em] text-white md:text-7xl lg:text-8xl">{item.title}</h3>
+                  <p className="mt-5 max-w-xl text-sm leading-7 text-white/68 md:text-base">{item.copy}</p>
+                  <span className="mt-8 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Open cinematic view</span>
+                </motion.div>
+                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Zephyr concept</div>
+              </div>
+            </motion.button>
+          </Reveal>
+        ))}
+      </div>
+      <AnimatePresence>
+        {active && (
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/92 p-3 backdrop-blur-lg md:p-6"
+            onClick={() => setActive(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.985, y: 34 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.992, y: 22 }}
+              transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+              className="relative h-[88vh] w-full max-w-7xl overflow-hidden rounded-[2rem] border border-white/14 shadow-[0_36px_140px_rgba(0,0,0,.70)] md:rounded-[2.6rem]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <motion.img
+                initial={{ scale: 1.035 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 1.015 }}
+                transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
+                src={active.image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-88 saturate-[.95]"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-br ${active.gradient} opacity-45`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-black/12" />
+              <button type="button" onClick={() => setActive(null)} className="absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-black/42 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/72 backdrop-blur-md transition duration-500 hover:border-zephyr-cyan hover:text-zephyr-cyan md:right-6 md:top-6">Close</button>
+              <div className="absolute bottom-6 left-5 right-5 z-10 md:bottom-12 md:left-12 md:right-12">
+                <p className="text-xs uppercase tracking-[0.34em] text-zephyr-cyan/82 md:text-sm">{active.num} / Cinematic campaign world</p>
+                <h3 className="mt-4 max-w-5xl font-display text-5xl font-black uppercase leading-[0.82] tracking-[-0.075em] md:text-8xl lg:text-9xl">{active.title}</h3>
+                <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 md:text-xl">{active.copy}</p>
+                <p className="mt-5 text-[0.65rem] uppercase tracking-[0.25em] text-white/42">Temporary stock-style placeholder — ready to swap with original Zephyr AI assets.</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
 }
-
 function Services() {
   return <section id="services" className="px-4 py-28 md:px-6 md:py-36"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={s}><motion.div whileHover={{ y: -3 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="glass min-h-44 rounded-[1.5rem] p-6 transition hover:border-zephyr-cyan/25 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan/55 to-zephyr-magenta/45 shadow-[0_0_18px_rgba(123,223,229,.10)]" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section>;
 }
