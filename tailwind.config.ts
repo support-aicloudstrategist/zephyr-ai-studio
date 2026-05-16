@@ -8,9 +8,9 @@ const config: Config = {
         zephyr: {
           black: '#030306',
           ink: '#070812',
-          cyan: '#00f5ff',
-          magenta: '#ff2bd6',
-          violet: '#8c5cff',
+          cyan: '#7bdfe5',
+          magenta: '#d86fbd',
+          violet: '#7562b5',
           gold: '#f8d58c',
         },
       },
@@ -20,11 +20,11 @@ const config: Config = {
         accent: ['var(--font-accent)', 'ui-sans-serif', 'system-ui'],
       },
       boxShadow: {
-        neon: '0 0 35px rgba(0,245,255,.35), 0 0 80px rgba(255,43,214,.15)',
-        magenta: '0 0 40px rgba(255,43,214,.3)',
+        neon: '0 0 22px rgba(123,223,229,.18), 0 0 46px rgba(216,111,189,.08)',
+        magenta: '0 0 24px rgba(216,111,189,.16)',
       },
       backgroundImage: {
-        'radial-cinema': 'radial-gradient(circle at 20% 20%, rgba(0,245,255,.22), transparent 28%), radial-gradient(circle at 80% 10%, rgba(255,43,214,.18), transparent 30%), radial-gradient(circle at 50% 90%, rgba(140,92,255,.16), transparent 35%)',
+        'radial-cinema': 'radial-gradient(circle at 20% 20%, rgba(123,223,229,.10), transparent 30%), radial-gradient(circle at 80% 10%, rgba(216,111,189,.08), transparent 32%), radial-gradient(circle at 50% 90%, rgba(117,98,181,.08), transparent 38%)',
       },
     },
   },
