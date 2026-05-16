@@ -36,9 +36,17 @@ export default function Home() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     gsap.to('.gsap-hero-glow', {
-      scale: 1.045,
-      opacity: 0.26,
-      duration: 8.5,
+      scale: 1.055,
+      opacity: 0.24,
+      duration: 10.5,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+    });
+    gsap.to('.gsap-hero-depth', {
+      xPercent: 1.4,
+      yPercent: -0.8,
+      duration: 16,
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut',
@@ -80,30 +88,73 @@ function Navigation() {
   );
 }
 
+const heroEase = [0.16, 1, 0.3, 1] as const;
+
 function Hero() {
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-start overflow-hidden bg-black px-5 py-28 md:px-10">
-      <video className="absolute inset-0 h-screen w-screen object-cover object-center opacity-84 saturate-95 contrast-105" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+      <motion.video
+        className="absolute inset-0 h-screen w-screen object-cover object-center opacity-88 saturate-[.9] contrast-110"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+        initial={{ scale: 1.035 }}
+        animate={{ scale: [1.035, 1.055, 1.035] }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+      >
         <source src={heroVideoSrc} type="video/mp4" />
-      </video>
-      <div className="gsap-hero-glow absolute left-[28%] top-1/2 h-[54vmin] w-[54vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[70px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_38%,rgba(123,223,229,.07),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.06),transparent_22%),linear-gradient(90deg,rgba(3,3,6,.82),rgba(3,3,6,.42)_36%,rgba(3,3,6,.10)_68%,rgba(3,3,6,.04)),linear-gradient(180deg,rgba(3,3,6,.04),rgba(3,3,6,.20)_52%,#030306_98%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
-      <div className="relative z-30 ml-0 max-w-4xl text-left md:ml-[4vw]">
-        <p className="mb-5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-zephyr-cyan sm:text-xs sm:tracking-[0.48em]">Luxury AI Cinema House</p>
-        <h1 className="text-glow font-display text-[clamp(2.45rem,8.5vw,6.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
+      </motion.video>
+      <div className="gsap-hero-depth absolute inset-[-3%] bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
+      <div className="gsap-hero-glow absolute left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.58)_36%,rgba(3,3,6,.22)_68%,rgba(3,3,6,.12)),linear-gradient(180deg,rgba(3,3,6,.20),rgba(3,3,6,.08)_34%,rgba(3,3,6,.38)_74%,#030306_99%)]" />
+      <div className="absolute inset-0 shadow-[inset_0_0_220px_rgba(0,0,0,.82)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/75 to-transparent md:h-24" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent md:h-36" />
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={{
+          hidden: {},
+          show: { transition: { staggerChildren: 0.18, delayChildren: 0.34 } },
+        }}
+        className="relative z-30 ml-0 max-w-4xl text-left md:ml-[4vw]"
+      >
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1.05, ease: heroEase }}
+          className="mb-5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-zephyr-cyan/86 sm:text-xs sm:tracking-[0.48em]"
+        >
+          Luxury AI Cinema House
+        </motion.p>
+        <motion.h1
+          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1.35, ease: heroEase }}
+          className="text-glow font-display text-[clamp(2.45rem,8.5vw,6.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]"
+        >
           Cinematic AI Advertising
-        </h1>
-        <p className="mt-7 max-w-2xl font-accent text-base leading-7 text-white/84 md:text-xl">Futuristic Visual Storytelling for Modern Brands</p>
-        <div className="mt-9 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center sm:gap-4">
-          <a href="#portfolio" className="rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black transition hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">View Portfolio</a>
-          <a href="#contact" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md transition hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
-        </div>
-      </div>
+        </motion.h1>
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1.2, ease: heroEase }}
+          className="mt-7 max-w-2xl font-accent text-base leading-7 text-white/84 md:text-xl"
+        >
+          Futuristic Visual Storytelling for Modern Brands
+        </motion.p>
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1.15, ease: heroEase }}
+          className="mt-9 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center sm:gap-4"
+        >
+          <a href="#portfolio" className="rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">View Portfolio</a>
+          <a href="#contact" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
-
 function ProofStrip() {
   return <section aria-label="Zephyr creative promise" className="relative border-y border-white/10 bg-black/30 px-4 py-9 md:py-10 md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center md:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/8 bg-white/[.025] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
 }
