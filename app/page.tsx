@@ -183,7 +183,7 @@ function Hero() {
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.35, ease: heroEase }}
-          className="text-glow font-display text-[clamp(1.95rem,9.5vw,3.6rem)] font-black uppercase leading-[0.94] tracking-[-0.055em] sm:text-[clamp(2.15rem,7.6vw,4.4rem)] md:text-[clamp(2.8rem,6.4vw,6.1rem)] md:leading-[0.88] md:tracking-[-0.075em] xl:text-[clamp(3.4rem,5.7vw,6.8rem)]"
+          className="text-glow font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]"
         >
           Cinematic AI Advertising
         </motion.h1>
@@ -212,7 +212,7 @@ function ProofStrip() {
 }
 
 function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; copy?: string }) {
-  return <Reveal className="mx-auto mb-10 max-w-6xl text-center md:mb-24"><p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">{kicker}</p><h2 className="text-glow font-display text-[clamp(2.25rem,9.8vw,6.8rem)] font-black uppercase leading-[.88] tracking-[-0.075em]">{title}</h2>{copy && <p className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/62 md:mt-7 md:max-w-xl md:text-xl">{copy}</p>}</Reveal>;
+  return <Reveal className="mx-auto mb-10 max-w-6xl text-center md:mb-24"><p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">{kicker}</p><h2 className="text-glow font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">{title}</h2>{copy && <p className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/62 md:mt-7 md:max-w-xl md:text-xl">{copy}</p>}</Reveal>;
 }
 
 function SectionFlow({ children, className = '' }: { children: ReactNode; className?: string }) {
@@ -230,7 +230,7 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-3xl font-black uppercase leading-[0.94] tracking-[-0.055em] md:text-6xl">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
 }
 
 function CinematicReveal() {
@@ -261,7 +261,7 @@ function CinematicReveal() {
         </motion.div>
         <motion.div style={{ opacity: textOpacity, y: textY }} className="pointer-events-none absolute z-10 mx-auto max-w-5xl px-6 text-center">
           <p className="text-[0.66rem] font-semibold uppercase tracking-[0.38em] text-zephyr-cyan/82 md:text-xs">The Zephyr Moment</p>
-          <h2 className="mt-5 font-display text-[clamp(2.2rem,7.6vw,5.8rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white">Brief to world.</h2>
+          <h2 className="mt-5 font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">Brief to world.</h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/68 md:text-lg">The campaign becomes cinema.</p>
         </motion.div>
       </div>
@@ -310,7 +310,7 @@ function Portfolio() {
                   className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-10 lg:p-12"
                 >
                   <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / High-end campaign preview</p>
-                  <h3 className="mt-4 max-w-4xl font-display text-3xl font-black uppercase leading-[0.92] md:text-6xl md:leading-[0.86] tracking-[-0.07em] text-white lg:text-7xl">{item.title}</h3>
+                  <h3 className="mt-4 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">{item.title}</h3>
                   <p className="mt-4 max-w-sm text-sm leading-6 text-white/68 md:mt-6 md:max-w-lg md:text-lg md:leading-7">{item.copy}</p>
                   <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
                 </motion.div>
@@ -354,7 +354,7 @@ function Portfolio() {
               <button type="button" onClick={() => setActive(null)} className="premium-button absolute right-4 top-4 z-20 rounded-full border border-white/20 bg-black/42 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-white/72 backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan md:right-6 md:top-6">Close</button>
               <div className="absolute bottom-6 left-5 right-5 z-10 md:bottom-12 md:left-12 md:right-12">
                 <p className="text-xs uppercase tracking-[0.34em] text-zephyr-cyan/82 md:text-sm">{active.num} / Cinematic campaign world</p>
-                <h3 className="mt-4 max-w-5xl font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-6xl lg:text-7xl">{active.title}</h3>
+                <h3 className="mt-4 max-w-5xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">{active.title}</h3>
                 <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 md:text-xl">{active.copy}</p>
                 <p className="mt-5 text-[0.65rem] uppercase tracking-[0.25em] text-white/42">Placeholder — ready for Zephyr originals.</p>
               </div>
@@ -390,7 +390,7 @@ function About() {
           <Reveal>
             <div>
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-zephyr-cyan/82 md:text-xs">About Zephyr</p>
-              <h2 className="mt-8 max-w-5xl font-display text-[clamp(2.35rem,10vw,7.2rem)] font-black uppercase leading-[0.86] tracking-[-0.075em] text-white">
+              <h2 className="mt-8 max-w-5xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">
                 We design the world your brand deserves.
               </h2>
             </div>
