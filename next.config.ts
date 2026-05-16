@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   images: { unoptimized: true },
+  env: { NEXT_PUBLIC_BASE_PATH: isGithubPages ? '/zephyr-ai-studio' : '' },
   ...(isGithubPages
     ? {
         basePath: '/zephyr-ai-studio',

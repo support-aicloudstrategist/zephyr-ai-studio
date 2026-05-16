@@ -9,6 +9,7 @@ import { Reveal } from '@/components/Reveal';
 import { placeholderPortfolio, placeholderVideos } from '@/lib/placeholders';
 
 const portfolio = placeholderPortfolio;
+const logoSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/brand/zephyr-ai-studio-logo.jpg`;
 
 const services = [
   'AI Product Advertisements',
@@ -67,7 +68,10 @@ function Navigation() {
   return (
     <motion.header initial={{ y: -60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }} className="fixed left-0 right-0 top-0 z-50 px-3 py-3 md:px-10 md:py-4">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-black/45 px-4 py-3 shadow-[0_14px_60px_rgba(0,0,0,.35)] backdrop-blur-2xl">
-        <a href="#hero" aria-label="Zephyr AI Studio home" className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</a>
+        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex items-center gap-3">
+          <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-9 w-9 rounded-full border border-white/10 object-cover shadow-[0_0_24px_rgba(0,245,255,.24)] sm:h-11 sm:w-11" />
+          <span className="hidden font-display text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white sm:inline sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
+        </a>
         <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs uppercase tracking-[0.2em] text-white/65 lg:flex">
           {['Showreel', 'Portfolio', 'Services', 'Pricing', 'Contact'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="transition hover:text-zephyr-cyan hover:drop-shadow-[0_0_14px_rgba(0,245,255,.8)]">{item}</a>)}
         </nav>
@@ -88,6 +92,7 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, delay: .4 }} className="scanline absolute left-1/2 top-1/2 z-20 h-px w-[92vw] origin-left -translate-x-1/2" />
       <div className="relative z-30 mx-auto max-w-7xl text-center">
+        <motion.img initial={{ opacity: 0, y: 18, scale: 0.92 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: .9, delay: .35 }} src={logoSrc} alt="Zephyr AI Studio" className="mx-auto mb-6 h-20 w-20 rounded-full border border-white/12 object-cover shadow-[0_0_55px_rgba(0,245,255,.28)] sm:h-24 sm:w-24" />
         <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: .45 }} className="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan sm:text-xs sm:tracking-[0.55em]">Luxury AI Cinema House</motion.p>
         <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="gsap-parallax text-glow font-display text-[clamp(3.25rem,16vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
           Cinematic AI Advertising
@@ -135,5 +140,5 @@ function Contact() {
 }
 
 function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><p className="uppercase tracking-[0.3em]">Zephyr AI Studio</p><p>Built with Next.js, React, Tailwind CSS, Framer Motion, Lenis, Three.js and GSAP.</p><div className="flex gap-5"><a className="hover:text-zephyr-cyan" href="#contact">Instagram</a><a className="hover:text-zephyr-cyan" href="#contact">LinkedIn</a><a className="hover:text-zephyr-cyan" href="#contact">YouTube</a></div></div></footer>;
+  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_28px_rgba(255,43,214,.22)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Built with Next.js, React, Tailwind CSS, Framer Motion, Lenis, Three.js and GSAP.</p><div className="flex gap-5"><a className="hover:text-zephyr-cyan" href="#contact">Instagram</a><a className="hover:text-zephyr-cyan" href="#contact">LinkedIn</a><a className="hover:text-zephyr-cyan" href="#contact">YouTube</a></div></div></footer>;
 }
