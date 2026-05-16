@@ -87,25 +87,25 @@ function Navigation() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 py-28">
-      <video className="absolute inset-0 h-screen w-screen object-cover opacity-70 saturate-150 contrast-125" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+    <section id="hero" className="relative flex min-h-screen items-center justify-start overflow-hidden bg-black px-5 py-28 md:px-10">
+      <video className="absolute inset-0 h-screen w-screen object-cover object-center opacity-88 saturate-150 contrast-110" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
         <source src={heroVideoSrc} type="video/mp4" />
       </video>
-      <div className="gsap-hero-glow absolute left-1/2 top-1/2 h-[72vmin] w-[72vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/20 blur-[90px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,245,255,.16),transparent_27%),radial-gradient(circle_at_80%_18%,rgba(255,43,214,.18),transparent_25%),linear-gradient(180deg,rgba(3,3,6,.16),rgba(3,3,6,.55)_46%,#030306_96%)]" />
+      <div className="gsap-hero-glow absolute left-[28%] top-1/2 h-[54vmin] w-[54vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/12 blur-[90px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_24%_38%,rgba(0,245,255,.12),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(255,43,214,.10),transparent_22%),linear-gradient(90deg,rgba(3,3,6,.82),rgba(3,3,6,.42)_36%,rgba(3,3,6,.10)_68%,rgba(3,3,6,.04)),linear-gradient(180deg,rgba(3,3,6,.04),rgba(3,3,6,.20)_52%,#030306_98%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, delay: .4 }} className="scanline absolute left-1/2 top-1/2 z-20 h-px w-[92vw] origin-left -translate-x-1/2" />
-      <div className="relative z-30 mx-auto max-w-7xl text-center">
-        <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: .45 }} className="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan sm:text-xs sm:tracking-[0.55em]">Luxury AI Cinema House</motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="gsap-parallax text-glow font-display text-[clamp(3.25rem,16vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
+      <div className="relative z-30 ml-0 max-w-4xl text-left md:ml-[4vw]">
+        <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: .45 }} className="mb-5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-zephyr-cyan sm:text-xs sm:tracking-[0.48em]">Luxury AI Cinema House</motion.p>
+        <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="gsap-parallax text-glow font-display text-[clamp(2.65rem,10vw,7.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
           Cinematic AI Advertising
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.05 }} className="mx-auto mt-7 max-w-3xl font-accent text-base leading-7 text-white/76 md:text-2xl">Futuristic Visual Storytelling for Modern Brands</motion.p>
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: 1.25 }} className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
+        <motion.p initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.05 }} className="mt-7 max-w-2xl font-accent text-base leading-7 text-white/78 md:text-xl">Futuristic Visual Storytelling for Modern Brands</motion.p>
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: 1.25 }} className="mt-9 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center sm:gap-4">
           <a href="#portfolio" className="rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black transition hover:bg-zephyr-cyan hover:shadow-neon">View Portfolio</a>
           <a href="#contact" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-xl transition hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
         </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.55 }} className="gsap-parallax-reverse mx-auto mt-12 grid max-w-3xl grid-cols-3 gap-2 rounded-[1.4rem] border border-white/10 bg-black/25 p-2 text-left backdrop-blur-xl sm:gap-3 sm:p-3">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.55 }} className="gsap-parallax-reverse mt-12 grid max-w-2xl grid-cols-3 gap-2 rounded-[1.4rem] border border-white/10 bg-black/18 p-2 text-left backdrop-blur-md sm:gap-3 sm:p-3">
           {['AI FILMS', 'LUXURY ADS', 'REELS'].map((item) => <div key={item} className="gsap-float rounded-2xl border border-white/8 bg-white/[.035] px-3 py-4 text-center text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/70 sm:text-xs">{item}</div>)}
         </motion.div>
       </div>
