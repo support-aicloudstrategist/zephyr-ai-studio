@@ -1,17 +1,19 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
 import Particles from '@/components/Particles';
 import SmoothScroll from '@/components/SmoothScroll';
 import { Reveal } from '@/components/Reveal';
 
 const portfolio = [
-  ['AI Product Films', 'Hero products staged like luxury cinema stills.', '01', 'from-cyan-400/25 via-transparent to-fuchsia-500/20'],
-  ['Fashion Worlds', 'Editorial silhouettes, texture, attitude and motion.', '02', 'from-fuchsia-500/25 via-transparent to-violet-500/20'],
-  ['Vertical Reels', 'Trailer-cut attention systems for launches and drops.', '03', 'from-violet-500/25 via-transparent to-cyan-400/20'],
-  ['Entertainment Teasers', 'Impossible scenes, posters and narrative energy.', '04', 'from-amber-200/18 via-transparent to-fuchsia-500/20'],
-  ['Launch Creatives', 'High-impact social assets with premium consistency.', '05', 'from-cyan-400/20 via-transparent to-white/10'],
-  ['Luxury Brand Visuals', 'Polished visual identity for expensive positioning.', '06', 'from-fuchsia-500/18 via-transparent to-cyan-400/20'],
+  { title: 'AI Product Films', copy: 'Chrome, glass and neon staged like a luxury launch film.', num: '01', gradient: 'from-cyan-400/30 via-transparent to-fuchsia-500/20', image: 'https://images.unsplash.com/photo-1635776063043-ab23b4c226f6?auto=format&fit=crop&w=1600&q=80' },
+  { title: 'Fashion Worlds', copy: 'Editorial silhouettes, synthetic rain, texture and attitude.', num: '02', gradient: 'from-fuchsia-500/30 via-transparent to-violet-500/20', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1600&q=80' },
+  { title: 'Vertical Reels', copy: 'Trailer-cut attention systems for launches, drops and reels.', num: '03', gradient: 'from-violet-500/30 via-transparent to-cyan-400/20', image: 'https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=80' },
+  { title: 'Entertainment Teasers', copy: 'Impossible scenes, poster energy and narrative pulse.', num: '04', gradient: 'from-amber-200/20 via-transparent to-fuchsia-500/20', image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80' },
+  { title: 'Launch Creatives', copy: 'Hero visuals with premium consistency across every format.', num: '05', gradient: 'from-cyan-400/24 via-transparent to-white/10', image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80' },
+  { title: 'Luxury Brand Visuals', copy: 'Polished campaign identity for expensive positioning.', num: '06', gradient: 'from-fuchsia-500/22 via-transparent to-cyan-400/20', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80' },
 ];
 
 const services = [
@@ -32,8 +34,26 @@ const prices = [
 ] as const;
 
 export default function Home() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    gsap.fromTo('.page-curtain', { yPercent: 0 }, { yPercent: -100, duration: 1.15, ease: 'power4.inOut', delay: 0.15 });
+    gsap.to('.gsap-hero-glow', { scale: 1.18, opacity: 0.72, duration: 2.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.gsap-float', { y: -18, duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut', stagger: 0.18 });
+
+    const onMove = (event: MouseEvent) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 34;
+      const y = (event.clientY / window.innerHeight - 0.5) * 24;
+      gsap.to('.gsap-parallax', { x, y, duration: 0.8, ease: 'power3.out' });
+      gsap.to('.gsap-parallax-reverse', { x: -x * 0.5, y: -y * 0.5, duration: 1, ease: 'power3.out' });
+    };
+    window.addEventListener('mousemove', onMove);
+    return () => window.removeEventListener('mousemove', onMove);
+  }, []);
+
   return (
     <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black text-white">
+      <div className="page-curtain fixed inset-0 z-[90] bg-[radial-gradient(circle_at_50%_45%,rgba(0,245,255,.18),transparent_28%),#030306]" />
       <SmoothScroll />
       <Particles />
       <Navigation />
@@ -65,25 +85,26 @@ function Navigation() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 pt-24">
-      <video className="absolute inset-0 h-full w-full scale-105 object-cover opacity-45 md:opacity-55" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden bg-black px-4 py-28">
+      <video className="absolute inset-0 h-screen w-screen object-cover opacity-60 saturate-150 contrast-125" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
         <source src="https://cdn.coverr.co/videos/coverr-lights-in-the-dark-6772/1080p.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,245,255,.22),transparent_27%),radial-gradient(circle_at_78%_22%,rgba(255,43,214,.18),transparent_24%),linear-gradient(180deg,rgba(3,3,6,.2),#030306_96%)]" />
+      <div className="gsap-hero-glow absolute left-1/2 top-1/2 h-[72vmin] w-[72vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/20 blur-[90px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,245,255,.20),transparent_27%),radial-gradient(circle_at_80%_18%,rgba(255,43,214,.20),transparent_25%),linear-gradient(180deg,rgba(3,3,6,.05),rgba(3,3,6,.52)_46%,#030306_96%)]" />
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-zephyr-black via-zephyr-black/80 to-transparent" />
       <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 1.4, delay: .4 }} className="scanline absolute left-1/2 top-1/2 z-20 h-px w-[92vw] origin-left -translate-x-1/2" />
       <div className="relative z-30 mx-auto max-w-7xl text-center">
         <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: .45 }} className="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan sm:text-xs sm:tracking-[0.55em]">Luxury AI Cinema House</motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="text-glow font-display text-[clamp(3.35rem,18vw,10.5rem)] font-black uppercase leading-[0.84] tracking-[-0.09em]">
-          AI-Native<br /><span className="bg-gradient-to-r from-zephyr-cyan via-white to-zephyr-magenta bg-clip-text text-transparent">Creative Studio</span>
+        <motion.h1 initial={{ opacity: 0, y: 38, filter: 'blur(12px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 1.2, delay: .7, ease: [0.22, 1, 0.36, 1] }} className="gsap-parallax text-glow font-display text-[clamp(3.25rem,16vw,11rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]">
+          Cinematic AI Advertising
         </motion.h1>
-        <motion.p initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.05 }} className="mx-auto mt-7 max-w-3xl font-accent text-base leading-7 text-white/72 md:text-2xl">Cinematic AI advertising, futuristic visual storytelling and premium campaign worlds.</motion.p>
+        <motion.p initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.05 }} className="mx-auto mt-7 max-w-3xl font-accent text-base leading-7 text-white/76 md:text-2xl">Futuristic Visual Storytelling for Modern Brands</motion.p>
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .9, delay: 1.25 }} className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
           <a href="#portfolio" className="rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black transition hover:bg-zephyr-cyan hover:shadow-neon">View Portfolio</a>
           <a href="#contact" className="rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-xl transition hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
         </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.55 }} className="mx-auto mt-12 grid max-w-3xl grid-cols-3 gap-2 rounded-[1.4rem] border border-white/10 bg-black/25 p-2 text-left backdrop-blur-xl sm:gap-3 sm:p-3">
-          {['AI FILMS', 'LUXURY ADS', 'REELS'].map((item) => <div key={item} className="rounded-2xl border border-white/8 bg-white/[.035] px-3 py-4 text-center text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/70 sm:text-xs">{item}</div>)}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.55 }} className="gsap-parallax-reverse mx-auto mt-12 grid max-w-3xl grid-cols-3 gap-2 rounded-[1.4rem] border border-white/10 bg-black/25 p-2 text-left backdrop-blur-xl sm:gap-3 sm:p-3">
+          {['AI FILMS', 'LUXURY ADS', 'REELS'].map((item) => <div key={item} className="gsap-float rounded-2xl border border-white/8 bg-white/[.035] px-3 py-4 text-center text-[0.62rem] font-bold uppercase tracking-[0.2em] text-white/70 sm:text-xs">{item}</div>)}
         </motion.div>
       </div>
     </section>
@@ -95,19 +116,20 @@ function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; 
 }
 
 function Showreel() {
-  return <section id="showreel" className="relative bg-zephyr-black px-4 py-24 md:px-6 md:py-36"><SectionTitle kicker="Showreel" title="A moving moodboard of impossible visuals" copy="Fashion. Product. Story. Motion. Built like a trailer." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/15 bg-white/5 p-2 shadow-neon sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] sm:rounded-[1.8rem] md:aspect-video"><video className="h-full w-full object-cover opacity-80" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="https://cdn.coverr.co/videos/coverr-abstract-neon-lights-5585/1080p.mp4" type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-transparent to-zephyr-magenta/25" /><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 text-3xl font-black uppercase leading-none tracking-[-0.05em] md:text-5xl">Fashion. Product. Story. Motion.</h3></div></div></div></Reveal></section>;
+  return <section id="showreel" className="relative bg-zephyr-black px-4 py-24 md:px-6 md:py-36"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="One page. Big frames. Sharp cuts. Fashion, product and story moving like a midnight premiere." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/15 bg-white/5 p-2 shadow-neon sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] sm:rounded-[1.8rem] md:aspect-video"><video className="h-full w-full object-cover opacity-90 saturate-150 contrast-125" autoPlay muted loop playsInline preload="metadata" aria-hidden="true"><source src="https://cdn.coverr.co/videos/coverr-abstract-neon-lights-5585/1080p.mp4" type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/78 via-transparent to-zephyr-magenta/28" /><div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-black/60 to-transparent" /><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">Fashion. Product. Story. Motion.</h3></div></div></div></Reveal></section>;
 }
 
 function Portfolio() {
-  return <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#070713] to-zephyr-black px-4 py-24 md:px-6 md:py-28"><SectionTitle kicker="Portfolio" title="Spec worlds for premium brands" copy="Six visual worlds. Minimal copy. Maximum atmosphere." /><div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 lg:grid-cols-3">{portfolio.map(([title, copy, num, gradient], i) => <Reveal delay={i * .04} key={title}><motion.article whileHover={{ y: -10, scale: 1.015 }} className="group relative min-h-[360px] overflow-hidden rounded-[1.55rem] border border-white/10 bg-radial-cinema p-6 shadow-[inset_0_0_80px_rgba(255,255,255,.03)] md:min-h-[430px] md:p-7"><div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-55 transition duration-500 group-hover:opacity-95`} /><div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/10 blur-3xl" /><div className="relative z-10 flex h-full flex-col justify-between"><span className="text-6xl font-black text-white/10 md:text-7xl">{num}</span><div><h3 className="text-2xl font-black uppercase tracking-[-0.04em] text-white transition group-hover:text-zephyr-cyan">{title}</h3><p className="mt-4 max-w-xs text-sm leading-6 text-white/60">{copy}</p><span className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.22em] text-zephyr-magenta">Cinematic Preview →</span></div></div></motion.article></Reveal>)}</div></section>;
+  const [active, setActive] = useState<(typeof portfolio)[number] | null>(null);
+  return <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#070713] to-zephyr-black px-4 py-24 md:px-6 md:py-28"><SectionTitle kicker="Portfolio" title="Fullscreen campaign worlds" copy="Tap any frame to open a cinematic preview." /><div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 lg:grid-cols-3">{portfolio.map((item, i) => <Reveal delay={i * .04} key={item.title}><motion.button type="button" onClick={() => setActive(item)} whileHover={{ y: -12, scale: 1.018 }} whileTap={{ scale: 0.98 }} className="group relative min-h-[390px] w-full overflow-hidden rounded-[1.55rem] border border-white/10 bg-radial-cinema p-0 text-left shadow-[inset_0_0_80px_rgba(255,255,255,.03)] outline-none md:min-h-[470px]"><img src={item.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-38 grayscale transition duration-700 group-hover:scale-110 group-hover:opacity-72 group-hover:grayscale-0" /><div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-75 transition duration-500 group-hover:opacity-95`} /><div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" /><div className="absolute -right-12 -top-12 h-44 w-44 rounded-full bg-white/10 blur-3xl transition group-hover:bg-zephyr-cyan/25" /><div className="relative z-10 flex h-full min-h-[390px] flex-col justify-between p-6 md:min-h-[470px] md:p-7"><span className="text-6xl font-black text-white/16 md:text-7xl">{item.num}</span><div><h3 className="text-2xl font-black uppercase tracking-[-0.04em] text-white transition group-hover:text-zephyr-cyan">{item.title}</h3><p className="mt-4 max-w-xs text-sm leading-6 text-white/68">{item.copy}</p><span className="mt-7 inline-flex text-xs font-bold uppercase tracking-[0.22em] text-zephyr-magenta">Fullscreen Preview →</span></div></div></motion.button></Reveal>)}</div><AnimatePresence>{active && <motion.div role="dialog" aria-modal="true" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[80] flex items-center justify-center bg-black/88 p-4 backdrop-blur-xl" onClick={() => setActive(null)}><motion.div initial={{ scale: .92, y: 40 }} animate={{ scale: 1, y: 0 }} exit={{ scale: .94, y: 30 }} transition={{ type: 'spring', damping: 24, stiffness: 180 }} className="relative h-[86vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-white/15 shadow-[0_0_120px_rgba(0,245,255,.20)]" onClick={(e) => e.stopPropagation()}><img src={active.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-75" /><div className={`absolute inset-0 bg-gradient-to-br ${active.gradient}`} /><div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" /><button type="button" onClick={() => setActive(null)} className="absolute right-4 top-4 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] backdrop-blur-xl hover:border-zephyr-cyan hover:text-zephyr-cyan">Close</button><div className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10"><p className="text-sm uppercase tracking-[0.34em] text-zephyr-cyan">{active.num} / Cinematic Preview</p><h3 className="mt-3 text-5xl font-black uppercase leading-none tracking-[-0.07em] md:text-8xl">{active.title}</h3><p className="mt-5 max-w-2xl text-base leading-7 text-white/72 md:text-xl">{active.copy}</p></div></motion.div></motion.div>}</AnimatePresence></section>;
 }
 
 function Services() {
-  return <section id="services" className="px-4 py-24 md:px-6 md:py-28"><SectionTitle kicker="Services" title="Built for brands that need to look expensive" /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={i*.03} key={s}><motion.div whileHover={{ rotateX: 4, rotateY: -4, y: -8 }} className="glass min-h-44 rounded-[1.5rem] p-6 transition hover:border-zephyr-cyan/60 hover:shadow-neon md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan to-zephyr-magenta shadow-neon" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section>;
+  return <section id="services" className="px-4 py-24 md:px-6 md:py-28"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={i*.03} key={s}><motion.div whileHover={{ rotateX: 4, rotateY: -4, y: -8 }} className="glass min-h-44 rounded-[1.5rem] p-6 transition hover:border-zephyr-cyan/60 hover:shadow-neon md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan to-zephyr-magenta shadow-neon" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section>;
 }
 
 function About() {
-  return <section id="about" className="relative overflow-hidden px-4 py-24 md:px-6 md:py-32"><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,43,214,.16),transparent_30%),radial-gradient(circle_at_20%_70%,rgba(0,245,255,.18),transparent_28%)]" /><div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[.9fr_1.1fr] md:items-center"><Reveal><div className="glass rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-xs uppercase tracking-[0.38em] text-zephyr-cyan">About</p><h2 className="mt-6 text-4xl font-black uppercase leading-[.9] tracking-[-0.06em] md:text-6xl">A studio for impossible brand worlds.</h2></div></Reveal><Reveal delay={0.12}><p className="text-2xl leading-relaxed text-white/72 md:text-4xl">We blend storytelling, branding, motion design and AI craft into visuals that feel premium before a word is read.</p></Reveal></div></section>;
+  return <section id="about" className="relative overflow-hidden px-4 py-24 md:px-6 md:py-32"><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,43,214,.16),transparent_30%),radial-gradient(circle_at_20%_70%,rgba(0,245,255,.18),transparent_28%)]" /><div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[.9fr_1.1fr] md:items-center"><Reveal><div className="glass rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-xs uppercase tracking-[0.38em] text-zephyr-cyan">About</p><h2 className="mt-6 text-4xl font-black uppercase leading-[.9] tracking-[-0.06em] md:text-6xl">A studio for impossible brand worlds.</h2></div></Reveal><Reveal delay={0.12}><p className="text-2xl leading-relaxed text-white/72 md:text-4xl">A futuristic cinematic creative studio combining storytelling, branding, motion design, and AI-powered visual production.</p></Reveal></div></section>;
 }
 
 function Pricing() {
@@ -119,5 +141,5 @@ function Contact() {
 }
 
 function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><p className="uppercase tracking-[0.3em]">Zephyr AI Studio</p><p>AI-native cinematic advertising & futuristic visual storytelling.</p><div className="flex gap-5"><a className="hover:text-zephyr-cyan" href="#contact">Instagram</a><a className="hover:text-zephyr-cyan" href="#contact">LinkedIn</a><a className="hover:text-zephyr-cyan" href="#contact">YouTube</a></div></div></footer>;
+  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><p className="uppercase tracking-[0.3em]">Zephyr AI Studio</p><p>Built with Next.js, React, Tailwind CSS, Framer Motion, Lenis, Three.js and GSAP.</p><div className="flex gap-5"><a className="hover:text-zephyr-cyan" href="#contact">Instagram</a><a className="hover:text-zephyr-cyan" href="#contact">LinkedIn</a><a className="hover:text-zephyr-cyan" href="#contact">YouTube</a></div></div></footer>;
 }

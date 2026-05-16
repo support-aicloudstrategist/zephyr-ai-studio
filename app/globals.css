@@ -64,4 +64,5 @@ select option { background: #05050c; color: #f7f7fb; }
     scroll-behavior: auto !important;
     transition-duration: .01ms !important;
   }
+  .page-curtain { display: none; }
 }
