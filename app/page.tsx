@@ -183,7 +183,7 @@ function Hero() {
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.35, ease: heroEase }}
-          className="text-glow font-display text-[clamp(2.45rem,14vw,8.8rem)] font-black uppercase leading-[0.86] tracking-[-0.075em] md:leading-[0.82] md:tracking-[-0.09em]"
+          className="text-glow font-display text-[clamp(2.15rem,11vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] sm:text-[clamp(2.4rem,9vw,5.2rem)] md:text-[clamp(3.2rem,7.8vw,7.4rem)] md:leading-[0.84] md:tracking-[-0.085em] xl:text-[clamp(4.2rem,7vw,8rem)]"
         >
           Cinematic AI Advertising
         </motion.h1>
