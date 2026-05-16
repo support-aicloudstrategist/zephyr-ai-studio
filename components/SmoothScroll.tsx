@@ -7,10 +7,10 @@ export default function SmoothScroll() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const lenis = new Lenis({
-      duration: 1.38,
+      duration: window.matchMedia('(max-width: 767px)').matches ? 1.05 : 1.38,
       smoothWheel: true,
-      wheelMultiplier: 0.92,
-      touchMultiplier: 1.18,
+      wheelMultiplier: window.matchMedia('(max-width: 767px)').matches ? 1 : 0.92,
+      touchMultiplier: window.matchMedia('(max-width: 767px)').matches ? 1.28 : 1.18,
       easing: (t: number) => 1 - Math.pow(1 - t, 4),
     });
     let rafId = 0;

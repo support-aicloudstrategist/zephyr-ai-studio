@@ -31,9 +31,23 @@ const prices = [
   ['Premium Cinematic Campaign', '₹1L+', 'Luxury storytelling at scale.', ['Full campaign world', 'Cinematic ad films', 'Motion design pack', 'Founder/brand story system']],
 ] as const;
 
+function useMobileMotion() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)');
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
+
+  return isMobile;
+}
+
 export default function Home() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches) return;
 
     gsap.to('.gsap-hero-glow', {
       scale: 1.055,
@@ -92,8 +106,9 @@ function Navigation() {
 const heroEase = [0.16, 1, 0.3, 1] as const;
 
 function Hero() {
+  const reduceMotion = useMobileMotion();
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-start overflow-hidden bg-black px-5 py-28 md:px-10">
+    <section id="hero" className="relative flex min-h-[92vh] items-center justify-start overflow-hidden bg-black px-5 py-24 md:min-h-screen md:px-10 md:py-28">
       <motion.video
         className="absolute inset-0 h-screen w-screen object-cover object-center opacity-88 saturate-[.9] contrast-110"
         autoPlay
@@ -102,9 +117,9 @@ function Hero() {
         playsInline
         preload="metadata"
         aria-hidden="true"
-        initial={{ scale: 1.035 }}
-        animate={{ scale: [1.035, 1.055, 1.035] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+        initial={{ scale: reduceMotion ? 1.015 : 1.035 }}
+        animate={reduceMotion ? { scale: 1.015 } : { scale: [1.035, 1.055, 1.035] }}
+        transition={{ duration: 22, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
       >
         <source src={heroVideoSrc} type="video/mp4" />
       </motion.video>
@@ -133,7 +148,7 @@ function Hero() {
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 1.35, ease: heroEase }}
-          className="text-glow font-display text-[clamp(3.2rem,10vw,8.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]"
+          className="text-glow font-display text-[clamp(2.75rem,16vw,8.8rem)] font-black uppercase leading-[0.82] tracking-[-0.09em]"
         >
           Cinematic AI Advertising
         </motion.h1>
@@ -178,27 +193,28 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-36 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="auto" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.075em] md:text-8xl">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.075em] md:text-8xl">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
 }
 
 function CinematicReveal() {
+  const reduceMotion = useMobileMotion();
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const frameScale = useTransform(scrollYProgress, [0.18, 0.52, 0.82], [0.78, 1, 1.08]);
-  const frameRadius = useTransform(scrollYProgress, [0.2, 0.62], ['2.4rem', '0rem']);
+  const frameScale = useTransform(scrollYProgress, [0.18, 0.52, 0.82], reduceMotion ? [0.9, 1, 1.01] : [0.78, 1, 1.08]);
+  const frameRadius = useTransform(scrollYProgress, [0.2, 0.62], reduceMotion ? ['1.4rem', '1.1rem'] : ['2.4rem', '0rem']);
   const textOpacity = useTransform(scrollYProgress, [0.16, 0.34, 0.5], [0, 1, 0]);
   const textY = useTransform(scrollYProgress, [0.16, 0.38, 0.5], [34, 0, -42]);
   const filmOpacity = useTransform(scrollYProgress, [0.34, 0.58, 0.84], [0.42, 0.86, 1]);
   const veilOpacity = useTransform(scrollYProgress, [0.32, 0.7], [0.58, 0.18]);
 
   return (
-    <section ref={ref} className="relative h-[220vh] bg-gradient-to-b from-zephyr-black via-black to-zephyr-black">
+    <section ref={ref} className="relative h-[150vh] bg-gradient-to-b from-zephyr-black via-black to-zephyr-black md:h-[220vh]">
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-4">
         <motion.div
           style={{ scale: frameScale, borderRadius: frameRadius }}
-          className="relative h-[74vh] w-full max-w-6xl overflow-hidden border border-white/12 bg-[#05050a] shadow-[0_36px_140px_rgba(0,0,0,.68)]"
+          className="relative h-[62vh] w-full max-w-6xl overflow-hidden border border-white/12 bg-[#05050a] shadow-[0_26px_90px_rgba(0,0,0,.58)] md:h-[74vh] md:shadow-[0_36px_140px_rgba(0,0,0,.68)]"
         >
-          <video className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-[.92] contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true">
+          <video className="absolute inset-0 h-full w-full object-cover opacity-86 saturate-[.9] contrast-105 md:opacity-90" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true">
             <source src={showreelVideoSrc} type="video/mp4" />
           </video>
           <motion.div style={{ opacity: filmOpacity }} className="absolute inset-0 bg-gradient-to-t from-black/76 via-black/18 to-black/28" />
@@ -219,7 +235,7 @@ function CinematicReveal() {
 function Portfolio() {
   const [active, setActive] = useState<(typeof portfolio)[number] | null>(null);
   return (
-    <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-32 md:px-6 md:py-44">
+    <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-24 md:px-6 md:py-44">
       <SectionTitle kicker="Portfolio" title="Campaign worlds, not gallery tiles" copy="Campaigns as cinema." />
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:gap-12">
         {portfolio.map((item, i) => (
@@ -234,12 +250,13 @@ function Portfolio() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className={`premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
             >
-              <div className="relative min-h-[460px] overflow-hidden md:min-h-[560px] lg:min-h-[640px]">
+              <div className="relative min-h-[360px] overflow-hidden sm:min-h-[420px] md:min-h-[560px] lg:min-h-[640px]">
                 <motion.img
                   variants={{ rest: { scale: 1 }, hover: { scale: 1.045 } }}
                   transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
                   src={item.image}
                   alt=""
+                  loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
                 />
                 <motion.div
@@ -255,7 +272,7 @@ function Portfolio() {
                   className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-10 lg:p-12"
                 >
                   <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / High-end campaign preview</p>
-                  <h3 className="mt-4 max-w-4xl font-display text-6xl font-black uppercase leading-[0.8] tracking-[-0.085em] text-white md:text-8xl lg:text-9xl">{item.title}</h3>
+                  <h3 className="mt-4 max-w-4xl font-display text-5xl md:text-8xl font-black uppercase leading-[0.8] tracking-[-0.085em] text-white lg:text-9xl">{item.title}</h3>
                   <p className="mt-6 max-w-lg text-base leading-7 text-white/62 md:text-lg">{item.copy}</p>
                   <span className="mt-8 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
                 </motion.div>
@@ -311,7 +328,7 @@ function Portfolio() {
   );
 }
 function Services() {
-  return <SectionFlow><section id="services" className="px-4 py-36 md:px-6 md:py-48"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={s}><motion.div whileHover={{ y: -3 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="premium-card glass min-h-44 rounded-[1.5rem] p-6 hover:border-zephyr-cyan/25 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan/55 to-zephyr-magenta/45 shadow-[0_0_18px_rgba(123,223,229,.10)]" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section id="services" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={s}><motion.div whileHover={{ y: -3 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="premium-card glass min-h-44 rounded-[1.5rem] p-6 hover:border-zephyr-cyan/25 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan/55 to-zephyr-magenta/45 shadow-[0_0_18px_rgba(123,223,229,.10)]" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section></SectionFlow>;
 }
 
 function Method() {
@@ -320,14 +337,14 @@ function Method() {
     ['Design', 'Moodboards, prompts, composition rules and motion references lock the premium world before production.'],
     ['Produce', 'AI visuals, video generation, editing direction and platform-specific cutdowns are built as one campaign system.'],
   ];
-  return <SectionFlow><section className="relative overflow-hidden bg-[#04040a] px-4 py-36 md:px-6 md:py-48"><div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(123,223,229,.055),transparent_34%),radial-gradient(circle_at_78%_40%,rgba(216,111,189,.07),transparent_28%)]" /><SectionTitle kicker="Process" title="From brief to brand world" copy="From brief to launch-ready world." /><div className="relative mx-auto grid max-w-7xl gap-4 lg:grid-cols-3">{steps.map(([title, copy], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={title}><div className="premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-6xl font-black text-white/10">0{i+1}</p><h3 className="mt-8 text-3xl font-black uppercase tracking-[-0.05em] text-white">{title}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section className="relative overflow-hidden bg-[#04040a] px-4 py-28 md:px-6 md:py-48"><div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(123,223,229,.055),transparent_34%),radial-gradient(circle_at_78%_40%,rgba(216,111,189,.07),transparent_28%)]" /><SectionTitle kicker="Process" title="From brief to brand world" copy="From brief to launch-ready world." /><div className="relative mx-auto grid max-w-7xl gap-4 lg:grid-cols-3">{steps.map(([title, copy], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={title}><div className="premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-6xl font-black text-white/10">0{i+1}</p><h3 className="mt-8 text-3xl font-black uppercase tracking-[-0.05em] text-white">{title}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
 }
 
 function About() {
   const beliefs = ['Cinema over content', 'Emotion over noise', 'Worlds over templates'];
   return (
     <SectionFlow>
-      <section id="about" className="relative overflow-hidden px-4 py-36 md:px-6 md:py-56">
+      <section id="about" className="relative overflow-hidden px-4 py-28 md:px-6 md:py-56">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_26%,rgba(216,111,189,.06),transparent_32%),radial-gradient(circle_at_18%_76%,rgba(123,223,229,.055),transparent_30%)]" />
         <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-zephyr-black to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-zephyr-black to-transparent" />
@@ -360,11 +377,11 @@ function About() {
   );
 }
 function Pricing() {
-  return <SectionFlow><section id="pricing" className="bg-[#05050c] px-4 py-36 md:px-6 md:py-48"><SectionTitle kicker="Pricing" title="Premium campaign architecture" copy="Choose the campaign scale." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(([name, price, copy, features], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8 ${i===2 ? 'border-zephyr-magenta/28 shadow-magenta' : ''}`}><p className="text-xs uppercase tracking-[0.3em] text-zephyr-cyan">{name}</p><h3 className="magenta-glow mt-6 text-4xl font-black">{price}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p><ul className="mt-8 space-y-3 text-sm text-white/72">{features.map(f => <li key={f} className="flex gap-3"><span className="text-zephyr-cyan" aria-hidden="true">✦</span><span>{f}</span></li>)}</ul></div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section id="pricing" className="bg-[#05050c] px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Pricing" title="Premium campaign architecture" copy="Choose the campaign scale." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(([name, price, copy, features], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8 ${i===2 ? 'border-zephyr-magenta/28 shadow-magenta' : ''}`}><p className="text-xs uppercase tracking-[0.3em] text-zephyr-cyan">{name}</p><h3 className="magenta-glow mt-6 text-4xl font-black">{price}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p><ul className="mt-8 space-y-3 text-sm text-white/72">{features.map(f => <li key={f} className="flex gap-3"><span className="text-zephyr-cyan" aria-hidden="true">✦</span><span>{f}</span></li>)}</ul></div></Reveal>)}</div></section></SectionFlow>;
 }
 
 function Contact() {
-  return <SectionFlow><section id="contact" className="px-4 py-36 md:px-6 md:py-48"><SectionTitle kicker="Start a project" title="Make the brief cinematic" copy="Send the brief. We shape the world." /><Reveal><form className="glass mx-auto grid max-w-5xl gap-4 rounded-[1.6rem] p-5 md:grid-cols-2 md:gap-5 md:rounded-[2rem] md:p-10"><input name="name" aria-label="Name" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Name" autoComplete="name" /><input name="contact" aria-label="Email or phone" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Email / Phone" autoComplete="email" /><select name="budget" aria-label="Budget selection" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Budget selection</option><option>₹15k–₹40k</option><option>₹50k–₹1L</option><option>₹1L+</option></select><select name="timeline" aria-label="Timeline" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Timeline</option><option>1–2 weeks</option><option>2–4 weeks</option><option>Campaign retainer</option></select><textarea name="details" aria-label="Project details" className="min-h-40 rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55 md:col-span-2" placeholder="Project details, visual references, product category, story direction..." /><label className="flex cursor-pointer flex-col gap-2 rounded-2xl border border-dashed border-white/18 bg-black/30 px-5 py-5 text-white/55 transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zephyr-magenta/55 hover:text-white sm:flex-row sm:items-center sm:justify-between md:col-span-2"><span>Upload references / product files</span><span className="text-xs uppercase tracking-[0.2em] text-zephyr-cyan">Optional</span><input name="references" type="file" className="hidden" aria-label="Upload references or product files" /></label><button type="button" aria-label="Submit inquiry" className="premium-button rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)] md:col-span-2">Submit Inquiry</button><p className="text-center text-xs text-white/42 md:col-span-2">Prototype form — connect email/CRM before public launch.</p></form></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="contact" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Start a project" title="Make the brief cinematic" copy="Send the brief. We shape the world." /><Reveal><form className="glass mx-auto grid max-w-5xl gap-4 rounded-[1.6rem] p-5 md:grid-cols-2 md:gap-5 md:rounded-[2rem] md:p-10"><input name="name" aria-label="Name" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Name" autoComplete="name" /><input name="contact" aria-label="Email or phone" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Email / Phone" autoComplete="email" /><select name="budget" aria-label="Budget selection" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Budget selection</option><option>₹15k–₹40k</option><option>₹50k–₹1L</option><option>₹1L+</option></select><select name="timeline" aria-label="Timeline" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Timeline</option><option>1–2 weeks</option><option>2–4 weeks</option><option>Campaign retainer</option></select><textarea name="details" aria-label="Project details" className="min-h-40 rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55 md:col-span-2" placeholder="Project details, visual references, product category, story direction..." /><label className="flex cursor-pointer flex-col gap-2 rounded-2xl border border-dashed border-white/18 bg-black/30 px-5 py-5 text-white/55 transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zephyr-magenta/55 hover:text-white sm:flex-row sm:items-center sm:justify-between md:col-span-2"><span>Upload references / product files</span><span className="text-xs uppercase tracking-[0.2em] text-zephyr-cyan">Optional</span><input name="references" type="file" className="hidden" aria-label="Upload references or product files" /></label><button type="button" aria-label="Submit inquiry" className="premium-button rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)] md:col-span-2">Submit Inquiry</button><p className="text-center text-xs text-white/42 md:col-span-2">Prototype form — connect email/CRM before public launch.</p></form></Reveal></section></SectionFlow>;
 }
 
 function Footer() {
