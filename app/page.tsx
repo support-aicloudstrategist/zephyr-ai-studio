@@ -12,8 +12,8 @@ const portfolio = placeholderPortfolio;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
-const showreelVideoSrc = `${basePath}/video/mixkit-fashion-studio-showreel.mp4`;
-const showreelPosterSrc = `${basePath}/images/mixkit-fashion-studio-poster.jpg`;
+const showreelVideoSrc = `${basePath}/video/mixkit-abstract-fabric-motion-v2.mp4`;
+const showreelPosterSrc = `${basePath}/images/mixkit-abstract-fabric-motion-v2.jpg`;
 
 const services = [
   'AI Product Advertisements',
