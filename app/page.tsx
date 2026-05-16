@@ -219,9 +219,9 @@ function CinematicReveal() {
 function Portfolio() {
   const [active, setActive] = useState<(typeof portfolio)[number] | null>(null);
   return (
-    <SectionFlow><section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-40 md:px-6 md:py-60">
+    <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-32 md:px-6 md:py-44">
       <SectionTitle kicker="Portfolio" title="Campaign worlds, not gallery tiles" copy="Campaigns as cinema." />
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 md:gap-16">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 md:gap-12">
         {portfolio.map((item, i) => (
           <Reveal delay={Math.min(i * 0.08, 0.24)} key={item.title}>
             <motion.button
@@ -234,7 +234,7 @@ function Portfolio() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className={`premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
             >
-              <div className="relative min-h-[560px] overflow-hidden md:min-h-[680px] lg:min-h-[760px]">
+              <div className="relative min-h-[460px] overflow-hidden md:min-h-[560px] lg:min-h-[640px]">
                 <motion.img
                   variants={{ rest: { scale: 1 }, hover: { scale: 1.045 } }}
                   transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
@@ -307,7 +307,7 @@ function Portfolio() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section></SectionFlow>
+    </section>
   );
 }
 function Services() {
