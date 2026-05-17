@@ -13,6 +13,7 @@ const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
 const showreelVideoSrc = `${basePath}/video/cinematic-fashion-campaign-preview.mp4`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
+const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
 
 const services = [
   'AI Product Advertisements',
@@ -143,66 +144,72 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 function Hero() {
   const reduceMotion = useMobileMotion();
   return (
-    <section id="hero" className="relative flex min-h-[92svh] items-center justify-center overflow-hidden bg-black px-5 py-24 text-center md:min-h-screen md:justify-start md:px-10 md:py-28 md:text-left">
+    <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
       <motion.video
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-82 saturate-[.86] contrast-105 md:h-screen md:w-screen md:opacity-88 md:saturate-[.9] md:contrast-110"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-72 saturate-[.82] contrast-110 md:h-screen md:w-screen md:opacity-88 md:saturate-[.9]"
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
         aria-hidden="true"
-        initial={{ scale: reduceMotion ? 1.015 : 1.035 }}
-        animate={reduceMotion ? { scale: 1.015 } : { scale: [1.035, 1.055, 1.035] }}
-        transition={{ duration: 22, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
+        initial={{ scale: reduceMotion ? 1.01 : 1.025 }}
+        animate={reduceMotion ? { scale: 1.01 } : { scale: [1.025, 1.045, 1.025] }}
+        transition={{ duration: 24, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
       >
         <source src={heroVideoSrc} type="video/mp4" />
       </motion.video>
-      <div className="cinematic-hero-depth absolute inset-[-3%] hidden md:block bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
-      <div className="cinematic-hero-glow absolute hidden md:block left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.52),rgba(3,3,6,.42)_42%,rgba(3,3,6,.70)_78%,#030306_99%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.58)_36%,rgba(3,3,6,.22)_68%,rgba(3,3,6,.12)),linear-gradient(180deg,rgba(3,3,6,.20),rgba(3,3,6,.08)_34%,rgba(3,3,6,.38)_74%,#030306_99%)]" />
-      <div className="absolute inset-0 shadow-[inset_0_0_130px_rgba(0,0,0,.72)] md:shadow-[inset_0_0_220px_rgba(0,0,0,.82)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/75 to-transparent md:h-24" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent md:h-36" />
+      <div className="cinematic-hero-depth absolute inset-[-3%] hidden md:block bg-[radial-gradient(circle_at_20%_38%,rgba(123,223,229,.065),transparent_25%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.045),transparent_24%)]" />
+      <div className="cinematic-hero-glow absolute left-1/2 top-[58%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/[.045] blur-[82px] md:left-[30%] md:h-[52vmin] md:w-[52vmin]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.34),rgba(3,3,6,.50)_34%,rgba(3,3,6,.86)_76%,#030306_100%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.92),rgba(3,3,6,.62)_36%,rgba(3,3,6,.24)_68%,rgba(3,3,6,.10)),linear-gradient(180deg,rgba(3,3,6,.18),rgba(3,3,6,.10)_34%,rgba(3,3,6,.42)_74%,#030306_99%)]" />
+      <div className="absolute inset-0 shadow-[inset_0_0_145px_rgba(0,0,0,.80)] md:shadow-[inset_0_0_230px_rgba(0,0,0,.84)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/78 to-transparent md:h-24" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/92 to-transparent md:h-36" />
       <motion.div
         initial={reduceMotion ? false : "hidden"}
         animate={reduceMotion ? undefined : "show"}
         variants={{
           hidden: {},
-          show: { transition: { staggerChildren: 0.18, delayChildren: 0.34 } },
+          show: { transition: { staggerChildren: 0.14, delayChildren: 0.22 } },
         }}
-        className="relative z-30 mx-auto max-w-[22rem] md:mx-0 md:ml-[4vw] md:max-w-4xl"
+        className="relative z-30 mx-auto w-full max-w-[24rem] rounded-[1.8rem] border border-white/10 bg-black/30 p-5 shadow-[0_22px_80px_rgba(0,0,0,.42)] backdrop-blur-[2px] sm:max-w-[30rem] sm:p-7 md:mx-0 md:ml-[4vw] md:max-w-5xl md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0"
       >
         <motion.p
-          variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 1.05, ease: heroEase }}
-          className="mb-5 text-[0.6rem] font-semibold uppercase tracking-[0.24em] text-zephyr-cyan/86 sm:text-xs sm:tracking-[0.48em]"
+          variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.9, ease: heroEase }}
+          className="mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/90 sm:text-[0.65rem] md:mb-6 md:tracking-[0.32em]"
         >
-          Luxury AI Cinema House
+          Premium AI Ad Studio
         </motion.p>
         <motion.h1
-          variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 1.35, ease: heroEase }}
-          className="text-glow font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]"
+          variants={{ hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1.12, ease: heroEase }}
+          className="text-glow max-w-[12ch] font-display text-[clamp(2.55rem,13vw,4.55rem)] font-black uppercase leading-[0.88] tracking-[-0.07em] md:max-w-[13ch] md:text-[clamp(4.2rem,7.2vw,7.4rem)]"
         >
-          Cinematic AI Advertising
+          Cinematic AI Ads for Brands That Want to Look Premium
         </motion.h1>
         <motion.p
-          variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 1.2, ease: heroEase }}
-          className="mx-auto mt-7 max-w-xs font-accent text-base leading-7 text-white/82 md:mx-0 md:mt-8 md:max-w-xl md:text-2xl"
+          variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 1, ease: heroEase }}
+          className="mt-5 max-w-[21rem] text-[1rem] leading-7 text-white/82 sm:max-w-md sm:text-lg md:mt-7 md:max-w-2xl md:text-2xl md:leading-9"
         >
-          Futuristic Visual Storytelling for Modern Brands
+          We create AI-powered product commercials, fashion campaigns, reels, and launch visuals for modern businesses.
         </motion.p>
         <motion.div
-          variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 1.15, ease: heroEase }}
-          className="mx-auto mt-8 flex max-w-xs flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4 md:mx-0 md:max-w-none md:justify-start md:mt-9"
+          variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.95, ease: heroEase }}
+          className="mt-7 grid w-full grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 md:mt-9 md:flex md:max-w-none md:items-center md:gap-4"
         >
-          <a href="#portfolio" className="premium-button rounded-full bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">View Portfolio</a>
-          <a href="#contact" className="premium-button rounded-full border border-white/25 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta">Start A Project</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_26px_rgba(37,211,102,.18)] hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.20)] md:min-w-56">Start on WhatsApp</a>
+          <a href="#portfolio" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Work</a>
         </motion.div>
-        <div className="mt-8 text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-white/42 md:hidden">Scroll to explore</div>
+        <motion.p
+          variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.9, ease: heroEase }}
+          className="mt-5 max-w-[22rem] text-xs font-medium leading-6 text-white/58 sm:text-sm md:mt-6 md:max-w-2xl md:text-base"
+        >
+          For fashion, skincare, jewelry, ecommerce, influencers, and premium local brands.
+        </motion.p>
       </motion.div>
     </section>
   );
