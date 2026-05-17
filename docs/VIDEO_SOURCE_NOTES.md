@@ -2,13 +2,13 @@
 
 Private implementation note. These clips are used only until original Zephyr-owned videos are produced.
 
-All selected clips are from Mixkit free stock video pages and were chosen for cinematic, premium, dark/elegant, beauty/fashion/product/luxury/food relevance. Public website copy must not refer to Mixkit, temporary videos, or placeholders.
+Portfolio/showreel clips are from Mixkit free stock video pages and were chosen for cinematic, premium, dark/elegant, beauty/fashion/product/luxury/food relevance. The hero background is the user-supplied Telegram video from 2026-05-17 and should remain the top-home background unless Raj/Anushka explicitly approves changing it. Public website copy must not refer to Mixkit, temporary videos, or placeholders.
 
 ## Selected clips
 
 | Local asset | Website use | Source page | Local notes |
 |---|---|---|---|
-| `public/video/zephyr-hero.mp4` | Hero desktop background | https://mixkit.co/free-stock-video/beautiful-indian-model-posing-101456/ | Elegant Indian fashion/model visual, suitable for premium creative studio first impression. |
+| `public/video/zephyr-hero.mp4` | Hero / top-home desktop background | User-supplied Telegram video, 2026-05-17 (`file_8---ab8fd28a-88b0-4a30-8117-084cef95a44c.mp4`) | Keep this video as the top-home background; do not replace without explicit Raj/Anushka approval. |
 | `public/video/cinematic-fashion-campaign-preview.mp4` | Showreel desktop preview | https://mixkit.co/free-stock-video/conceptual-fashion-model-posing-100684/ | Modern fashion/editorial motion, strong fit for cinematic campaign preview. |
 | `public/video/portfolio/portfolio-skincare.mp4` | Skincare card desktop motion | https://mixkit.co/free-stock-video/a-young-woman-with-a-towel-robe-applying-skincare-product-51187/ | Skincare/self-care product-ad fit. |
 | `public/video/portfolio/portfolio-cosmetics.mp4` | Cosmetics card desktop motion | https://mixkit.co/free-stock-video/woman-opening-a-bag-with-makeup-39907/ | Makeup/cosmetic product context. |
