@@ -109,4 +109,13 @@ export const portfolioAssets = [
     video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-fuchsia-400/16 via-black/10 to-cyan-300/14',
   },
+  {
+    title: 'Gyms & Fitness Studios',
+    filter: 'Fitness',
+    create: 'Fitness reels, transformation ads, gym launch videos, offer creatives, trainer promos, and cinematic workout visuals.',
+    bestFor: 'Gyms, fitness coaches, personal trainers, yoga studios, and wellness brands.',
+    image: `${basePath}/images/video-posters/portfolio-fitness.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-fitness.mp4`,
+    gradient: 'from-emerald-300/16 via-black/10 to-cyan-300/14',
+  },
 ] as const;

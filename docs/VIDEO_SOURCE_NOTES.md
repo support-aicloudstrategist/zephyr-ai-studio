@@ -18,6 +18,7 @@ All selected clips are from Mixkit free stock video pages and were chosen for ci
 | `public/video/portfolio/portfolio-restaurant.mp4` | Cafes/restaurants card desktop motion | https://mixkit.co/free-stock-video/empty-restaurant-with-nice-lighting-29050/ | Elegant restaurant ambience. |
 | `public/video/portfolio/portfolio-luxury-product.mp4` | Perfume/luxury/ecommerce cards desktop motion | https://mixkit.co/free-stock-video/detailed-wrist-watch-while-working-3649/ | Dark luxury product/detail mood. |
 | `public/video/portfolio/portfolio-neon-brand.mp4` | Creators/startup/premium brand cards desktop motion | https://mixkit.co/free-stock-video/dark-corridor-between-blocks-with-blue-neon-lights-34349/ | Dark cinematic neon atmosphere without office/SaaS feel. |
+| `public/video/portfolio/portfolio-fitness.mp4` | Gyms & Fitness Studios card desktop motion | https://mixkit.co/free-stock-video/lightweight-boxer-practicing-in-a-dark-boxing-ring-45874/ | Dark boxing-ring atmosphere with strong cinematic fitness energy; avoids generic corporate gym stock look. |
 
 ## Performance choices
 

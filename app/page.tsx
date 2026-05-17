@@ -224,7 +224,7 @@ function Showreel() {
 }
 
 function Portfolio() {
-  const filters = ['All', 'Beauty', 'Fashion', 'Jewellery', 'Food', 'Ecommerce', 'Creators', 'Startups'];
+  const filters = ['All', 'Beauty', 'Fashion', 'Jewellery', 'Food', 'Fitness', 'Ecommerce', 'Creators', 'Startups'];
   return (
     <section id="portfolio" className="relative overflow-hidden bg-[linear-gradient(180deg,#030306_0%,#060610_45%,#030306_100%)] px-4 py-24 md:px-6 md:py-44">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(123,223,229,.045),transparent_28%),radial-gradient(circle_at_86%_54%,rgba(216,111,189,.04),transparent_30%)]" />
