@@ -225,53 +225,49 @@ function Showreel() {
 function Portfolio() {
   return (
     <section id="portfolio" className="relative overflow-hidden bg-[linear-gradient(180deg,#030306_0%,#060610_45%,#030306_100%)] px-4 py-24 md:px-6 md:py-44">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(123,223,229,.05),transparent_28%),radial-gradient(circle_at_86%_54%,rgba(216,111,189,.045),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(123,223,229,.045),transparent_28%),radial-gradient(circle_at_86%_54%,rgba(216,111,189,.04),transparent_30%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-zephyr-black to-transparent" />
       <div className="relative mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-9 max-w-4xl text-center md:mb-16">
           <p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">Work</p>
-          <h2 className="text-glow font-display text-[clamp(2.15rem,8vw,4.7rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.8rem,5.2vw,5.8rem)]">Choose Your Campaign Style</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/64 md:mt-7 md:text-xl md:leading-8">Premium AI-powered ads, reels, and launch visuals for products, fashion, food, creators, and modern brands — without expensive shoots.</p>
+          <h2 className="text-glow font-display text-[clamp(2.15rem,8vw,4.7rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.8rem,5.2vw,5.8rem)]">Find Your Campaign Style</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/64 md:mt-7 md:text-xl md:leading-8">Choose your business type and see how Zephyr can create premium AI ads, reels, and launch visuals without expensive shoots.</p>
         </Reveal>
 
-        <div className="grid gap-5 md:grid-cols-12 md:gap-6">
-          {portfolio.map((item, i) => {
-            const feature = i < 2;
-            return (
-              <Reveal delay={Math.min(i * 0.06, 0.2)} key={item.title} className={feature ? 'md:col-span-6' : 'md:col-span-4'}>
-                <a
-                  href="#contact"
-                  className={`portfolio-card premium-card group relative block overflow-hidden rounded-[1.35rem] border border-white/10 bg-black text-left outline-none shadow-[0_22px_80px_rgba(0,0,0,.36)] md:rounded-[1.7rem] ${feature ? 'min-h-[540px] md:min-h-[690px]' : 'min-h-[500px] md:min-h-[520px]'}`}
-                  aria-label={`Create this for my brand: ${item.title}`}
-                >
-                  <img
-                    src={item.image}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-82 saturate-[.88] contrast-110"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.06)_0%,rgba(0,0,0,.20)_36%,rgba(0,0,0,.92)_100%)]" />
-                  <div className="absolute inset-x-0 bottom-0 h-[72%] bg-gradient-to-t from-black via-black/70 to-transparent" />
-                  <div className="absolute left-4 top-4 z-10 flex flex-wrap items-center gap-2 md:left-5 md:top-5">
-                    <span className="rounded-full border border-white/12 bg-black/46 px-3 py-2 text-[0.56rem] font-black uppercase tracking-[0.18em] text-white/58 backdrop-blur-md">Campaign style</span>
-                    <span className="rounded-full border border-zephyr-cyan/18 bg-zephyr-cyan/[.07] px-3 py-2 text-[0.56rem] font-black uppercase tracking-[0.18em] text-zephyr-cyan/86 backdrop-blur-md">{item.category}</span>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {portfolio.map((item, i) => (
+            <Reveal delay={Math.min(i * 0.035, 0.18)} key={item.title}>
+              <a
+                href="#contact"
+                className="portfolio-card premium-card group relative block min-h-[410px] overflow-hidden rounded-[1.25rem] border border-white/10 bg-black text-left outline-none shadow-[0_18px_70px_rgba(0,0,0,.34)] md:min-h-[450px] md:rounded-[1.45rem]"
+                aria-label={`Create this for my brand: ${item.title}`}
+              >
+                <img
+                  src={item.image}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.88] contrast-110"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.28)_34%,rgba(0,0,0,.94)_100%)]" />
+                <div className="absolute inset-x-0 bottom-0 h-[74%] bg-gradient-to-t from-black via-black/72 to-transparent" />
+                <div className="absolute left-4 top-4 z-10 rounded-full border border-zephyr-cyan/18 bg-black/48 px-3 py-2 text-[0.56rem] font-black uppercase tracking-[0.18em] text-zephyr-cyan/86 backdrop-blur-md">
+                  Campaign style
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-6">
+                  <h3 className="font-display text-[clamp(1.9rem,7.5vw,3.05rem)] font-black uppercase leading-[0.9] tracking-[-0.06em] text-white md:text-[clamp(1.9rem,2.45vw,3.1rem)]">{item.title}</h3>
+                  <div className="mt-5 space-y-3 text-sm leading-6 text-white/70 md:text-[0.95rem] md:leading-7">
+                    <p><span className="font-black uppercase tracking-[0.1em] text-zephyr-cyan/84">What we create:</span> {item.create}</p>
+                    <p><span className="font-black uppercase tracking-[0.1em] text-zephyr-magenta/82">Why it helps:</span> {item.why}</p>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-6 md:p-7">
-                    <h3 className={`font-display font-black uppercase leading-[0.9] tracking-[-0.06em] text-white ${feature ? 'text-[clamp(2.25rem,9vw,4.2rem)] md:text-[clamp(3rem,4.8vw,5.4rem)]' : 'text-[clamp(2rem,8vw,3.3rem)] md:text-[clamp(2.15rem,3vw,3.55rem)]'}`}>{item.title}</h3>
-                    <div className="mt-5 space-y-3 text-sm leading-6 text-white/70 md:text-base md:leading-7">
-                      <p><span className="font-black uppercase tracking-[0.11em] text-zephyr-cyan/84">Create:</span> {item.create}</p>
-                      <p><span className="font-black uppercase tracking-[0.11em] text-zephyr-magenta/82">Helps:</span> {item.why}</p>
-                    </div>
-                    <span className="premium-button mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/16 bg-white/[.065] px-5 py-3 text-center text-[0.66rem] font-black uppercase tracking-[0.15em] text-white/86 backdrop-blur-sm group-hover:border-zephyr-cyan/36 group-hover:text-zephyr-cyan sm:w-auto">
-                      Create this for my brand
-                    </span>
-                  </div>
-                </a>
-              </Reveal>
-            );
-          })}
+                  <span className="premium-button mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/16 bg-white/[.065] px-5 py-3 text-center text-[0.64rem] font-black uppercase tracking-[0.14em] text-white/86 backdrop-blur-sm group-hover:border-zephyr-cyan/36 group-hover:text-zephyr-cyan">
+                    Create this for my brand
+                  </span>
+                </div>
+              </a>
+            </Reveal>
+          ))}
         </div>
 
         <Reveal>
