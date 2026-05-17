@@ -1,10 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Sora, Space_Grotesk } from 'next/font/google';
 import './globals.css';
-
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' });
-const sora = Sora({ subsets: ['latin'], variable: '--font-body' });
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-accent' });
 
 export const metadata: Metadata = {
   title: 'Zephyr AI Studio — Cinematic AI Advertising',
@@ -18,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${sora.variable} ${outfit.variable}`}>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
