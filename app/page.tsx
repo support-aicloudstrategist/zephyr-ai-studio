@@ -69,7 +69,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black text-white">
+    <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
       <SmoothScroll />
       <Navigation />
       <Hero />
@@ -83,59 +83,66 @@ export default function Home() {
       <Pricing />
       <Contact />
       <Footer />
+      <MobileBottomCTA />
     </main>
   );
 }
 
 function Navigation() {
-  const [open, setOpen] = useState(false);
-  const navItems = ['Showreel', 'Portfolio', 'Services', 'Pricing', 'Contact'];
+  const desktopNavItems = [
+    ['Showreel', '#showreel'],
+    ['Work', '#portfolio'],
+    ['Services', '#services'],
+    ['Pricing', '#pricing'],
+    ['Contact', '#contact'],
+  ] as const;
+  const mobileNavItems = [
+    ['View Work', '#portfolio'],
+    ['Pricing', '#pricing'],
+    ['WhatsApp', whatsappUrl],
+  ] as const;
 
   return (
     <motion.header initial={false} className="fixed left-0 right-0 top-0 z-50 px-3 py-3 md:px-10 md:py-4">
-      <div className="mx-auto max-w-7xl rounded-[1.8rem] border border-white/10 bg-black/68 px-4 py-3 shadow-[0_14px_46px_rgba(0,0,0,.30)] backdrop-blur-md md:rounded-full">
-        <div className="flex items-center justify-between">
-          <a href="#hero" aria-label="Zephyr AI Studio home" className="flex min-h-11 items-center gap-3" onClick={() => setOpen(false)}>
-            <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-10 w-10 rounded-full border border-white/10 object-cover shadow-[0_0_12px_rgba(123,223,229,.10)] sm:h-12 sm:w-12" />
-            <span className="font-display text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-white sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
+      <div className="mx-auto max-w-7xl rounded-[1.45rem] border border-white/10 bg-black/72 px-3 py-3 shadow-[0_14px_46px_rgba(0,0,0,.30)] backdrop-blur-md md:rounded-full md:px-5">
+        <div className="flex items-center justify-between gap-3">
+          <a href="#hero" aria-label="Zephyr AI Studio home" className="flex min-h-11 min-w-0 items-center gap-3">
+            <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-10 w-10 shrink-0 rounded-full border border-white/10 object-cover shadow-[0_0_12px_rgba(123,223,229,.10)] sm:h-12 sm:w-12" />
+            <span className="truncate font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
           </a>
           <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs uppercase tracking-[0.2em] text-white/78 lg:flex">
-            {navItems.map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="premium-link hover:text-zephyr-cyan">{item}</a>)}
+            {desktopNavItems.map(([label, href]) => <a key={label} href={href} className="premium-link hover:text-zephyr-cyan">{label}</a>)}
           </nav>
           <div className="hidden lg:block">
-            <a href="#contact" className="premium-button rounded-full border border-white/24 px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 shadow-none hover:border-zephyr-cyan hover:text-zephyr-cyan sm:text-xs">Start</a>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button rounded-full border border-white/24 px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 shadow-none hover:border-zephyr-cyan hover:text-zephyr-cyan sm:text-xs">WhatsApp</a>
           </div>
-          <button type="button" aria-label="Toggle mobile menu" aria-expanded={open} onClick={() => setOpen((value) => !value)} className="premium-button flex h-11 items-center justify-center gap-2 rounded-full border border-white/18 bg-white/[.06] px-4 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 lg:hidden">
-            <span>Menu</span><span className="relative h-3.5 w-5">
-              <span className={`absolute left-0 top-0 h-px w-5 bg-white transition duration-500 ${open ? 'translate-y-[6px] rotate-45' : ''}`} />
-              <span className={`absolute left-0 top-[6px] h-px w-5 bg-white transition duration-500 ${open ? 'opacity-0' : 'opacity-100'}`} />
-              <span className={`absolute left-0 top-3 h-px w-5 bg-white transition duration-500 ${open ? '-translate-y-[6px] -rotate-45' : ''}`} />
-            </span>
-          </button>
         </div>
-        <AnimatePresence>
-          {open && (
-            <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              className="overflow-hidden lg:hidden"
-              aria-label="Mobile navigation"
+        <nav aria-label="Mobile navigation" className="mt-3 grid grid-cols-3 gap-2 border-t border-white/10 pt-3 lg:hidden">
+          {mobileNavItems.map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('http') ? '_blank' : undefined}
+              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className={`premium-button flex min-h-10 items-center justify-center rounded-full px-3 text-center text-[0.62rem] font-black uppercase tracking-[0.12em] ${label === 'WhatsApp' ? 'bg-[#25D366] text-black shadow-[0_0_20px_rgba(37,211,102,.14)]' : 'border border-white/10 bg-white/[.045] text-white/78'}`}
             >
-              <div className="mt-4 grid gap-2 border-t border-white/10 pt-4">
-                {navItems.map((item) => (
-                  <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)} className="rounded-2xl border border-white/8 bg-white/[.025] px-4 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white/76">
-                    {item}
-                  </a>
-                ))}
-                <a href="#contact" onClick={() => setOpen(false)} className="rounded-2xl bg-white px-4 py-4 text-center text-sm font-black uppercase tracking-[0.2em] text-black">Start a Project</a>
-              </div>
-            </motion.nav>
-          )}
-        </AnimatePresence>
+              {label}
+            </a>
+          ))}
+        </nav>
       </div>
     </motion.header>
+  );
+}
+
+function MobileBottomCTA() {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 lg:hidden">
+      <div className="mx-auto grid max-w-xl grid-cols-[1.15fr_.85fr] gap-2 rounded-[1.35rem] border border-white/10 bg-black/78 p-2 shadow-[0_-18px_60px_rgba(0,0,0,.48)] backdrop-blur-xl">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-4 py-3 text-[0.72rem] font-black uppercase tracking-[0.13em] text-black shadow-[0_0_24px_rgba(37,211,102,.15)]">WhatsApp Us</a>
+        <a href="#pricing" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-[0.72rem] font-black uppercase tracking-[0.13em] text-white/86">View Pricing</a>
+      </div>
+    </div>
   );
 }
 
