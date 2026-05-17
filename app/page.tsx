@@ -39,9 +39,30 @@ const services = [
 ] as const;
 
 const prices = [
-  ['Starter Campaign', '₹15k – ₹40k', 'A focused launch pack.', ['1 hero direction', '2–4 premium visuals', '1 short reel direction', 'Caption + launch copy']],
-  ['Growth Campaign', '₹50k – ₹1L', 'A complete campaign system.', ['Campaign direction', 'Multiple reels/edits', 'Social creative set', 'Brand visual direction']],
-  ['Premium Cinematic Campaign', '₹1L+', 'Luxury storytelling at scale.', ['Full campaign world', 'Cinematic ad films', 'Motion design pack', 'Founder/brand story system']],
+  {
+    name: 'Starter Visual Pack',
+    price: '₹15K–₹40K',
+    bestFor: 'Small brands launching one product or campaign.',
+    includes: ['1 creative direction', '2–4 premium AI visuals', '1 short reel concept', 'Caption and launch copy', 'Delivery in 5–10 days'],
+    cta: 'Start Starter Pack',
+    recommended: false,
+  },
+  {
+    name: 'Growth Campaign',
+    price: '₹50K–₹1L',
+    bestFor: 'Brands that need a complete social launch campaign.',
+    includes: ['Campaign concept', '5–10 premium visuals', '2–3 reels or shorts', 'Product/fashion storytelling', 'Social media creative set'],
+    cta: 'Plan Growth Campaign',
+    recommended: true,
+  },
+  {
+    name: 'Premium Cinematic Campaign',
+    price: '₹1L+',
+    bestFor: 'Fashion, jewelry, skincare, luxury products, and founder-led brands.',
+    includes: ['Full campaign world', 'Cinematic ad film direction', 'Multiple reels and cutdowns', 'Hero visuals', 'Brand story system'],
+    cta: 'Discuss Premium Campaign',
+    recommended: false,
+  },
 ] as const;
 
 function useMobileMotion() {
@@ -441,7 +462,7 @@ function About() {
   );
 }
 function Pricing() {
-  return <SectionFlow><section id="pricing" className="bg-[#05050c] px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Pricing" title="Premium campaign architecture" copy="Choose the campaign scale." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(([name, price, copy, features], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8 ${i===2 ? 'border-zephyr-magenta/28 shadow-magenta' : ''}`}><p className="text-xs uppercase tracking-[0.3em] text-zephyr-cyan">{name}</p><h3 className="magenta-glow mt-6 text-3xl font-black">{price}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p><ul className="mt-8 space-y-3 text-sm text-white/72">{features.map(f => <li key={f} className="flex gap-3"><span className="text-zephyr-cyan" aria-hidden="true">✦</span><span>{f}</span></li>)}</ul></div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section id="pricing" className="relative overflow-hidden bg-[#05050c] px-4 py-24 md:px-6 md:py-48"><div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_82%_46%,rgba(216,111,189,.06),transparent_30%)]" /><div className="relative"><SectionTitle kicker="Pricing" title="Choose Your Campaign Scale" copy="Simple premium packages for Indian brands that want better visuals, reels, and launch content." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(({ name, price, bestFor, includes, cta, recommended }, i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass relative flex h-full flex-col rounded-[1.6rem] p-6 md:rounded-[2rem] md:p-8 ${recommended ? 'border-zephyr-cyan/30 shadow-[0_0_46px_rgba(123,223,229,.10)] lg:-translate-y-4' : 'border-white/10'}`}>{recommended && <div className="mb-5 inline-flex w-fit rounded-full border border-zephyr-cyan/24 bg-zephyr-cyan/[.08] px-4 py-2 text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan">Recommended</div>}<p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-white/54">Package 0{i + 1}</p><h3 className="mt-4 min-h-16 text-2xl font-black uppercase leading-[0.95] tracking-[-0.05em] text-white md:text-3xl">{name}</h3><p className="magenta-glow mt-6 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">{price}</p><div className="mt-7 rounded-2xl border border-white/10 bg-black/24 p-4"><p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan/84">Best for</p><p className="mt-3 text-sm leading-6 text-white/70 md:text-base md:leading-7">{bestFor}</p></div><ul className="mt-7 grow space-y-3 text-sm leading-6 text-white/72 md:text-base">{includes.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zephyr-cyan/78" aria-hidden="true" /><span>{item}</span></li>)}</ul><a href={`${whatsappUrl}%20I%20am%20interested%20in%20the%20${encodeURIComponent(name)}.`} target="_blank" rel="noopener noreferrer" className={`premium-button mt-8 flex min-h-14 items-center justify-center rounded-full px-5 py-4 text-center text-xs font-black uppercase tracking-[0.14em] ${recommended ? 'bg-white text-black hover:bg-zephyr-cyan' : 'border border-white/14 bg-white/[.055] text-white hover:border-zephyr-magenta hover:text-zephyr-magenta'}`}>{cta}</a></div></Reveal>)}</div><Reveal><p className="mx-auto mt-8 max-w-4xl rounded-[1.35rem] border border-white/10 bg-black/26 px-5 py-4 text-center text-sm leading-6 text-white/58 md:text-base">Final pricing depends on product type, number of visuals, video duration, revisions, and delivery timeline.</p></Reveal></div></section></SectionFlow>;
 }
 
 function Contact() {
