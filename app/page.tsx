@@ -17,22 +17,27 @@ const services = [
   {
     title: 'AI Product Commercials',
     copy: 'Cinematic product ads and launch visuals designed to make your product look premium.',
+    bestFor: 'Ecommerce products',
   },
   {
     title: 'Fashion & Model Campaigns',
     copy: 'AI-generated fashion models, editorial visuals, and campaign stories for modern brands.',
+    bestFor: 'Fashion boutiques',
   },
   {
     title: 'Instagram Reels & Shorts',
     copy: 'Short-form cinematic videos for Instagram, YouTube Shorts, ads, and product promotions.',
+    bestFor: 'Instagram launches',
   },
   {
     title: 'Brand Launch Visuals',
     copy: 'Premium campaign visuals for new products, offers, events, and brand launches.',
+    bestFor: 'Skincare / jewelry',
   },
   {
     title: 'Cinematic Story Videos',
     copy: 'Emotion-led storytelling videos for founders, creators, and premium businesses.',
+    bestFor: 'Founders / creators',
   },
 ] as const;
 
@@ -43,6 +48,7 @@ const prices = [
     bestFor: 'Small brands launching one product or campaign.',
     includes: ['1 creative direction', '2–4 premium AI visuals', '1 short reel concept', 'Caption and launch copy', 'Delivery in 5–10 days'],
     cta: 'Start Starter Pack',
+    message: 'I want Starter Visual Pack for my product launch.',
     recommended: false,
   },
   {
@@ -51,6 +57,7 @@ const prices = [
     bestFor: 'Brands that need a complete social launch campaign.',
     includes: ['Campaign concept', '5–10 premium visuals', '2–3 reels or shorts', 'Product/fashion storytelling', 'Social media creative set'],
     cta: 'Plan Growth Campaign',
+    message: 'I want Growth Campaign for Instagram/social launch.',
     recommended: true,
   },
   {
@@ -59,6 +66,7 @@ const prices = [
     bestFor: 'Fashion, jewelry, skincare, luxury products, and founder-led brands.',
     includes: ['Full campaign world', 'Cinematic ad film direction', 'Multiple reels and cutdowns', 'Hero visuals', 'Brand story system'],
     cta: 'Discuss Premium Campaign',
+    message: 'I want Premium Cinematic Campaign for my brand.',
     recommended: false,
   },
 ] as const;
@@ -74,6 +82,7 @@ export default function Home() {
       <Services />
       <Method />
       <About />
+      <TrustSignals />
       <Pricing />
       <Contact />
       <Footer />
@@ -168,7 +177,7 @@ function Hero() {
         className="relative z-30 mx-auto w-full max-w-[24rem] rounded-[1.8rem] border border-white/10 bg-black/30 p-5 shadow-[0_22px_80px_rgba(0,0,0,.42)] backdrop-blur-[2px] sm:max-w-[30rem] sm:p-7 md:mx-0 md:ml-[4vw] md:max-w-5xl md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0"
       >
         <p
-          className="mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/90 sm:text-[0.65rem] md:mb-6 md:tracking-[0.32em]"
+          className="hero-badge-shimmer mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/90 sm:text-[0.65rem] md:mb-6 md:tracking-[0.32em]"
         >
           Premium AI Ad Studio
         </p>
@@ -222,14 +231,14 @@ function Portfolio() {
           <Reveal delay={Math.min(i * 0.08, 0.24)} key={item.title}>
             <a
               href="#contact"
-              className={`premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
+              className={`portfolio-card premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
             >
               <div className="relative min-h-[390px] overflow-hidden sm:min-h-[430px] md:min-h-[560px] lg:min-h-[640px]">
                 <img
                   src={item.image}
                   alt=""
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
+                  className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
                 />
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}
@@ -239,12 +248,12 @@ function Portfolio() {
                 <div
                   className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-10 lg:p-12"
                 >
-                  <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / High-end campaign preview</p>
+                  <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / Sample campaign preview</p>
                   <h3 className="mt-4 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">{item.title}</h3>
                   <p className="mt-4 max-w-sm text-sm leading-6 text-white/68 md:mt-6 md:max-w-lg md:text-lg md:leading-7">{item.copy}</p>
-                  <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
+                  <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Create similar campaign</span>
                 </div>
-                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Campaign direction</div>
+                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Visual concept</div>
               </div>
             </a>
           </Reveal>
@@ -254,17 +263,18 @@ function Portfolio() {
   );
 }
 function Services() {
-  return <SectionFlow><section id="services" className="px-4 py-24 md:px-6 md:py-44"><SectionTitle kicker="Services" title="What We Create" copy="Premium AI-powered visual content for brands that want to stand out online." /><div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, copy }, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={title}><div className={`premium-card glass h-full min-h-56 rounded-[1.45rem] p-6 hover:border-zephyr-cyan/20 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:rounded-[1.8rem] md:p-7 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}><div className="mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/[.035] text-sm font-black text-zephyr-cyan/88 shadow-[0_0_18px_rgba(123,223,229,.08)]">0{i + 1}</div><h3 className="max-w-xs text-xl font-black uppercase leading-tight tracking-[-0.04em] text-white md:text-2xl">{title}</h3><p className="mt-5 max-w-sm text-sm leading-7 text-white/62 md:text-base">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section id="services" className="px-4 py-24 md:px-6 md:py-44"><SectionTitle kicker="Services" title="What We Create" copy="Premium AI-powered visual content for brands that want to stand out online." /><div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, copy, bestFor }, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={title}><div className={`premium-card glass h-full min-h-56 rounded-[1.45rem] p-6 hover:border-zephyr-cyan/20 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:rounded-[1.8rem] md:p-7 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}><div className="mb-7 flex items-center justify-between gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/[.035] text-sm font-black text-zephyr-cyan/88 shadow-[0_0_18px_rgba(123,223,229,.08)]">0{i + 1}</div><span className="rounded-full border border-white/10 bg-black/24 px-3 py-2 text-[0.58rem] font-black uppercase tracking-[0.16em] text-white/54">Best for {bestFor}</span></div><h3 className="max-w-xs text-xl font-black uppercase leading-tight tracking-[-0.04em] text-white md:text-2xl">{title}</h3><p className="mt-5 max-w-sm text-sm leading-7 text-white/62 md:text-base">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
 }
 
 function Method() {
   const steps = [
-    ['Discover', 'Product, audience, visual language and campaign ambition are translated into a cinematic brief.'],
-    ['Design', 'Moodboards, prompts, composition rules and motion references lock the premium world before production.'],
-    ['Produce', 'AI visuals, video generation, editing direction and platform-specific cutdowns are built as one campaign system.'],
+    ['Share your product and goal', 'Send your product, brand, offer, audience, and where you want to launch it.'],
+    ['We create a premium visual direction', 'We shape the style, story, formats, and campaign look so your brand feels expensive online.'],
+    ['You receive launch-ready visuals/reels', 'Final visuals, reels, and launch copy are prepared for social media, ads, and product promotions.'],
   ];
-  return <SectionFlow><section className="relative overflow-hidden bg-[#04040a] px-4 py-28 md:px-6 md:py-48"><div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(123,223,229,.055),transparent_34%),radial-gradient(circle_at_78%_40%,rgba(216,111,189,.07),transparent_28%)]" /><SectionTitle kicker="Process" title="From brief to brand world" copy="From brief to launch-ready world." /><div className="relative mx-auto grid max-w-7xl gap-4 lg:grid-cols-3">{steps.map(([title, copy], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={title}><div className="premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-6xl font-black text-white/10">0{i+1}</p><h3 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em] text-white">{title}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/58">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section className="relative overflow-hidden bg-[#04040a] px-4 py-24 md:px-6 md:py-48"><div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(123,223,229,.045),transparent_34%),radial-gradient(circle_at_78%_40%,rgba(216,111,189,.055),transparent_28%)]" /><SectionTitle kicker="Process" title="Simple, Clear, Launch-Ready" copy="A calm creative process built for business owners, not production teams." /><div className="relative mx-auto grid max-w-7xl gap-4 lg:grid-cols-3">{steps.map(([title, copy], i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={title}><div className="premium-card glass h-full rounded-[1.6rem] p-7 md:rounded-[2rem] md:p-8"><p className="text-6xl font-black text-white/10">0{i+1}</p><h3 className="mt-8 text-2xl font-black uppercase tracking-[-0.04em] text-white">{title}</h3><p className="mt-6 max-w-sm text-base leading-7 text-white/62">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
 }
+
 
 function About() {
   const beliefs = ['Cinema over content', 'Emotion over noise', 'Worlds over templates'];
@@ -288,6 +298,7 @@ function About() {
               <p className="text-xl font-semibold leading-tight tracking-[-0.035em] text-white/82 md:text-3xl">
                 Zephyr is a cinematic studio for brands that want to be felt before they are understood.
               </p>
+              <p className="text-base leading-7 text-white/62 md:text-lg">Built for brands that need premium-looking ads without a traditional photoshoot.</p>
               <div className="grid gap-3">
                 {beliefs.map((item) => (
                   <div key={item} className="border-t border-white/10 py-4 text-[0.72rem] font-bold uppercase tracking-[0.28em] text-white/58 md:text-xs">
@@ -302,8 +313,13 @@ function About() {
     </SectionFlow>
   );
 }
+function TrustSignals() {
+  const signals = ['WhatsApp-first briefing', 'India-friendly pricing', 'Fast launch visuals', 'No full shoot required', 'Platform-ready formats', 'Revision support included'];
+  return <SectionFlow><section className="relative overflow-hidden border-y border-white/10 bg-black/28 px-4 py-20 md:px-6 md:py-32"><div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(123,223,229,.045),transparent_34%)]" /><div className="relative mx-auto max-w-7xl"><SectionTitle kicker="Trust" title="Premium Visuals. Clear Process. No Confusion." /><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{signals.map((signal) => <div key={signal} className="rounded-full border border-white/10 bg-white/[.035] px-5 py-4 text-center text-[0.68rem] font-black uppercase tracking-[0.18em] text-white/68"><span className="mr-2 text-zephyr-cyan">✦</span>{signal}</div>)}</div></div></section></SectionFlow>;
+}
+
 function Pricing() {
-  return <SectionFlow><section id="pricing" className="relative overflow-hidden bg-[#05050c] px-4 py-24 md:px-6 md:py-48"><div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_82%_46%,rgba(216,111,189,.06),transparent_30%)]" /><div className="relative"><SectionTitle kicker="Pricing" title="Choose Your Campaign Scale" copy="Simple premium packages for Indian brands that want better visuals, reels, and launch content." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(({ name, price, bestFor, includes, cta, recommended }, i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass relative flex h-full flex-col rounded-[1.6rem] p-6 md:rounded-[2rem] md:p-8 ${recommended ? 'border-zephyr-cyan/30 shadow-[0_0_46px_rgba(123,223,229,.10)] lg:-translate-y-4' : 'border-white/10'}`}>{recommended && <div className="mb-5 inline-flex w-fit rounded-full border border-zephyr-cyan/24 bg-zephyr-cyan/[.08] px-4 py-2 text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan">Recommended</div>}<p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-white/54">Package 0{i + 1}</p><h3 className="mt-4 min-h-16 text-2xl font-black uppercase leading-[0.95] tracking-[-0.05em] text-white md:text-3xl">{name}</h3><p className="magenta-glow mt-6 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">{price}</p><div className="mt-7 rounded-2xl border border-white/10 bg-black/24 p-4"><p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan/84">Best for</p><p className="mt-3 text-sm leading-6 text-white/70 md:text-base md:leading-7">{bestFor}</p></div><ul className="mt-7 grow space-y-3 text-sm leading-6 text-white/72 md:text-base">{includes.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zephyr-cyan/78" aria-hidden="true" /><span>{item}</span></li>)}</ul><a href={`${whatsappUrl}%20I%20am%20interested%20in%20the%20${encodeURIComponent(name)}.`} target="_blank" rel="noopener noreferrer" className={`premium-button mt-8 flex min-h-14 items-center justify-center rounded-full px-5 py-4 text-center text-xs font-black uppercase tracking-[0.14em] ${recommended ? 'bg-white text-black hover:bg-zephyr-cyan' : 'border border-white/14 bg-white/[.055] text-white hover:border-zephyr-magenta hover:text-zephyr-magenta'}`}>{cta}</a></div></Reveal>)}</div><Reveal><p className="mx-auto mt-8 max-w-4xl rounded-[1.35rem] border border-white/10 bg-black/26 px-5 py-4 text-center text-sm leading-6 text-white/58 md:text-base">Final pricing depends on product type, number of visuals, video duration, revisions, and delivery timeline.</p></Reveal></div></section></SectionFlow>;
+  return <SectionFlow><section id="pricing" className="relative overflow-hidden bg-[#05050c] px-4 py-24 md:px-6 md:py-48"><div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_82%_46%,rgba(216,111,189,.06),transparent_30%)]" /><div className="relative"><SectionTitle kicker="Pricing" title="Choose Your Campaign Scale" copy="Simple premium packages for Indian brands that want better visuals, reels, and launch content." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(({ name, price, bestFor, includes, cta, message, recommended }, i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass relative flex h-full flex-col rounded-[1.6rem] p-6 md:rounded-[2rem] md:p-8 ${recommended ? 'border-zephyr-cyan/30 shadow-[0_0_46px_rgba(123,223,229,.10)] lg:-translate-y-4' : 'border-white/10'}`}>{recommended && <div className="mb-5 inline-flex w-fit rounded-full border border-zephyr-cyan/24 bg-zephyr-cyan/[.08] px-4 py-2 text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan">Recommended</div>}<p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-white/54">Package 0{i + 1}</p><h3 className="mt-4 min-h-16 text-2xl font-black uppercase leading-[0.95] tracking-[-0.05em] text-white md:text-3xl">{name}</h3><p className="magenta-glow mt-6 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">{price}</p><div className="mt-7 rounded-2xl border border-white/10 bg-black/24 p-4"><p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan/84">Best for</p><p className="mt-3 text-sm leading-6 text-white/70 md:text-base md:leading-7">{bestFor}</p></div><ul className="mt-7 grow space-y-3 text-sm leading-6 text-white/72 md:text-base">{includes.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zephyr-cyan/78" aria-hidden="true" /><span>{item}</span></li>)}</ul><a href={`https://wa.me/918796302608?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer" className={`premium-button mt-8 flex min-h-14 items-center justify-center rounded-full px-5 py-4 text-center text-xs font-black uppercase tracking-[0.14em] ${recommended ? 'bg-white text-black hover:bg-zephyr-cyan' : 'border border-white/14 bg-white/[.055] text-white hover:border-zephyr-magenta hover:text-zephyr-magenta'}`}>{cta}</a></div></Reveal>)}</div><Reveal><p className="mx-auto mt-8 max-w-4xl rounded-[1.35rem] border border-white/10 bg-black/26 px-5 py-4 text-center text-sm leading-6 text-white/58 md:text-base">Final pricing depends on product type, number of visuals, video duration, revisions, and delivery timeline.</p></Reveal></div></section></SectionFlow>;
 }
 
 function Contact() {
@@ -320,7 +336,7 @@ function Contact() {
                   <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/82">Quick enquiry</p>
                   <h3 className="mt-5 font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.055em] text-white md:text-5xl">Start with one message.</h3>
                   <p className="mt-5 text-base leading-7 text-white/64">Tell us what you sell and where you want to promote it. We’ll help shape the visual direction.</p>
-                  <p className="mt-5 rounded-2xl border border-white/10 bg-white/[.035] p-4 text-sm leading-6 text-white/62">You can also send product photos or references directly on WhatsApp.</p>
+                  <p className="mt-5 rounded-2xl border border-white/10 bg-white/[.035] p-4 text-sm leading-6 text-white/62">Fastest reply: WhatsApp. You can also send product photos or references directly on WhatsApp.</p>
                 </div>
                 <div className="grid gap-3">
                   <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_24px_rgba(37,211,102,.15)]">Start on WhatsApp</a>

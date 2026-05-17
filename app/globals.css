@@ -98,3 +98,36 @@ select option { background: #05050c; color: #f7f7fb; }
   }
   .page-curtain { display: none; }
 }
+
+.hero-badge-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.hero-badge-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: -40% auto -40% -80%;
+  width: 48%;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+  animation: zephyr-badge-shimmer 5.8s ease-in-out infinite;
+}
+@keyframes zephyr-badge-shimmer {
+  0%, 58%, 100% { left: -80%; opacity: 0; }
+  66% { opacity: .65; }
+  82% { left: 130%; opacity: 0; }
+}
+@media (min-width: 768px) {
+  .portfolio-image {
+    transition: transform 1.2s cubic-bezier(.16,1,.3,1), opacity 1.2s cubic-bezier(.16,1,.3,1);
+  }
+  .portfolio-card:hover .portfolio-image {
+    transform: scale(1.035);
+  }
+  .premium-button:hover {
+    box-shadow: 0 0 24px rgba(123,223,229,.12), 0 0 34px rgba(216,111,189,.08);
+  }
+}
+@media (max-width: 767px) {
+  .hero-badge-shimmer::after { animation-duration: 7.5s; }
+}
