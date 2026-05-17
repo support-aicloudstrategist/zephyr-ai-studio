@@ -1,6 +1,6 @@
 'use client';
 
-import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { type FormEvent, type ReactNode, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import gsap from 'gsap';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -14,6 +14,8 @@ const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
 const showreelVideoSrc = `${basePath}/video/cinematic-fashion-campaign-preview.mp4`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
+const emailUrl = 'mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief';
+const instagramUrl = 'https://www.instagram.com/aicloudstrategist/';
 
 const services = [
   {
@@ -466,7 +468,62 @@ function Pricing() {
 }
 
 function Contact() {
-  return <SectionFlow><section id="contact" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Start a project" title="Make the brief cinematic" copy="Share the campaign ambition. We shape the world, the frames, and the launch language." /><Reveal><div className="glass mx-auto grid max-w-5xl gap-6 rounded-[1.6rem] p-6 md:grid-cols-[1.05fr_.95fr] md:gap-8 md:rounded-[2rem] md:p-10"><div><p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/82">Private campaign enquiry</p><h3 className="mt-6 font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.055em] text-white md:text-6xl">Commission a visual world.</h3><p className="mt-6 max-w-xl text-base leading-7 text-white/64 md:text-lg">For product launches, fashion stories, premium social films, founder campaigns and cinematic brand systems.</p></div><div className="rounded-[1.4rem] border border-white/10 bg-black/32 p-6 md:p-8"><div className="space-y-5 text-sm leading-7 text-white/66"><p><span className="text-white">Send:</span> brand name, product category, campaign goal, preferred timeline and visual references.</p><p><span className="text-white">Receive:</span> a refined creative direction, production scope and launch-ready visual plan.</p></div><a href="mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief" className="premium-button mt-8 inline-flex rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">Email the brief</a></div></div></Reveal></section></SectionFlow>;
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const message = [
+      'Hi Zephyr AI Studio, I want to discuss a cinematic brand campaign.',
+      `Name: ${data.get('name') || ''}`,
+      `Brand / Business: ${data.get('brand') || ''}`,
+      `WhatsApp Number: ${data.get('phone') || ''}`,
+      `Need: ${data.get('need') || ''}`,
+      `Budget: ${data.get('budget') || ''}`,
+      `Message: ${data.get('message') || ''}`,
+    ].join('\n');
+    window.open(`https://wa.me/918796302608?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const fieldClass = 'min-h-14 rounded-2xl border border-white/10 bg-black/38 px-4 py-4 text-base text-white outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/34 focus:border-zephyr-cyan/70 focus:bg-black/55 md:px-5';
+  const labelClass = 'text-[0.66rem] font-black uppercase tracking-[0.22em] text-white/52';
+
+  return (
+    <SectionFlow>
+      <section id="contact" className="relative overflow-hidden px-4 py-24 md:px-6 md:py-48">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_26%,rgba(123,223,229,.055),transparent_30%),radial-gradient(circle_at_86%_70%,rgba(216,111,189,.055),transparent_32%)]" />
+        <div className="relative mx-auto max-w-6xl">
+          <SectionTitle kicker="Start a project" title="Let’s Make Your Brand Look Cinematic" copy="Send your product, brand, or campaign idea. We’ll suggest the best visual direction for your launch." />
+          <Reveal>
+            <div className="glass grid gap-6 rounded-[1.6rem] p-5 md:grid-cols-[.9fr_1.1fr] md:gap-8 md:rounded-[2rem] md:p-8 lg:p-10">
+              <div className="flex flex-col justify-between gap-8 rounded-[1.35rem] border border-white/10 bg-black/24 p-5 md:p-7">
+                <div>
+                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/82">Quick enquiry</p>
+                  <h3 className="mt-5 font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.055em] text-white md:text-5xl">Start with one message.</h3>
+                  <p className="mt-5 text-base leading-7 text-white/64">Tell us what you sell and where you want to promote it. We’ll help shape the visual direction.</p>
+                  <p className="mt-5 rounded-2xl border border-white/10 bg-white/[.035] p-4 text-sm leading-6 text-white/62">You can also send product photos or references directly on WhatsApp.</p>
+                </div>
+                <div className="grid gap-3">
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_24px_rgba(37,211,102,.15)]">Start on WhatsApp</a>
+                  <div className="grid grid-cols-2 gap-3">
+                    <a href={emailUrl} className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-xs font-black uppercase tracking-[0.13em] text-white/86 hover:border-zephyr-cyan hover:text-zephyr-cyan">Email</a>
+                    <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-xs font-black uppercase tracking-[0.13em] text-white/86 hover:border-zephyr-magenta hover:text-zephyr-magenta">Instagram</a>
+                  </div>
+                </div>
+              </div>
+              <form onSubmit={handleSubmit} className="grid gap-4 md:grid-cols-2">
+                <label className="grid gap-2"><span className={labelClass}>Name</span><input name="name" required className={fieldClass} placeholder="Your name" autoComplete="name" /></label>
+                <label className="grid gap-2"><span className={labelClass}>Brand / Business Name</span><input name="brand" required className={fieldClass} placeholder="Brand name" autoComplete="organization" /></label>
+                <label className="grid gap-2 md:col-span-2"><span className={labelClass}>WhatsApp Number</span><input name="phone" required className={fieldClass} placeholder="Your WhatsApp number" autoComplete="tel" inputMode="tel" /></label>
+                <label className="grid gap-2"><span className={labelClass}>What do you need?</span><select name="need" required className={fieldClass} defaultValue=""><option value="" disabled>Select one</option><option>Product ad</option><option>Instagram reel</option><option>Fashion campaign</option><option>Skincare / jewelry visuals</option><option>Brand launch campaign</option><option>Not sure yet</option></select></label>
+                <label className="grid gap-2"><span className={labelClass}>Budget range</span><select name="budget" required className={fieldClass} defaultValue=""><option value="" disabled>Select budget</option><option>₹15K–₹40K</option><option>₹50K–₹1L</option><option>₹1L+</option></select></label>
+                <label className="grid gap-2 md:col-span-2"><span className={labelClass}>Message</span><textarea name="message" className={`${fieldClass} min-h-36 resize-none`} placeholder="Tell us about your product, offer, launch, or visual style..." /></label>
+                <button type="submit" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_24px_rgba(123,223,229,.16)] md:col-span-2">Send Inquiry on WhatsApp</button>
+              </form>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </SectionFlow>
+  );
 }
 
 function Footer() {
