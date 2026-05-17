@@ -16,15 +16,27 @@ const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
 
 const services = [
-  'AI Product Advertisements',
-  'Cinematic Video Production',
-  'AI Fashion Campaigns',
-  'Social Media Reels',
-  'Storytelling Content',
-  'Motion Graphics',
-  'Brand Visual Systems',
-  'AI Commercial Production',
-];
+  {
+    title: 'AI Product Commercials',
+    copy: 'Cinematic product ads and launch visuals designed to make your product look premium.',
+  },
+  {
+    title: 'Fashion & Model Campaigns',
+    copy: 'AI-generated fashion models, editorial visuals, and campaign stories for modern brands.',
+  },
+  {
+    title: 'Instagram Reels & Shorts',
+    copy: 'Short-form cinematic videos for Instagram, YouTube Shorts, ads, and product promotions.',
+  },
+  {
+    title: 'Brand Launch Visuals',
+    copy: 'Premium campaign visuals for new products, offers, events, and brand launches.',
+  },
+  {
+    title: 'Cinematic Story Videos',
+    copy: 'Emotion-led storytelling videos for founders, creators, and premium businesses.',
+  },
+] as const;
 
 const prices = [
   ['Starter Campaign', '₹15k – ₹40k', 'A focused launch pack.', ['1 hero direction', '2–4 premium visuals', '1 short reel direction', 'Caption + launch copy']],
@@ -380,7 +392,7 @@ function Portfolio() {
   );
 }
 function Services() {
-  return <SectionFlow><section id="services" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Services" title="Frames first. Words second." /><div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">{services.map((s, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={s}><motion.div whileHover={{ y: -3 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className="premium-card glass min-h-44 rounded-[1.5rem] p-6 hover:border-zephyr-cyan/25 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:min-h-52 md:rounded-[1.8rem] md:p-7"><div className="mb-8 h-10 w-10 rounded-full bg-gradient-to-br from-zephyr-cyan/55 to-zephyr-magenta/45 shadow-[0_0_18px_rgba(123,223,229,.10)]" /><h3 className="text-lg font-bold uppercase tracking-[-0.03em]">{s}</h3></motion.div></Reveal>)}</div></section></SectionFlow>;
+  return <SectionFlow><section id="services" className="px-4 py-24 md:px-6 md:py-44"><SectionTitle kicker="Services" title="What We Create" copy="Premium AI-powered visual content for brands that want to stand out online." /><div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, copy }, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={title}><motion.div whileHover={{ y: -3 }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }} className={`premium-card glass h-full min-h-56 rounded-[1.45rem] p-6 hover:border-zephyr-cyan/20 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:rounded-[1.8rem] md:p-7 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}><div className="mb-7 flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/[.035] text-sm font-black text-zephyr-cyan/88 shadow-[0_0_18px_rgba(123,223,229,.08)]">0{i + 1}</div><h3 className="max-w-xs text-xl font-black uppercase leading-tight tracking-[-0.04em] text-white md:text-2xl">{title}</h3><p className="mt-5 max-w-sm text-sm leading-7 text-white/62 md:text-base">{copy}</p></motion.div></Reveal>)}</div></section></SectionFlow>;
 }
 
 function Method() {
