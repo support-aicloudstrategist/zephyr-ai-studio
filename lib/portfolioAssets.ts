@@ -6,7 +6,8 @@ export const portfolioAssets = [
     filter: 'Beauty',
     create: 'luxury skincare visuals, product reels, ingredient-story ads.',
     bestFor: 'skincare launches, beauty D2C brands, premium product pages.',
-    image: `${basePath}/images/portfolio/portfolio-1.webp`,
+    image: `${basePath}/images/video-posters/portfolio-skincare.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-skincare.mp4`,
     gradient: 'from-cyan-200/18 via-black/10 to-fuchsia-500/14',
   },
   {
@@ -14,7 +15,8 @@ export const portfolioAssets = [
     filter: 'Beauty',
     create: 'beauty product ads, lipstick/perfume visuals, launch reels.',
     bestFor: 'makeup launches, social ads, beauty campaign content.',
-    image: `${basePath}/images/portfolio/portfolio-2.webp`,
+    image: `${basePath}/images/video-posters/portfolio-cosmetics.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-cosmetics.mp4`,
     gradient: 'from-fuchsia-400/18 via-black/10 to-violet-300/12',
   },
   {
@@ -22,7 +24,8 @@ export const portfolioAssets = [
     filter: 'Jewellery',
     create: 'jewellery glow shots, festive ads, luxury product reels.',
     bestFor: 'jewellery drops, festive promotions, premium Instagram visuals.',
-    image: `${basePath}/images/portfolio/portfolio-3.webp`,
+    image: `${basePath}/images/video-posters/portfolio-jewellery.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-jewellery.mp4`,
     gradient: 'from-amber-200/18 via-black/10 to-fuchsia-400/14',
   },
   {
@@ -30,7 +33,8 @@ export const portfolioAssets = [
     filter: 'Fashion',
     create: 'AI fashion model visuals, lookbook reels, clothing campaign ads.',
     bestFor: 'fashion collections, launches, editorials, social campaigns.',
-    image: `${basePath}/images/portfolio/portfolio-4.webp`,
+    image: `${basePath}/images/video-posters/portfolio-fashion.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-fashion.mp4`,
     gradient: 'from-violet-400/16 via-black/10 to-cyan-300/14',
   },
   {
@@ -38,7 +42,8 @@ export const portfolioAssets = [
     filter: 'Fashion',
     create: 'boutique collection reels, sale creatives, festive outfit campaigns.',
     bestFor: 'boutiques, seasonal drops, offers, Instagram selling.',
-    image: `${basePath}/images/portfolio/portfolio-5.webp`,
+    image: `${basePath}/images/video-posters/portfolio-fashion.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-fashion.mp4`,
     gradient: 'from-fuchsia-300/16 via-black/10 to-cyan-300/12',
   },
   {
@@ -46,7 +51,8 @@ export const portfolioAssets = [
     filter: 'Ecommerce',
     create: 'product commercials, marketplace visuals, banners, social ads.',
     bestFor: 'Amazon/Flipkart sellers, D2C products, paid ads.',
-    image: `${basePath}/images/portfolio/portfolio-6.webp`,
+    image: `${basePath}/images/video-posters/portfolio-luxury-product.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-luxury-product.mp4`,
     gradient: 'from-cyan-300/16 via-black/10 to-white/10',
   },
   {
@@ -54,7 +60,8 @@ export const portfolioAssets = [
     filter: 'Beauty',
     create: 'moody product films, premium launch visuals, brand story ads.',
     bestFor: 'perfume, watches, gifting products, luxury launches.',
-    image: `${basePath}/images/portfolio/portfolio-1.webp`,
+    image: `${basePath}/images/video-posters/portfolio-luxury-product.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-luxury-product.mp4`,
     gradient: 'from-violet-300/16 via-black/10 to-fuchsia-400/14',
   },
   {
@@ -62,7 +69,8 @@ export const portfolioAssets = [
     filter: 'Food',
     create: 'food reels, menu visuals, festive offers, product ads.',
     bestFor: 'packaged food, cloud kitchens, offers, festive campaigns.',
-    image: `${basePath}/images/portfolio/portfolio-2.webp`,
+    image: `${basePath}/images/video-posters/portfolio-cafe.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-cafe.mp4`,
     gradient: 'from-amber-300/18 via-black/10 to-fuchsia-400/12',
   },
   {
@@ -70,7 +78,8 @@ export const portfolioAssets = [
     filter: 'Food',
     create: 'cafe reels, ambience visuals, opening launch ads, offer creatives.',
     bestFor: 'cafes, restaurants, local launches, social promotions.',
-    image: `${basePath}/images/portfolio/portfolio-3.webp`,
+    image: `${basePath}/images/video-posters/portfolio-restaurant.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-restaurant.mp4`,
     gradient: 'from-cyan-200/14 via-black/10 to-amber-200/12',
   },
   {
@@ -78,7 +87,8 @@ export const portfolioAssets = [
     filter: 'Creators',
     create: 'personal brand reels, cinematic intros, profile visuals.',
     bestFor: 'creators, coaches, founders, premium personal branding.',
-    image: `${basePath}/images/portfolio/portfolio-4.webp`,
+    image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-fuchsia-400/16 via-black/10 to-cyan-300/14',
   },
   {
@@ -86,7 +96,8 @@ export const portfolioAssets = [
     filter: 'Startups',
     create: 'product teasers, launch visuals, website banners, social creatives.',
     bestFor: 'new apps, product launches, landing pages, founder launches.',
-    image: `${basePath}/images/portfolio/portfolio-5.webp`,
+    image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-cyan-300/16 via-black/10 to-violet-300/12',
   },
   {
@@ -94,7 +105,8 @@ export const portfolioAssets = [
     filter: 'Startups',
     create: 'full cinematic campaign worlds for brands that want luxury perception.',
     bestFor: 'premium positioning, launches, brand identity, hero campaigns.',
-    image: `${basePath}/images/portfolio/portfolio-6.webp`,
+    image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-fuchsia-400/16 via-black/10 to-cyan-300/14',
   },
 ] as const;

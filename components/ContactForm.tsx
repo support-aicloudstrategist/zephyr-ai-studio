@@ -18,7 +18,7 @@ export function ContactForm() {
     window.open(`https://wa.me/918796302608?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   };
 
-  const fieldClass = 'min-h-14 rounded-2xl border border-white/10 bg-black/38 px-4 py-4 text-base text-white outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/34 focus:border-zephyr-cyan/70 focus:bg-black/55 md:px-5';
+  const fieldClass = 'min-h-14 rounded-2xl border border-white/10 bg-black/38 px-4 py-4 text-base text-white/90 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan/70 focus:bg-black/55 md:px-5';
   const labelClass = 'text-[0.66rem] font-black uppercase tracking-[0.22em] text-white/52';
 
   return (

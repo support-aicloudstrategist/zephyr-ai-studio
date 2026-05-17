@@ -7,6 +7,7 @@ const portfolio = portfolioAssets;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
+const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero.jpg`;
 const showreelVideoSrc = `${basePath}/video/cinematic-fashion-campaign-preview.mp4`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
@@ -154,7 +155,7 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
-      <img src={showreelPosterSrc} alt="" fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover object-center opacity-72 saturate-[.82] contrast-110 md:opacity-0" />
+      <img src={heroPosterSrc} alt="" fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover object-center opacity-72 saturate-[.82] contrast-110 md:opacity-0" />
       <video
           className="absolute inset-0 hidden h-screen w-screen object-cover object-center opacity-88 saturate-[.9] contrast-110 md:block"
           autoPlay
@@ -162,7 +163,7 @@ function Hero() {
           loop
           playsInline
           preload="none"
-          poster={showreelPosterSrc}
+          poster={heroPosterSrc}
           aria-hidden="true"
         >
         <source media="(min-width: 768px)" src={heroVideoSrc} type="video/mp4" />
@@ -219,7 +220,7 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-20 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A cinematic fashion campaign preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" loading="lazy" decoding="async" width="900" height="1200" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 hidden h-full w-full object-cover opacity-92 saturate-110 contrast-105 md:block" autoPlay muted loop playsInline preload="none" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Cinematic fashion campaign preview</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Campaign Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">Luxury campaign direction for product, fashion, and social-first storytelling.</p></div></div></div></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-20 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A cinematic fashion campaign preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" loading="lazy" decoding="async" width="900" height="1200" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 hidden h-full w-full object-cover opacity-92 saturate-110 contrast-105 md:block" autoPlay muted loop playsInline preload="none" poster={showreelPosterSrc} aria-hidden="true"><source media="(min-width: 768px)" src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Cinematic fashion campaign preview</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Campaign Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">Luxury campaign direction for product, fashion, and social-first storytelling.</p></div></div></div></Reveal></section></SectionFlow>;
 }
 
 function Portfolio() {
@@ -267,6 +268,20 @@ function Portfolio() {
                     decoding="async"
                     className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-80 saturate-[.88] contrast-110"
                   />
+                  {'video' in item && (
+                    <video
+                      className="portfolio-image absolute inset-0 hidden h-full w-full object-cover opacity-78 saturate-[.9] contrast-110 md:block"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      poster={item.image}
+                      aria-hidden="true"
+                    >
+                      <source media="(min-width: 768px)" src={item.video} type="video/mp4" />
+                    </video>
+                  )}
                   <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.06)_0%,rgba(0,0,0,.26)_34%,rgba(0,0,0,.94)_100%)]" />
                   <div className="absolute inset-x-0 bottom-0 h-[76%] bg-gradient-to-t from-black via-black/72 to-transparent" />
