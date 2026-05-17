@@ -330,7 +330,7 @@ function Contact() {
                   </div>
                 </div>
               </div>
-              <ContactForm whatsappBaseUrl={whatsappUrl} />
+              <ContactForm />
             </div>
           </Reveal>
         </div>
@@ -340,5 +340,5 @@ function Contact() {
 }
 
 function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link hover:text-zephyr-cyan" href="mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief">Start a private brief</a></div></footer>;
+  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" loading="lazy" decoding="async" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link inline-flex min-h-11 items-center rounded-full border border-white/10 px-4 hover:border-zephyr-cyan hover:text-zephyr-cyan" href={emailUrl}>Start a private brief</a></div></footer>;
 }

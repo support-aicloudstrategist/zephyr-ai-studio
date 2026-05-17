@@ -2,7 +2,7 @@
 
 import { type FormEvent } from 'react';
 
-export function ContactForm({ whatsappBaseUrl }: { whatsappBaseUrl: string }) {
+export function ContactForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -30,7 +30,6 @@ export function ContactForm({ whatsappBaseUrl }: { whatsappBaseUrl: string }) {
       <label className="grid gap-2"><span className={labelClass}>Budget range</span><select name="budget" required className={fieldClass} defaultValue=""><option value="" disabled>Select budget</option><option>₹15K–₹40K</option><option>₹50K–₹1L</option><option>₹1L+</option></select></label>
       <label className="grid gap-2 md:col-span-2"><span className={labelClass}>Message</span><textarea name="message" className={`${fieldClass} min-h-36 resize-none`} placeholder="Tell us about your product, offer, launch, or visual style..." /></label>
       <button type="submit" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-white px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_24px_rgba(123,223,229,.16)] md:col-span-2">Send Inquiry on WhatsApp</button>
-      <a href={whatsappBaseUrl} target="_blank" rel="noopener noreferrer" className="sr-only">Start on WhatsApp</a>
     </form>
   );
 }
