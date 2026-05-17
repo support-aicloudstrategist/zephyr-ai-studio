@@ -3,6 +3,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 export const portfolioAssets = [
   {
     title: 'Skincare Brands',
+    filter: 'Beauty',
     create: 'Luxury skincare visuals, launch reels, ingredient-story ads, and premium beauty campaigns.',
     why: 'Makes your product look premium, trustworthy, and ready for serious buyers.',
     image: `${basePath}/images/portfolio/portfolio-1.webp`,
@@ -10,6 +11,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Cosmetics Brands',
+    filter: 'Beauty',
     create: 'Lipstick, perfume, makeup product ads, beauty reels, and social media launch creatives.',
     why: 'Helps beauty products stand out without costly models or studio shoots.',
     image: `${basePath}/images/portfolio/portfolio-2.webp`,
@@ -17,6 +19,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Jewellery Brands',
+    filter: 'Jewellery',
     create: 'Cinematic jewellery glow shots, festive campaigns, luxury product films, and Instagram reels.',
     why: 'Makes jewellery look high-value, polished, and premium online.',
     image: `${basePath}/images/portfolio/portfolio-3.webp`,
@@ -24,6 +27,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Fashion Brands',
+    filter: 'Fashion',
     create: 'AI fashion model visuals, clothing launch reels, lookbook campaigns, and editorial-style ads.',
     why: 'Shows your collection with premium styling and campaign-level presentation.',
     image: `${basePath}/images/portfolio/portfolio-4.webp`,
@@ -31,6 +35,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Clothing Boutiques',
+    filter: 'Fashion',
     create: 'Boutique collection reels, festive outfit campaigns, sale creatives, and Instagram visuals.',
     why: 'Promotes outfits quickly without expensive models, locations, or full shoots.',
     image: `${basePath}/images/portfolio/portfolio-5.webp`,
@@ -38,6 +43,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Ecommerce Products',
+    filter: 'Ecommerce',
     create: 'Product commercials, marketplace visuals, social ads, banners, and launch creatives.',
     why: 'Turns ordinary product listings into premium brand-style campaigns.',
     image: `${basePath}/images/portfolio/portfolio-6.webp`,
@@ -45,6 +51,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Perfume & Luxury Products',
+    filter: 'Beauty',
     create: 'Moody cinematic product films, premium brand stories, and high-end launch visuals.',
     why: 'Builds a luxury feeling around products that depend on perception and desire.',
     image: `${basePath}/images/portfolio/portfolio-1.webp`,
@@ -52,6 +59,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Food Brands & Restaurants',
+    filter: 'Food',
     create: 'Food reels, menu promotions, restaurant launch ads, and festive offer creatives.',
     why: 'Makes food look tempting and improves engagement on social platforms.',
     image: `${basePath}/images/portfolio/portfolio-2.webp`,
@@ -59,6 +67,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Cafes & Local Brands',
+    filter: 'Food',
     create: 'Ambience reels, cafe promotions, opening launch campaigns, and stylish local ads.',
     why: 'Gives local brands a polished, premium digital presence customers notice.',
     image: `${basePath}/images/portfolio/portfolio-3.webp`,
@@ -66,6 +75,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Influencers & Creators',
+    filter: 'Creators',
     create: 'Personal brand reels, cinematic intros, profile visuals, and content campaign assets.',
     why: 'Makes your personal brand look sharper, more premium, and memorable.',
     image: `${basePath}/images/portfolio/portfolio-4.webp`,
@@ -73,6 +83,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Startup Product Launches',
+    filter: 'Startups',
     create: 'Product teaser films, launch visuals, website banners, and social campaign creatives.',
     why: 'Helps new products look credible, exciting, and ready for launch.',
     image: `${basePath}/images/portfolio/portfolio-5.webp`,
@@ -80,6 +91,7 @@ export const portfolioAssets = [
   },
   {
     title: 'Premium Brand Campaigns',
+    filter: 'Startups',
     create: 'Full cinematic campaign worlds for brands that want luxury perception and strong visual identity.',
     why: 'Creates a high-end brand image across ads, reels, and launch visuals.',
     image: `${basePath}/images/portfolio/portfolio-6.webp`,
