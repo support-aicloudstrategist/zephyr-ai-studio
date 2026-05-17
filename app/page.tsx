@@ -5,14 +5,14 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import gsap from 'gsap';
 import SmoothScroll from '@/components/SmoothScroll';
 import { Reveal } from '@/components/Reveal';
-import { placeholderPortfolio } from '@/lib/placeholders';
+import { portfolioAssets } from '@/lib/portfolioAssets';
 
-const portfolio = placeholderPortfolio;
+const portfolio = portfolioAssets;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
-const showreelVideoSrc = `${basePath}/video/mixkit-stylish-woman-sports-car-44545.mp4`;
-const showreelPosterSrc = `${basePath}/images/mixkit-stylish-woman-sports-car-44545.jpg`;
+const showreelVideoSrc = `${basePath}/video/cinematic-fashion-campaign-preview.mp4`;
+const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
 
 const services = [
   'AI Product Advertisements',
@@ -26,8 +26,8 @@ const services = [
 ];
 
 const prices = [
-  ['Starter Campaign', '₹15k – ₹40k', 'A focused launch pack.', ['1 hero concept', '2–4 premium visuals', '1 short reel direction', 'Caption + launch copy']],
-  ['Growth Campaign', '₹50k – ₹1L', 'A complete campaign system.', ['Campaign concept', 'Multiple reels/edits', 'Social creative set', 'Brand visual direction']],
+  ['Starter Campaign', '₹15k – ₹40k', 'A focused launch pack.', ['1 hero direction', '2–4 premium visuals', '1 short reel direction', 'Caption + launch copy']],
+  ['Growth Campaign', '₹50k – ₹1L', 'A complete campaign system.', ['Campaign direction', 'Multiple reels/edits', 'Social creative set', 'Brand visual direction']],
   ['Premium Cinematic Campaign', '₹1L+', 'Luxury storytelling at scale.', ['Full campaign world', 'Cinematic ad films', 'Motion design pack', 'Founder/brand story system']],
 ] as const;
 
@@ -49,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     if (window.matchMedia('(max-width: 767px), (prefers-reduced-motion: reduce)').matches) return;
 
-    gsap.to('.gsap-hero-glow', {
+    gsap.to('.cinematic-hero-glow', {
       scale: 1.055,
       opacity: 0.24,
       duration: 10.5,
@@ -57,7 +57,7 @@ export default function Home() {
       yoyo: true,
       ease: 'sine.inOut',
     });
-    gsap.to('.gsap-hero-depth', {
+    gsap.to('.cinematic-hero-depth', {
       xPercent: 1.4,
       yPercent: -0.8,
       duration: 16,
@@ -158,8 +158,8 @@ function Hero() {
       >
         <source src={heroVideoSrc} type="video/mp4" />
       </motion.video>
-      <div className="gsap-hero-depth absolute inset-[-3%] hidden md:block bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
-      <div className="gsap-hero-glow absolute hidden md:block left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
+      <div className="cinematic-hero-depth absolute inset-[-3%] hidden md:block bg-[radial-gradient(circle_at_22%_42%,rgba(123,223,229,.075),transparent_24%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_24%)]" />
+      <div className="cinematic-hero-glow absolute hidden md:block left-[30%] top-1/2 h-[52vmin] w-[52vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/7 blur-[76px]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.52),rgba(3,3,6,.42)_42%,rgba(3,3,6,.70)_78%,#030306_99%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.58)_36%,rgba(3,3,6,.22)_68%,rgba(3,3,6,.12)),linear-gradient(180deg,rgba(3,3,6,.20),rgba(3,3,6,.08)_34%,rgba(3,3,6,.38)_74%,#030306_99%)]" />
       <div className="absolute inset-0 shadow-[inset_0_0_130px_rgba(0,0,0,.72)] md:shadow-[inset_0_0_220px_rgba(0,0,0,.82)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/75 to-transparent md:h-24" />
@@ -230,7 +230,7 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A luxury motion preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Mixkit fashion placeholder</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Zephyr Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">A placeholder frame for the Zephyr visual language.</p></div></div></div></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-28 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A cinematic fashion campaign preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" className="absolute inset-0 h-full w-full object-cover opacity-76 saturate-110" /><video className="absolute inset-0 h-full w-full object-cover opacity-92 saturate-110 contrast-105" autoPlay muted loop playsInline preload="metadata" poster={showreelPosterSrc} aria-hidden="true"><source src={showreelVideoSrc} type="video/mp4" /></video><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Cinematic fashion campaign preview</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Campaign Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">Luxury campaign direction for product, fashion, and social-first storytelling.</p></div></div></div></Reveal></section></SectionFlow>;
 }
 
 function CinematicReveal() {
@@ -314,7 +314,7 @@ function Portfolio() {
                   <p className="mt-4 max-w-sm text-sm leading-6 text-white/68 md:mt-6 md:max-w-lg md:text-lg md:leading-7">{item.copy}</p>
                   <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Enter world</span>
                 </motion.div>
-                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Zephyr concept</div>
+                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Campaign direction</div>
               </div>
             </motion.button>
           </Reveal>
@@ -356,7 +356,7 @@ function Portfolio() {
                 <p className="text-xs uppercase tracking-[0.34em] text-zephyr-cyan/82 md:text-sm">{active.num} / Cinematic campaign world</p>
                 <h3 className="mt-4 max-w-5xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">{active.title}</h3>
                 <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 md:text-xl">{active.copy}</p>
-                <p className="mt-5 text-[0.65rem] uppercase tracking-[0.25em] text-white/42">Placeholder — ready for Zephyr originals.</p>
+                <p className="mt-5 text-[0.65rem] uppercase tracking-[0.25em] text-white/42">Luxury campaign direction for product, fashion, and social-first storytelling.</p>
               </div>
             </motion.div>
           </motion.div>
@@ -419,9 +419,9 @@ function Pricing() {
 }
 
 function Contact() {
-  return <SectionFlow><section id="contact" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Start a project" title="Make the brief cinematic" copy="Send the brief. We shape the world." /><Reveal><form className="glass mx-auto grid max-w-5xl gap-4 rounded-[1.6rem] p-5 md:grid-cols-2 md:gap-5 md:rounded-[2rem] md:p-10"><input name="name" aria-label="Name" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Name" autoComplete="name" /><input name="contact" aria-label="Email or phone" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55" placeholder="Email / Phone" autoComplete="email" /><select name="budget" aria-label="Budget selection" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Budget selection</option><option>₹15k–₹40k</option><option>₹50k–₹1L</option><option>₹1L+</option></select><select name="timeline" aria-label="Timeline" className="rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white/70 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus:border-zephyr-cyan focus:bg-black/55"><option>Timeline</option><option>1–2 weeks</option><option>2–4 weeks</option><option>Campaign retainer</option></select><textarea name="details" aria-label="Project details" className="min-h-40 rounded-2xl border border-white/10 bg-black/40 px-5 py-4 outline-none transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-white/35 focus:border-zephyr-cyan focus:bg-black/55 md:col-span-2" placeholder="Project details, visual references, product category, story direction..." /><label className="flex cursor-pointer flex-col gap-2 rounded-2xl border border-dashed border-white/18 bg-black/30 px-5 py-5 text-white/55 transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-zephyr-magenta/55 hover:text-white sm:flex-row sm:items-center sm:justify-between md:col-span-2"><span>Upload references / product files</span><span className="text-xs uppercase tracking-[0.2em] text-zephyr-cyan">Optional</span><input name="references" type="file" className="hidden" aria-label="Upload references or product files" /></label><button type="button" aria-label="Submit inquiry" className="premium-button rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)] md:col-span-2">Submit Inquiry</button><p className="text-center text-xs text-white/42 md:col-span-2">Prototype form — connect email/CRM before public launch.</p></form></Reveal></section></SectionFlow>;
+  return <SectionFlow><section id="contact" className="px-4 py-28 md:px-6 md:py-48"><SectionTitle kicker="Start a project" title="Make the brief cinematic" copy="Share the campaign ambition. We shape the world, the frames, and the launch language." /><Reveal><div className="glass mx-auto grid max-w-5xl gap-6 rounded-[1.6rem] p-6 md:grid-cols-[1.05fr_.95fr] md:gap-8 md:rounded-[2rem] md:p-10"><div><p className="text-[0.68rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/82">Private campaign enquiry</p><h3 className="mt-6 font-display text-4xl font-black uppercase leading-[0.9] tracking-[-0.055em] text-white md:text-6xl">Commission a visual world.</h3><p className="mt-6 max-w-xl text-base leading-7 text-white/64 md:text-lg">For product launches, fashion stories, premium social films, founder campaigns and cinematic brand systems.</p></div><div className="rounded-[1.4rem] border border-white/10 bg-black/32 p-6 md:p-8"><div className="space-y-5 text-sm leading-7 text-white/66"><p><span className="text-white">Send:</span> brand name, product category, campaign goal, preferred timeline and visual references.</p><p><span className="text-white">Receive:</span> a refined creative direction, production scope and launch-ready visual plan.</p></div><a href="mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief" className="premium-button mt-8 inline-flex rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.18em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_22px_rgba(123,223,229,.16)]">Email the brief</a></div></div></Reveal></section></SectionFlow>;
 }
 
 function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Built with Next.js, React, Tailwind CSS, Framer Motion, Lenis, Three.js and GSAP.</p><div className="flex gap-5"><a className="premium-link hover:text-zephyr-cyan" href="#contact">Instagram</a><a className="premium-link hover:text-zephyr-cyan" href="#contact">LinkedIn</a><a className="premium-link hover:text-zephyr-cyan" href="#contact">YouTube</a></div></div></footer>;
+  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link hover:text-zephyr-cyan" href="mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief">Start a private brief</a></div></footer>;
 }
