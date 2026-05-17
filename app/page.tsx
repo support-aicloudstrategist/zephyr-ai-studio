@@ -224,44 +224,63 @@ function Showreel() {
 
 function Portfolio() {
   return (
-    <section id="portfolio" className="relative bg-gradient-to-b from-zephyr-black via-[#06060d] to-zephyr-black px-4 py-24 md:px-6 md:py-44">
-      <SectionTitle kicker="Portfolio" title="Campaign worlds, not gallery tiles" copy="Campaigns as cinema." />
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 md:gap-12">
-        {portfolio.map((item, i) => (
-          <Reveal delay={Math.min(i * 0.08, 0.24)} key={item.title}>
-            <a
-              href="#contact"
-              className={`portfolio-card premium-card group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black text-left outline-none md:rounded-[2.8rem] ${i % 2 ? 'md:ml-auto md:w-[88%]' : 'md:mr-auto md:w-[88%]'}`}
-            >
-              <div className="relative min-h-[390px] overflow-hidden sm:min-h-[430px] md:min-h-[560px] lg:min-h-[640px]">
-                <img
-                  src={item.image}
-                  alt=""
-                  loading="lazy"
-                  className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.92] contrast-105"
-                />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/26 to-black/8" />
-                <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-black/72 via-black/26 to-transparent" />
-                <div
-                  className="absolute bottom-0 left-0 right-0 z-10 p-5 md:p-10 lg:p-12"
+    <section id="portfolio" className="relative overflow-hidden bg-[linear-gradient(180deg,#030306_0%,#070711_42%,#030306_100%)] px-4 py-24 md:px-6 md:py-44">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_82%_54%,rgba(216,111,189,.055),transparent_32%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-zephyr-black to-transparent" />
+      <div className="relative mx-auto max-w-7xl">
+        <Reveal className="mb-9 max-w-4xl md:mb-16">
+          <p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">Portfolio</p>
+          <h2 className="text-glow font-display text-[clamp(2.25rem,9vw,4.8rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(3rem,5.6vw,6rem)]">Selected Campaign Worlds</h2>
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-white/64 md:mt-7 md:text-xl md:leading-8">Cinematic AI-powered visual directions for product launches, fashion stories, social reels, and premium brand campaigns.</p>
+        </Reveal>
+
+        <div className="grid gap-5 md:grid-cols-12 md:gap-6">
+          {portfolio.map((item, i) => {
+            const featured = i === 0;
+            return (
+              <Reveal delay={Math.min(i * 0.07, 0.22)} key={item.title} className={featured ? 'md:col-span-7 md:row-span-2' : 'md:col-span-5'}>
+                <a
+                  href="#contact"
+                  className={`portfolio-card premium-card group relative block overflow-hidden rounded-[1.35rem] border border-white/10 bg-black text-left outline-none shadow-[0_22px_80px_rgba(0,0,0,.34)] md:rounded-[1.75rem] ${featured ? 'min-h-[520px] md:min-h-[760px]' : 'min-h-[430px] md:min-h-[367px]'}`}
+                  aria-label={`Create similar campaign: ${item.title}`}
                 >
-                  <p className="text-[0.66rem] uppercase tracking-[0.34em] text-zephyr-cyan/80 md:text-xs">{item.num} / Sample campaign preview</p>
-                  <h3 className="mt-4 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">{item.title}</h3>
-                  <p className="mt-4 max-w-sm text-sm leading-6 text-white/68 md:mt-6 md:max-w-lg md:text-lg md:leading-7">{item.copy}</p>
-                  <span className="mt-5 inline-flex rounded-full border border-white/18 bg-white/[.035] px-5 py-3 text-[0.65rem] md:mt-8 font-bold uppercase tracking-[0.22em] text-white/78 backdrop-blur-sm">Create similar campaign</span>
-                </div>
-                <div className="absolute left-6 top-6 rounded-full border border-white/14 bg-black/32 px-4 py-2 text-[0.62rem] uppercase tracking-[0.22em] text-white/52 backdrop-blur-sm md:left-10 md:top-10">Visual concept</div>
-              </div>
-            </a>
-          </Reveal>
-        ))}
+                  <img
+                    src={item.image}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-82 saturate-[.88] contrast-110"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.14)_0%,rgba(0,0,0,.20)_38%,rgba(0,0,0,.88)_100%)]" />
+                  <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/62 to-transparent" />
+                  <div className="absolute left-4 top-4 z-10 rounded-full border border-white/12 bg-black/38 px-3 py-2 text-[0.58rem] font-black uppercase tracking-[0.18em] text-white/58 backdrop-blur-md md:left-6 md:top-6">
+                    {item.label}
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-5 sm:p-6 md:p-8">
+                    <p className="text-[0.62rem] font-black uppercase tracking-[0.26em] text-zephyr-cyan/84">{item.category}</p>
+                    <h3 className={`mt-3 font-display font-black uppercase leading-[0.9] tracking-[-0.06em] text-white ${featured ? 'text-[clamp(2.45rem,11vw,5.6rem)] md:text-[clamp(3.5rem,6vw,6.4rem)]' : 'text-[clamp(2rem,8vw,3.45rem)] md:text-[clamp(2.2rem,3.4vw,3.9rem)]'}`}>{item.title}</h3>
+                    <p className={`mt-4 leading-7 text-white/70 ${featured ? 'max-w-xl text-base md:text-lg' : 'max-w-md text-sm md:text-base'}`}>{item.copy}</p>
+                    <span className="premium-button mt-5 inline-flex min-h-12 items-center justify-center rounded-full border border-white/16 bg-white/[.055] px-5 py-3 text-[0.66rem] font-black uppercase tracking-[0.18em] text-white/82 backdrop-blur-sm group-hover:border-zephyr-cyan/36 group-hover:text-zephyr-cyan md:mt-7">
+                      Create similar campaign
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <Reveal>
+          <p className="mx-auto mt-7 max-w-3xl rounded-[1.1rem] border border-white/10 bg-black/28 px-5 py-4 text-center text-sm leading-6 text-white/58 md:mt-10 md:text-base">
+            These are sample visual directions. Each campaign is custom-created around your product, brand, audience, and launch goal.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
 }
+
 function Services() {
   return <SectionFlow><section id="services" className="px-4 py-24 md:px-6 md:py-44"><SectionTitle kicker="Services" title="What We Create" copy="Premium AI-powered visual content for brands that want to stand out online." /><div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, copy, bestFor }, i) => <Reveal delay={Math.min(i * 0.07, 0.24)} key={title}><div className={`premium-card glass h-full min-h-56 rounded-[1.45rem] p-6 hover:border-zephyr-cyan/20 hover:shadow-[0_18px_60px_rgba(0,0,0,.22)] md:rounded-[1.8rem] md:p-7 ${i === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}><div className="mb-7 flex items-center justify-between gap-3"><div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/[.035] text-sm font-black text-zephyr-cyan/88 shadow-[0_0_18px_rgba(123,223,229,.08)]">0{i + 1}</div><span className="rounded-full border border-white/10 bg-black/24 px-3 py-2 text-[0.58rem] font-black uppercase tracking-[0.16em] text-white/54">Best for {bestFor}</span></div><h3 className="max-w-xs text-xl font-black uppercase leading-tight tracking-[-0.04em] text-white md:text-2xl">{title}</h3><p className="mt-5 max-w-sm text-sm leading-7 text-white/62 md:text-base">{copy}</p></div></Reveal>)}</div></section></SectionFlow>;
 }
