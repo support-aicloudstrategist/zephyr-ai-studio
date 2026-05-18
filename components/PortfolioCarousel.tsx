@@ -36,6 +36,7 @@ export function PortfolioCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const autoStartTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
@@ -143,14 +144,21 @@ export function PortfolioCarousel() {
 
   useEffect(() => {
     if (autoPaused) return undefined;
+    autoStartTimerRef.current = setTimeout(() => {
+      scrollByStep(1);
+    }, 1400);
     const interval = setInterval(() => {
       scrollByStep(1);
-    }, 5200);
-    return () => clearInterval(interval);
+    }, 4300);
+    return () => {
+      if (autoStartTimerRef.current) clearTimeout(autoStartTimerRef.current);
+      clearInterval(interval);
+    };
   }, [autoPaused, scrollByStep]);
 
   useEffect(() => () => {
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    if (autoStartTimerRef.current) clearTimeout(autoStartTimerRef.current);
   }, []);
 
   const dots = useMemo(() => carouselItems.map((item) => item.title), []);
