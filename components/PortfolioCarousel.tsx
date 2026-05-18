@@ -146,10 +146,10 @@ export function PortfolioCarousel() {
     if (autoPaused) return undefined;
     autoStartTimerRef.current = setTimeout(() => {
       scrollByStep(1);
-    }, 1400);
+    }, 900);
     const interval = setInterval(() => {
       scrollByStep(1);
-    }, 4300);
+    }, 2800);
     return () => {
       if (autoStartTimerRef.current) clearTimeout(autoStartTimerRef.current);
       clearInterval(interval);
