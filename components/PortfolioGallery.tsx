@@ -64,16 +64,16 @@ export function PortfolioGallery() {
                 />
                 {'video' in item && (
                   <video
-                    className="portfolio-image absolute inset-0 hidden h-full w-full object-cover opacity-78 saturate-[.9] contrast-110 md:block"
+                    className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-78 saturate-[.9] contrast-110"
                     autoPlay
                     muted
                     loop
                     playsInline
-                    preload="none"
+                    preload="metadata"
                     poster={item.image}
                     aria-hidden="true"
                   >
-                    <source media="(min-width: 768px)" src={item.video} type="video/mp4" />
+                    <source src={item.video} type="video/mp4" />
                   </video>
                 )}
                 <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
