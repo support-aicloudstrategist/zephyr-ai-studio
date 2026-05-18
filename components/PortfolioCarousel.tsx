@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type WheelEvent } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { portfolioAssets } from '@/lib/portfolioAssets';
 import { whatsappProjectUrl } from '@/lib/siteLinks';
@@ -35,16 +35,49 @@ type CarouselItem = (typeof carouselItems)[number];
 export function PortfolioCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+  const [autoPaused, setAutoPaused] = useState(false);
 
-  const scrollToIndex = (index: number) => {
-    const safeIndex = Math.max(0, Math.min(index, carouselItems.length - 1));
+  const scrollToIndex = useCallback((index: number) => {
+    const safeIndex = (index + carouselItems.length) % carouselItems.length;
     const track = trackRef.current;
     const card = track?.children.item(safeIndex) as HTMLElement | null;
     card?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     setActiveIndex(safeIndex);
-  };
+    activeIndexRef.current = safeIndex;
+  }, []);
+
+  const scrollByStep = useCallback((direction: 1 | -1) => {
+    const track = trackRef.current;
+    const firstCard = track?.children.item(0) as HTMLElement | null;
+    if (!track || !firstCard) return;
+    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap || '0') || 0;
+    const step = firstCard.offsetWidth + gap;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const target = direction > 0
+      ? track.scrollLeft + step >= maxScroll - 8 ? 0 : track.scrollLeft + step
+      : track.scrollLeft <= 8 ? maxScroll : track.scrollLeft - step;
+    track.scrollTo({ left: target, behavior: 'smooth' });
+    const nextIndex = (activeIndexRef.current + direction + carouselItems.length) % carouselItems.length;
+    setActiveIndex(nextIndex);
+    activeIndexRef.current = nextIndex;
+  }, []);
+
+  const pauseAuto = useCallback((resume = true) => {
+    setAutoPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    if (resume) {
+      resumeTimerRef.current = setTimeout(() => setAutoPaused(false), 7000);
+    }
+  }, []);
+
+  const resumeAuto = useCallback(() => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => setAutoPaused(false), 1800);
+  }, []);
 
   const updateActiveFromScroll = () => {
     const track = trackRef.current;
@@ -62,6 +95,7 @@ export function PortfolioCarousel() {
       }
     });
     setActiveIndex(nearest);
+    activeIndexRef.current = nearest;
   };
 
   const playVideo = (index: number) => {
@@ -77,6 +111,7 @@ export function PortfolioCarousel() {
   };
 
   const togglePreview = (index: number) => {
+    pauseAuto();
     setPreviewIndex((current) => {
       if (current === index) {
         pauseVideo(index);
@@ -88,6 +123,35 @@ export function PortfolioCarousel() {
     });
     scrollToIndex(index);
   };
+
+  const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    pauseAuto();
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      event.preventDefault();
+      track.scrollLeft += event.deltaY;
+      updateActiveFromScroll();
+    }
+  };
+
+  const handleManualMove = () => pauseAuto();
+
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
+
+  useEffect(() => {
+    if (autoPaused) return undefined;
+    const interval = setInterval(() => {
+      scrollByStep(1);
+    }, 5200);
+    return () => clearInterval(interval);
+  }, [autoPaused, scrollByStep]);
+
+  useEffect(() => () => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  }, []);
 
   const dots = useMemo(() => carouselItems.map((item) => item.title), []);
 
@@ -109,8 +173,8 @@ export function PortfolioCarousel() {
           <div className="relative">
             <button
               type="button"
-              onClick={() => scrollToIndex(activeIndex - 1)}
-              className="premium-button absolute left-0 top-1/2 z-20 hidden h-12 w-12 -translate-x-3 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/72 text-xl text-white/80 shadow-[0_0_22px_rgba(123,223,229,.10)] backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan lg:flex"
+              onClick={() => { pauseAuto(); scrollByStep(-1); }}
+              className="premium-button absolute left-2 top-[42%] z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/64 text-lg text-white/80 shadow-[0_0_18px_rgba(123,223,229,.08)] backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan md:flex lg:left-3 lg:h-11 lg:w-11"
               aria-label="Previous campaign style"
             >
               ‹
@@ -118,6 +182,11 @@ export function PortfolioCarousel() {
             <div
               ref={trackRef}
               onScroll={updateActiveFromScroll}
+              onWheel={handleWheel}
+              onPointerDown={handleManualMove}
+              onTouchStart={handleManualMove}
+              onMouseEnter={() => pauseAuto(false)}
+              onMouseLeave={resumeAuto}
               className="portfolio-carousel-track -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 sm:gap-5 md:mx-0 md:px-1 lg:gap-6"
               aria-label="Featured campaign style carousel"
             >
@@ -129,7 +198,7 @@ export function PortfolioCarousel() {
                     active={previewIndex === index}
                     setVideoRef={(node) => { videoRefs.current[String(index)] = node; }}
                     onTap={() => togglePreview(index)}
-                    onMouseEnter={() => { setPreviewIndex(index); playVideo(index); }}
+                    onMouseEnter={() => { pauseAuto(false); setPreviewIndex(index); playVideo(index); }}
                     onMouseLeave={() => { setPreviewIndex((current) => current === index ? null : current); pauseVideo(index); }}
                   />
                 </div>
@@ -137,8 +206,8 @@ export function PortfolioCarousel() {
             </div>
             <button
               type="button"
-              onClick={() => scrollToIndex(activeIndex + 1)}
-              className="premium-button absolute right-0 top-1/2 z-20 hidden h-12 w-12 translate-x-3 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/72 text-xl text-white/80 shadow-[0_0_22px_rgba(216,111,189,.10)] backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta lg:flex"
+              onClick={() => { pauseAuto(); scrollByStep(1); }}
+              className="premium-button absolute right-2 top-[42%] z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/64 text-lg text-white/80 shadow-[0_0_18px_rgba(216,111,189,.08)] backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta md:flex lg:right-3 lg:h-11 lg:w-11"
               aria-label="Next campaign style"
             >
               ›
@@ -152,7 +221,7 @@ export function PortfolioCarousel() {
               <button
                 key={label}
                 type="button"
-                onClick={() => scrollToIndex(index)}
+                onClick={() => { pauseAuto(); scrollToIndex(index); }}
                 aria-label={`View ${label}`}
                 className={`h-2.5 rounded-full transition-all duration-500 ${activeIndex === index ? 'w-8 bg-zephyr-cyan shadow-[0_0_14px_rgba(123,223,229,.34)]' : 'w-2.5 bg-white/22 hover:bg-white/40'}`}
               />
@@ -191,6 +260,7 @@ function CarouselCard({
   return (
     <article
       className={`portfolio-card premium-card group relative h-[440px] overflow-hidden rounded-[1.35rem] border bg-black text-left shadow-[0_18px_70px_rgba(0,0,0,.34)] transition duration-500 md:h-[500px] md:rounded-[1.65rem] ${active ? 'scale-[1.018] border-zephyr-cyan/28 shadow-[0_24px_82px_rgba(123,223,229,.12)]' : 'border-white/10'}`}
+      style={active ? { transform: 'scale(1.018)' } : undefined}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
