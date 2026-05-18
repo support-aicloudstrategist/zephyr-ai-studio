@@ -87,6 +87,35 @@ select option { background: #05050c; color: #f7f7fb; }
 }
 .portfolio-carousel-track::-webkit-scrollbar { display: none; }
 
+.premium-campaign-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(100deg, rgba(123,223,229,.68), rgba(255,255,255,.16) 34%, rgba(216,111,189,.58) 72%, rgba(123,223,229,.46));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.premium-campaign-cta::after {
+  content: '';
+  position: absolute;
+  inset: -55% auto -55% -42%;
+  width: 36%;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  animation: zephyr-cta-shimmer 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes zephyr-cta-shimmer {
+  0%, 48%, 100% { left: -42%; opacity: 0; }
+  56% { opacity: .55; }
+  78% { left: 112%; opacity: 0; }
+}
+
 @media (max-width: 767px) {
   .cinema-noise::before { opacity: .012; }
   .text-glow { text-shadow: 0 0 3px rgba(128,225,230,.07); }
@@ -133,6 +162,9 @@ select option { background: #05050c; color: #f7f7fb; }
   }
   .portfolio-card:hover {
     transform: translateY(-3px) scale(1.018);
+  }
+  .premium-campaign-cta:hover {
+    box-shadow: 0 0 28px rgba(123,223,229,.16), 0 0 44px rgba(216,111,189,.13), 0 18px 60px rgba(0,0,0,.30);
   }
   .premium-button:hover {
     box-shadow: 0 0 24px rgba(123,223,229,.12), 0 0 34px rgba(216,111,189,.08);

@@ -236,8 +236,9 @@ export function PortfolioCarousel() {
             ))}
           </div>
           <div className="mt-8 flex justify-center md:mt-10">
-            <a href="#contact" className="premium-button inline-flex min-h-14 items-center justify-center rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.16em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_28px_rgba(123,223,229,.18)]">
-              View More Campaign Styles
+            <a href="#contact" className="premium-campaign-cta premium-button group relative inline-flex min-h-14 w-full max-w-[23rem] items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[linear-gradient(135deg,#05050b_0%,#140d22_48%,#05050b_100%)] px-7 py-4 text-center text-[0.72rem] font-black uppercase tracking-[0.16em] text-white/92 shadow-[0_0_22px_rgba(123,223,229,.10),0_0_34px_rgba(216,111,189,.08)] active:scale-[.985] sm:w-auto sm:min-w-[22rem] sm:px-9 md:text-sm">
+              <span className="relative z-10">View More Campaign Styles</span>
+              <span className="relative z-10 ml-3 text-base text-zephyr-cyan transition-transform duration-500 group-hover:translate-x-1" aria-hidden="true">→</span>
             </a>
           </div>
         </Reveal>
