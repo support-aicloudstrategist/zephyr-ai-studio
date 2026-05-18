@@ -1,6 +1,7 @@
 import { type ReactNode } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
+import { CustomCursor } from '@/components/CustomCursor';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
@@ -86,6 +87,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <MobileBottomCTA />
+      <CustomCursor />
     </main>
   );
 }
