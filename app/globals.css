@@ -80,6 +80,13 @@ select option { background: #05050c; color: #f7f7fb; }
   transform: translateY(-3px);
 }
 
+.portfolio-carousel-track {
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.portfolio-carousel-track::-webkit-scrollbar { display: none; }
+
 @media (max-width: 767px) {
   .cinema-noise::before { opacity: .012; }
   .text-glow { text-shadow: 0 0 3px rgba(128,225,230,.07); }
@@ -123,6 +130,9 @@ select option { background: #05050c; color: #f7f7fb; }
   }
   .portfolio-card:hover .portfolio-image {
     transform: scale(1.035);
+  }
+  .portfolio-card:hover {
+    transform: translateY(-3px) scale(1.018);
   }
   .premium-button:hover {
     box-shadow: 0 0 24px rgba(123,223,229,.12), 0 0 34px rgba(216,111,189,.08);

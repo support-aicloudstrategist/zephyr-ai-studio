@@ -1,8 +1,8 @@
 import { type ReactNode } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
-import { HomePortfolioTeaser } from '@/components/HomePortfolioTeaser';
-import { basePath, portfolioUrl } from '@/lib/siteLinks';
+import { PortfolioCarousel } from '@/components/PortfolioCarousel';
+import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero.mp4`;
 const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero.jpg`;
@@ -93,13 +93,13 @@ export default function Home() {
 function Navigation() {
   const desktopNavItems = [
     ['Showreel', '#showreel'],
-    ['Portfolio', portfolioUrl],
+    ['Work', '#portfolio'],
     ['Services', '#services'],
     ['Pricing', '#pricing'],
     ['Contact', '#contact'],
   ] as const;
   const mobileNavItems = [
-    ['Portfolio', portfolioUrl],
+    ['Work', '#portfolio'],
     ['Pricing', '#pricing'],
     ['WhatsApp', whatsappUrl],
   ] as const;
@@ -194,7 +194,7 @@ function Hero() {
           className="mt-7 grid w-full grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 md:mt-9 md:flex md:max-w-none md:items-center md:gap-4"
         >
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_26px_rgba(37,211,102,.18)] hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.20)] md:min-w-56">Start on WhatsApp</a>
-          <a href={portfolioUrl} className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Portfolio</a>
+          <a href="#portfolio" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Work</a>
         </div>
         <p
           className="mt-5 max-w-[22rem] text-xs font-medium leading-6 text-white/58 sm:text-sm md:mt-6 md:max-w-2xl md:text-base"
@@ -222,7 +222,7 @@ function Showreel() {
 }
 
 function Portfolio() {
-  return <HomePortfolioTeaser />;
+  return <PortfolioCarousel />;
 }
 
 function Services() {
