@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { basePath } from '@/lib/siteLinks';
 
-const logoSrc = `${basePath}/brand/zephyr-logo-full.jpg`;
+const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 
 const navItems = [
   ['WORK', '#portfolio'],
@@ -29,16 +29,16 @@ export function Navigation() {
         scrolled ? 'bg-black/42 backdrop-blur-xl' : 'bg-transparent backdrop-blur-0'
       }`}
     >
-      <div className="mx-auto flex h-[4.5rem] max-w-[92rem] items-center justify-between px-5 sm:px-7 md:px-10 lg:px-14 xl:px-16">
-        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex shrink-0 items-center">
+      <div className="flex h-[4.5rem] w-full items-center justify-between px-0">
+        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex shrink-0 items-center pl-0">
           <img
             src={logoSrc}
-            alt="Zephyr AI Studio"
-            className="h-11 w-auto object-contain md:h-12 lg:h-14"
+            alt="Zephyr AI Studio logo"
+            className="h-12 w-auto object-contain md:h-14 lg:h-16"
           />
         </a>
 
-        <nav aria-label="Main navigation" className="hidden items-center justify-end gap-7 text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/74 md:flex lg:gap-9 xl:gap-10">
+        <nav aria-label="Main navigation" className="hidden items-center justify-end gap-7 pr-0 text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/74 md:flex lg:gap-9 xl:gap-10">
           {navItems.map(([label, href]) => (
             <a key={label} href={href} className="premium-link hover:text-white">
               {label}
