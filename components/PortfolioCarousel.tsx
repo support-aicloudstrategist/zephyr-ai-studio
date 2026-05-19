@@ -245,13 +245,13 @@ export function PortfolioCarousel() {
         </Reveal>
 
         <Reveal>
-          <div className="mx-auto mb-7 grid max-w-xl grid-cols-2 gap-2 rounded-full border border-white/10 bg-black/38 p-1.5 backdrop-blur-md md:mb-10">
+          <div className="mx-auto mb-6 grid max-w-2xl grid-cols-2 gap-2 rounded-[1.35rem] border border-white/10 bg-black/44 p-2 shadow-[0_22px_80px_rgba(0,0,0,.24)] backdrop-blur-md md:mb-8 md:rounded-full">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 type="button"
                 onClick={() => switchTab(tab.key)}
-                className={`premium-button min-h-12 rounded-full px-3 text-center text-[0.66rem] font-black uppercase tracking-[0.13em] md:text-xs ${activeTab === tab.key ? 'bg-white text-black shadow-[0_0_22px_rgba(123,223,229,.12)]' : 'text-white/64 hover:bg-white/[.055] hover:text-white'}`}
+                className={`premium-button min-h-14 rounded-[1rem] px-3 text-center text-[0.66rem] font-black uppercase tracking-[0.13em] md:rounded-full md:text-xs ${activeTab === tab.key ? 'bg-white text-black shadow-[0_0_22px_rgba(123,223,229,.12)]' : 'border border-white/8 bg-white/[.035] text-white/64 hover:bg-white/[.07] hover:text-white'}`}
                 aria-pressed={activeTab === tab.key}
               >
                 {tab.label}
@@ -261,11 +261,31 @@ export function PortfolioCarousel() {
         </Reveal>
 
         <Reveal>
-          <div className="relative">
+          <div className="relative rounded-[1.6rem] border border-white/10 bg-black/24 p-3 shadow-[0_24px_90px_rgba(0,0,0,.26)] sm:p-4 md:rounded-[2rem] md:p-5">
+            <div className="mb-4 grid gap-3 md:grid-cols-[.78fr_1.22fr] md:items-center">
+              <div className="rounded-[1.25rem] border border-white/10 bg-white/[.035] p-4 md:p-5">
+                <p className="text-[0.62rem] font-black uppercase tracking-[0.24em] text-zephyr-cyan/82">
+                  {activeTab === 'format' ? 'Choose a content format' : 'Choose your business type'}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-white/62 md:text-base">
+                  {activeTab === 'format'
+                    ? 'Swipe through clear ad, reel, film, and visual formats Zephyr can create.'
+                    : 'Swipe through brand categories and pick the closest style for your business.'}
+                </p>
+              </div>
+              <div className="hidden justify-end gap-3 text-right md:flex">
+                <div className="rounded-full border border-white/10 bg-white/[.035] px-5 py-3 text-[0.68rem] font-black uppercase tracking-[0.18em] text-white/62">
+                  {items.length} visual concepts
+                </div>
+                <div className="rounded-full border border-zephyr-cyan/16 bg-zephyr-cyan/[.06] px-5 py-3 text-[0.68rem] font-black uppercase tracking-[0.18em] text-zephyr-cyan/82">
+                  Scroll / arrows
+                </div>
+              </div>
+            </div>
             <button
               type="button"
               onClick={() => scrollByStep(-1)}
-              className="premium-button absolute left-2 top-[42%] z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/64 text-lg text-white/80 shadow-[0_0_18px_rgba(123,223,229,.08)] backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan md:flex lg:left-3 lg:h-11 lg:w-11"
+              className="premium-button absolute left-1 top-[57%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/72 text-xl text-white/80 shadow-[0_0_18px_rgba(123,223,229,.08)] backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan md:flex lg:left-3"
               aria-label="Previous visual concept"
             >
               ‹
@@ -274,14 +294,15 @@ export function PortfolioCarousel() {
               ref={trackRef}
               onScroll={updateActiveFromScroll}
               onWheel={handleWheel}
-              className="portfolio-carousel-track -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 sm:gap-5 md:mx-0 md:px-1 lg:gap-6"
+              className="portfolio-carousel-track -mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-4 sm:gap-5 md:mx-0 md:px-1 lg:gap-6"
               aria-label={`${tabs.find((tab) => tab.key === activeTab)?.label} visual concept carousel`}
             >
               {items.map((item, index) => (
-                <div key={`${activeTab}-${item.title}`} className="w-[82vw] shrink-0 snap-center sm:w-[46vw] lg:w-[31%] xl:w-[24%]">
+                <div key={`${activeTab}-${item.title}`} className="w-[80vw] shrink-0 snap-center sm:w-[45vw] lg:w-[30%] xl:w-[23.5%]">
                   <ShowcaseCard
                     item={item}
                     index={index}
+                    modeLabel={activeTab === 'format' ? 'Content format' : 'Business type'}
                     active={previewIndex === index}
                     setVideoRef={(node) => { videoRefs.current[String(index)] = node; }}
                     onTap={() => togglePreview(index)}
@@ -294,7 +315,7 @@ export function PortfolioCarousel() {
             <button
               type="button"
               onClick={() => scrollByStep(1)}
-              className="premium-button absolute right-2 top-[42%] z-20 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/64 text-lg text-white/80 shadow-[0_0_18px_rgba(216,111,189,.08)] backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta md:flex lg:right-3 lg:h-11 lg:w-11"
+              className="premium-button absolute right-1 top-[57%] z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/14 bg-black/72 text-xl text-white/80 shadow-[0_0_18px_rgba(216,111,189,.08)] backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta md:flex lg:right-3"
               aria-label="Next visual concept"
             >
               ›
@@ -324,6 +345,7 @@ export function PortfolioCarousel() {
 function ShowcaseCard({
   item,
   index,
+  modeLabel,
   active,
   setVideoRef,
   onTap,
@@ -332,6 +354,7 @@ function ShowcaseCard({
 }: {
   item: ShowcaseItem;
   index: number;
+  modeLabel: string;
   active: boolean;
   setVideoRef: (node: HTMLVideoElement | null) => void;
   onTap: () => void;
@@ -342,7 +365,7 @@ function ShowcaseCard({
 
   return (
     <article
-      className={`portfolio-card premium-card group relative h-[430px] overflow-hidden rounded-[1.35rem] border bg-black text-left shadow-[0_18px_70px_rgba(0,0,0,.34)] transition duration-500 md:h-[500px] md:rounded-[1.65rem] ${active ? 'scale-[1.012] border-zephyr-cyan/28 shadow-[0_24px_82px_rgba(123,223,229,.10)]' : 'border-white/10'}`}
+      className={`portfolio-card premium-card group relative h-[390px] overflow-hidden rounded-[1.35rem] border bg-black text-left shadow-[0_18px_70px_rgba(0,0,0,.34)] transition duration-500 md:h-[460px] md:rounded-[1.65rem] ${active ? 'scale-[1.012] border-zephyr-cyan/28 shadow-[0_24px_82px_rgba(123,223,229,.10)]' : 'border-white/10'}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -368,7 +391,7 @@ function ShowcaseCard({
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08)_0%,rgba(0,0,0,.30)_38%,rgba(0,0,0,.96)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-[76%] bg-gradient-to-t from-black via-black/76 to-transparent" />
       <div className="absolute left-4 top-4 z-20 flex flex-wrap gap-2 md:left-5 md:top-5">
-        <span className="rounded-full border border-white/12 bg-black/48 px-3 py-2 text-[0.55rem] font-black uppercase tracking-[0.17em] text-white/58 backdrop-blur-md">Visual concept</span>
+        <span className="rounded-full border border-white/12 bg-black/54 px-3 py-2 text-[0.55rem] font-black uppercase tracking-[0.17em] text-white/68 backdrop-blur-md">{modeLabel}</span>
         <span className="rounded-full border border-zephyr-cyan/18 bg-zephyr-cyan/[.07] px-3 py-2 text-[0.55rem] font-black uppercase tracking-[0.17em] text-zephyr-cyan/86 backdrop-blur-md">{String(index + 1).padStart(2, '0')}</span>
       </div>
       <div className="absolute bottom-0 left-0 right-0 z-20 flex min-h-[50%] flex-col justify-end p-5 md:p-6">
