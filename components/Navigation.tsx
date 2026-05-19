@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { basePath } from '@/lib/siteLinks';
 
-const logoSrc = `${basePath}/brand/zephyr-navbar-logo-file18.jpg`;
+const logoSrc = `${basePath}/brand/zephyr-navbar-logo-file18-cropped.png`;
 
 const navItems = [
   ['WORK', '#portfolio'],
