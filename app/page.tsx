@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { CustomCursor } from '@/components/CustomCursor';
+import { Navigation } from '@/components/Navigation';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
@@ -89,53 +90,6 @@ export default function Home() {
       <MobileBottomCTA />
       <CustomCursor />
     </main>
-  );
-}
-
-function Navigation() {
-  const desktopNavItems = [
-    ['Showreel', '#showreel'],
-    ['Work', '#portfolio'],
-    ['Services', '#services'],
-    ['Pricing', '#pricing'],
-    ['Contact', '#contact'],
-  ] as const;
-  const mobileNavItems = [
-    ['Work', '#portfolio'],
-    ['Pricing', '#pricing'],
-    ['WhatsApp', whatsappUrl],
-  ] as const;
-
-  return (
-    <header className="fixed left-0 right-0 top-0 z-50 px-3 py-3 md:px-10 md:py-4">
-      <div className="mx-auto max-w-7xl rounded-[1.45rem] border border-white/10 bg-black/72 px-3 py-3 shadow-[0_14px_46px_rgba(0,0,0,.30)] backdrop-blur-md md:rounded-full md:px-5">
-        <div className="flex items-center justify-between gap-3">
-          <a href="#hero" aria-label="Zephyr AI Studio home" className="flex min-h-11 min-w-0 items-center gap-3">
-            <img src={logoSrc} alt="Zephyr AI Studio logo" className="h-10 w-10 shrink-0 rounded-full border border-white/10 object-cover shadow-[0_0_12px_rgba(123,223,229,.10)] sm:h-12 sm:w-12" />
-            <span className="truncate font-display text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white sm:text-sm sm:tracking-[0.32em]">Zephyr <span className="text-zephyr-cyan">AI</span> Studio</span>
-          </a>
-          <nav aria-label="Main navigation" className="hidden items-center gap-7 text-xs uppercase tracking-[0.2em] text-white/78 lg:flex">
-            {desktopNavItems.map(([label, href]) => <a key={label} href={href} className="premium-link hover:text-zephyr-cyan">{label}</a>)}
-          </nav>
-          <div className="hidden lg:block">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button rounded-full border border-white/24 px-4 py-2 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/90 shadow-none hover:border-zephyr-cyan hover:text-zephyr-cyan sm:text-xs">WhatsApp</a>
-          </div>
-        </div>
-        <nav aria-label="Mobile navigation" className="mt-3 grid grid-cols-3 gap-2 border-t border-white/10 pt-3 lg:hidden">
-          {mobileNavItems.map(([label, href]) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className={`premium-button flex min-h-10 items-center justify-center rounded-full px-3 text-center text-[0.62rem] font-black uppercase tracking-[0.12em] ${label === 'WhatsApp' ? 'bg-[#25D366] text-black shadow-[0_0_20px_rgba(37,211,102,.14)]' : 'border border-white/10 bg-white/[.045] text-white/78'}`}
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-      </div>
-    </header>
   );
 }
 
