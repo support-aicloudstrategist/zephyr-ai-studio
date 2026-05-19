@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { basePath } from '@/lib/siteLinks';
 
-const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
+const logoSrc = `${basePath}/brand/zephyr-navbar-logo.jpg`;
 
 const navItems = [
   ['WORK', '#portfolio'],
@@ -34,7 +34,7 @@ export function Navigation() {
           <img
             src={logoSrc}
             alt="Zephyr AI Studio logo"
-            className="h-12 w-auto object-contain md:h-14 lg:h-16"
+            className="h-10 w-auto object-contain md:h-12 lg:h-14"
           />
         </a>
 
