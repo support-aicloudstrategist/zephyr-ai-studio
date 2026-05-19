@@ -29,8 +29,8 @@ export function Navigation() {
         scrolled ? 'bg-black/42 backdrop-blur-xl' : 'bg-transparent backdrop-blur-0'
       }`}
     >
-      <div className="flex h-[4.5rem] w-full items-center justify-between px-0">
-        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex shrink-0 items-center pl-0">
+      <div className="flex h-[4.5rem] w-full items-center justify-between px-4 sm:px-5 md:px-8 lg:px-10 xl:px-12">
+        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex shrink-0 items-center">
           <img
             src={logoSrc}
             alt="Zephyr AI Studio logo"
@@ -38,7 +38,7 @@ export function Navigation() {
           />
         </a>
 
-        <nav aria-label="Main navigation" className="hidden items-center justify-end gap-7 pr-0 text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/74 md:flex lg:gap-9 xl:gap-10">
+        <nav aria-label="Main navigation" className="hidden items-center justify-end gap-7 text-[0.64rem] font-semibold uppercase tracking-[0.28em] text-white/74 md:flex lg:gap-9 xl:gap-10">
           {navItems.map(([label, href]) => (
             <a key={label} href={href} className="premium-link hover:text-white">
               {label}
