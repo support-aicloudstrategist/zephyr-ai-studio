@@ -80,6 +80,11 @@ select option { background: #05050c; color: #f7f7fb; }
   transform: translateY(-3px);
 }
 
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item[open] {
+  box-shadow: 0 20px 70px rgba(0,0,0,.24), 0 0 34px rgba(123,223,229,.045);
+}
+
 .portfolio-carousel-track {
   scrollbar-width: none;
   overscroll-behavior-x: contain;

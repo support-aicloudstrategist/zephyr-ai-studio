@@ -71,6 +71,33 @@ const prices = [
   },
 ] as const;
 
+const faqs = [
+  {
+    question: 'Do I need to ship my physical products?',
+    answer: 'Not always. For many campaigns, clear product photos, videos, packaging images, and brand references are enough. If a physical shoot is needed later, we will tell you clearly.',
+  },
+  {
+    question: 'Will my product shape, logo, or packaging stay accurate?',
+    answer: 'Yes. We use precise masking and controlled editing to keep your actual product, logo, packaging, and shape accurate while transforming the environment around it.',
+  },
+  {
+    question: 'Are AI-generated assets safe for paid ads?',
+    answer: 'We create assets for commercial brand use and deliver them for social media, Meta ads, YouTube, websites, and digital campaigns. Final platform approval depends on each ad platform’s policy and the product category.',
+  },
+  {
+    question: 'What is the turnaround time?',
+    answer: 'Starter campaigns usually take 5–10 days. Larger campaigns depend on the number of visuals, video duration, revisions, and creative complexity.',
+  },
+  {
+    question: 'What do I need to provide?',
+    answer: 'Share your product photos, logo, brand colors, references, campaign goal, target audience, and preferred format such as reel, ad, launch visual, or product film.',
+  },
+  {
+    question: 'Do you include music, sound design, or voiceovers?',
+    answer: 'Yes, selected packages can include music, sound design, captions, and AI voiceover depending on the project scope.',
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
@@ -84,6 +111,7 @@ export default function Home() {
       <About />
       <TrustSignals />
       <Pricing />
+      <FAQ />
       <Contact />
       <Footer />
       <MobileBottomCTA />
@@ -237,6 +265,39 @@ function TrustSignals() {
 
 function Pricing() {
   return <SectionFlow><section id="pricing" className="relative overflow-hidden bg-[#05050c] px-4 py-24 md:px-6 md:py-48"><div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_82%_46%,rgba(216,111,189,.06),transparent_30%)]" /><div className="relative"><SectionTitle kicker="Pricing" title="Choose Your Campaign Scale" copy="Simple premium packages for Indian brands that want better visuals, reels, and launch content." /><div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">{prices.map(({ name, price, bestFor, includes, cta, message, recommended }, i) => <Reveal delay={Math.min(i * 0.1, 0.24)} key={name}><div className={`premium-card glass relative flex h-full flex-col rounded-[1.6rem] p-6 md:rounded-[2rem] md:p-8 ${recommended ? 'border-zephyr-cyan/30 shadow-[0_0_46px_rgba(123,223,229,.10)] lg:-translate-y-4' : 'border-white/10'}`}>{recommended && <div className="mb-5 inline-flex w-fit rounded-full border border-zephyr-cyan/24 bg-zephyr-cyan/[.08] px-4 py-2 text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan">Recommended</div>}<p className="text-[0.68rem] font-bold uppercase tracking-[0.24em] text-white/54">Package 0{i + 1}</p><h3 className="mt-4 min-h-16 text-2xl font-black uppercase leading-[0.95] tracking-[-0.05em] text-white md:text-3xl">{name}</h3><p className="magenta-glow mt-6 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">{price}</p><div className="mt-7 rounded-2xl border border-white/10 bg-black/24 p-4"><p className="text-[0.62rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan/84">Best for</p><p className="mt-3 text-sm leading-6 text-white/70 md:text-base md:leading-7">{bestFor}</p></div><ul className="mt-7 grow space-y-3 text-sm leading-6 text-white/72 md:text-base">{includes.map((item) => <li key={item} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-zephyr-cyan/78" aria-hidden="true" /><span>{item}</span></li>)}</ul><a href={`https://wa.me/918796302608?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer" className={`premium-button mt-8 flex min-h-14 items-center justify-center rounded-full px-5 py-4 text-center text-xs font-black uppercase tracking-[0.14em] ${recommended ? 'bg-white text-black hover:bg-zephyr-cyan' : 'border border-white/14 bg-white/[.055] text-white hover:border-zephyr-magenta hover:text-zephyr-magenta'}`}>{cta}</a></div></Reveal>)}</div><Reveal><p className="mx-auto mt-8 max-w-4xl rounded-[1.35rem] border border-white/10 bg-black/26 px-5 py-4 text-center text-sm leading-6 text-white/58 md:text-base">Final pricing depends on product type, number of visuals, video duration, revisions, and delivery timeline.</p></Reveal></div></section></SectionFlow>;
+}
+
+function FAQ() {
+  return (
+    <SectionFlow>
+      <section id="faq" className="relative overflow-hidden border-y border-white/10 bg-[#04040a] px-4 py-24 md:px-6 md:py-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(123,223,229,.055),transparent_30%),radial-gradient(circle_at_84%_62%,rgba(216,111,189,.055),transparent_32%)]" />
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#05050c] to-transparent" />
+        <div className="relative mx-auto max-w-5xl">
+          <SectionTitle kicker="FAQ" title="Questions Before We Begin" copy="Clear answers before you start your campaign." />
+          <div className="mx-auto grid gap-3 md:gap-4">
+            {faqs.map(({ question, answer }, i) => (
+              <Reveal delay={Math.min(i * 0.05, 0.2)} key={question}>
+                <details className="faq-item group rounded-[1.35rem] border border-white/10 bg-white/[.035] p-0 shadow-[0_18px_60px_rgba(0,0,0,.18)] backdrop-blur-md open:border-zephyr-cyan/24 open:bg-white/[.055] md:rounded-[1.65rem]">
+                  <summary className="flex min-h-[4.8rem] cursor-pointer list-none items-center justify-between gap-5 px-5 py-5 text-left md:min-h-[5.4rem] md:px-7 md:py-6">
+                    <span className="max-w-[42rem] text-base font-black uppercase leading-tight tracking-[-0.035em] text-white md:text-xl">
+                      {question}
+                    </span>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/12 bg-black/24 text-lg font-light text-zephyr-cyan transition-transform duration-300 group-open:rotate-45" aria-hidden="true">
+                      +
+                    </span>
+                  </summary>
+                  <div className="px-5 pb-6 pr-16 md:px-7 md:pb-7 md:pr-24">
+                    <p className="max-w-3xl text-sm leading-7 text-white/66 md:text-base md:leading-8">{answer}</p>
+                  </div>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </SectionFlow>
+  );
 }
 
 function Contact() {
