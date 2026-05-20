@@ -5,6 +5,8 @@ import { Navigation } from '@/components/Navigation';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
+const heroVideoSrc = `${basePath}/video/zephyr-hero-mixkit-44541.mp4`;
+const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541.jpg`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
 const emailUrl = 'mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief';
@@ -155,7 +157,10 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
-      <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_18%_30%,rgba(123,223,229,.09),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.08),transparent_26%),radial-gradient(circle_at_52%_76%,rgba(255,255,255,.035),transparent_24%)]" />
+      <video className="absolute inset-0 h-full w-full object-cover object-center opacity-88 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="metadata" poster={heroPosterSrc} aria-hidden="true">
+        <source src={heroVideoSrc} type="video/mp4" />
+      </video>
+      <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_18%_30%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_26%),radial-gradient(circle_at_52%_76%,rgba(255,255,255,.025),transparent_24%)]" />
       <div className="absolute left-1/2 top-[58%] h-[58vmin] w-[58vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/[.035] blur-[72px] md:left-[30%] md:h-[46vmin] md:w-[46vmin]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.34),rgba(3,3,6,.50)_34%,rgba(3,3,6,.86)_76%,#030306_100%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.92),rgba(3,3,6,.62)_36%,rgba(3,3,6,.24)_68%,rgba(3,3,6,.10)),linear-gradient(180deg,rgba(3,3,6,.18),rgba(3,3,6,.10)_34%,rgba(3,3,6,.42)_74%,#030306_99%)]" />
       <div className="absolute inset-0 shadow-[inset_0_0_145px_rgba(0,0,0,.80)] md:shadow-[inset_0_0_230px_rgba(0,0,0,.84)]" />
