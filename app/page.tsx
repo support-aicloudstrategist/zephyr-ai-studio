@@ -98,6 +98,27 @@ const faqs = [
   },
 ] as const;
 
+const beforeAfterExamples = [
+  {
+    title: 'Skincare product',
+    before: `${basePath}/images/before-after/skincare-before.webp`,
+    after: `${basePath}/images/before-after/skincare-after.webp`,
+    caption: 'A plain product reference becomes a moody beauty launch visual with premium light, depth, and campaign atmosphere.',
+  },
+  {
+    title: 'Jewellery product',
+    before: `${basePath}/images/before-after/jewellery-before.webp`,
+    after: `${basePath}/images/before-after/jewellery-after.webp`,
+    caption: 'Simple catalogue jewellery is elevated into a cinematic hero visual built for launches, ads, and social storytelling.',
+  },
+  {
+    title: 'Food or cafe product',
+    before: `${basePath}/images/before-after/cafe-before.webp`,
+    after: `${basePath}/images/before-after/cafe-after.webp`,
+    caption: 'Basic cafe references gain warmth, mood, and visual appetite for premium reels, offers, and campaign posts.',
+  },
+] as const;
+
 export default function Home() {
   return (
     <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
@@ -106,6 +127,7 @@ export default function Home() {
       <ProofStrip />
       <Showreel />
       <Portfolio />
+      <BeforeAfterConcept />
       <ProductAuthenticity />
       <Services />
       <Method />
@@ -206,6 +228,56 @@ function Showreel() {
 
 function Portfolio() {
   return <PortfolioCarousel />;
+}
+
+function BeforeAfterConcept() {
+  return (
+    <SectionFlow>
+      <section id="before-after" className="relative overflow-hidden bg-[#04040a] px-4 py-24 md:px-6 md:py-40" aria-labelledby="before-after-title">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(123,223,229,.05),transparent_30%),radial-gradient(circle_at_88%_44%,rgba(216,111,189,.05),transparent_30%)]" />
+        <div className="relative mx-auto max-w-7xl">
+          <Reveal className="mx-auto mb-9 max-w-5xl text-center md:mb-14">
+            <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/84 md:text-xs md:tracking-[0.45em]">Demo transformations</p>
+            <h2 id="before-after-title" className="text-glow font-display text-[clamp(2rem,8vw,4.7rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.7rem,5.2vw,5.8rem)]">
+              From Simple Product Photo to Cinematic Campaign
+            </h2>
+            <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-white/64 md:mt-7 md:text-xl md:leading-8">
+              See how ordinary product references can become premium launch visuals, ads, and social content.
+            </p>
+            <p className="mx-auto mt-4 inline-flex rounded-full border border-white/10 bg-black/28 px-4 py-2 text-[0.6rem] font-black uppercase tracking-[0.18em] text-white/48 md:text-xs">
+              Sample demo visuals — not client work
+            </p>
+          </Reveal>
+          <div className="grid gap-5 lg:gap-7">
+            {beforeAfterExamples.map(({ title, before, after, caption }, i) => (
+              <Reveal delay={Math.min(i * 0.08, 0.2)} key={title}>
+                <article className="premium-card glass overflow-hidden rounded-[1.6rem] p-3 md:rounded-[2.1rem] md:p-4">
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <figure className="relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-black/30 md:rounded-[1.65rem]">
+                      <img src={before} alt={`Demo before reference for ${title}`} loading="lazy" decoding="async" width="1024" height="1024" className="aspect-[4/3] h-full w-full object-cover md:aspect-[5/4]" />
+                      <figcaption className="absolute left-3 top-3 rounded-full border border-white/12 bg-black/62 px-3 py-2 text-[0.58rem] font-black uppercase tracking-[0.18em] text-white/76 backdrop-blur-md">
+                        Before · reference photo
+                      </figcaption>
+                    </figure>
+                    <figure className="relative overflow-hidden rounded-[1.25rem] border border-zephyr-cyan/18 bg-black/30 shadow-[0_0_28px_rgba(123,223,229,.055)] md:rounded-[1.65rem]">
+                      <img src={after} alt={`Demo cinematic campaign visual for ${title}`} loading="lazy" decoding="async" width="1024" height="1024" className="aspect-[4/3] h-full w-full object-cover md:aspect-[5/4]" />
+                      <figcaption className="absolute left-3 top-3 rounded-full border border-zephyr-cyan/24 bg-black/62 px-3 py-2 text-[0.58rem] font-black uppercase tracking-[0.18em] text-zephyr-cyan/90 backdrop-blur-md">
+                        After · campaign visual
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div className="px-2 pb-3 pt-5 md:flex md:items-end md:justify-between md:gap-8 md:px-4 md:pb-4 md:pt-6">
+                    <h3 className="text-xl font-black uppercase leading-tight tracking-[-0.04em] text-white md:text-3xl">{title}</h3>
+                    <p className="mt-3 max-w-2xl text-sm leading-7 text-white/62 md:mt-0 md:text-right md:text-base md:leading-7">{caption}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </SectionFlow>
+  );
 }
 
 function ProductAuthenticity() {
