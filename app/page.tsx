@@ -106,6 +106,7 @@ export default function Home() {
       <ProofStrip />
       <Showreel />
       <Portfolio />
+      <ProductAuthenticity />
       <Services />
       <Method />
       <About />
@@ -205,6 +206,40 @@ function Showreel() {
 
 function Portfolio() {
   return <PortfolioCarousel />;
+}
+
+function ProductAuthenticity() {
+  const points = ['Product shape protected', 'Logo and packaging preserved', 'Cinematic background transformation', 'Brand-safe visual direction'];
+
+  return (
+    <SectionFlow>
+      <section className="relative overflow-hidden px-4 py-14 md:px-6 md:py-20" aria-labelledby="product-authenticity-title">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(123,223,229,.045),transparent_28%),radial-gradient(circle_at_84%_72%,rgba(216,111,189,.04),transparent_30%)]" />
+        <Reveal>
+          <div className="premium-card glass relative mx-auto max-w-6xl overflow-hidden rounded-[1.65rem] p-6 shadow-[0_22px_80px_rgba(0,0,0,.22)] md:rounded-[2.2rem] md:p-9 lg:grid lg:grid-cols-[1.05fr_.95fr] lg:items-center lg:gap-10">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-zephyr-cyan/42 to-transparent" />
+            <div>
+              <p className="mb-4 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-zephyr-cyan/84 md:text-xs md:tracking-[0.42em]">Product authenticity</p>
+              <h2 id="product-authenticity-title" className="text-glow max-w-2xl font-display text-[clamp(2rem,8vw,4.7rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.5rem,5vw,5.3rem)]">
+                Your Product Stays Real
+              </h2>
+              <p className="mt-6 max-w-2xl text-sm leading-7 text-white/68 md:text-lg md:leading-8">
+                Your product remains accurate. We use precise masking and controlled editing to keep your physical product, logo, packaging, and shape authentic while transforming the world around it into a cinematic campaign.
+              </p>
+            </div>
+            <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:mt-0">
+              {points.map((point) => (
+                <div key={point} className="rounded-2xl border border-white/10 bg-black/24 px-4 py-4 text-sm font-bold uppercase leading-5 tracking-[0.08em] text-white/76 md:px-5 md:py-5">
+                  <span className="mb-3 block h-1.5 w-1.5 rounded-full bg-zephyr-cyan/82 shadow-[0_0_14px_rgba(123,223,229,.28)]" aria-hidden="true" />
+                  {point}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+    </SectionFlow>
+  );
 }
 
 function Services() {
