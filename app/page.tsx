@@ -182,7 +182,7 @@ function Hero() {
           Premium AI Ad Studio
         </p>
         <h1
-          className="text-glow max-w-[12ch] font-display text-[clamp(1.9rem,9.4vw,2.15rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.055em] md:max-w-[13ch] md:text-[clamp(2.65rem,4.6vw,3.5rem)]"
+          className="text-glow max-w-[12ch] font-display text-[clamp(1.9rem,9.4vw,2.15rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.055em] md:max-w-[13ch] md:text-[clamp(3.75rem,5.2vw,4.25rem)]"
         >
           Cinematic AI Ads for Brands That Want to Look Premium
         </h1>
