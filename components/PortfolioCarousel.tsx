@@ -139,18 +139,6 @@ export function PortfolioCarousel() {
 
   const items = useMemo(() => (activeTab === 'format' ? formatItems : businessItems), [activeTab]);
 
-  const pauseVideo = (index: number) => {
-    const video = videoRefs.current[String(index)];
-    if (!video) return;
-    video.pause();
-  };
-
-  const playVideo = (index: number) => {
-    const video = videoRefs.current[String(index)];
-    if (!video) return;
-    video.play().catch(() => undefined);
-  };
-
   const updateActiveFromScroll = useCallback(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -207,7 +195,7 @@ export function PortfolioCarousel() {
 
   const switchTab = (tab: TabKey) => {
     if (tab === activeTab) return;
-    if (previewIndex !== null) pauseVideo(previewIndex);
+    Object.values(videoRefs.current).forEach((video) => video?.pause());
     setPreviewIndex(null);
     setActiveTab(tab);
     setActiveIndex(0);
@@ -216,8 +204,7 @@ export function PortfolioCarousel() {
   };
 
   const openModalPreview = (index: number) => {
-    if (previewIndex !== null) pauseVideo(previewIndex);
-    setPreviewIndex(null);
+    setPreviewIndex(index);
     setModalItem(items[index]);
     scrollToIndex(index);
   };
@@ -225,6 +212,33 @@ export function PortfolioCarousel() {
   useEffect(() => {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
+
+  useEffect(() => {
+    const videos = Object.values(videoRefs.current).filter(Boolean) as HTMLVideoElement[];
+    if (!videos.length) return;
+
+    const play = (video: HTMLVideoElement) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.play().catch(() => undefined);
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      videos.forEach(play);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) play(video);
+        else video.pause();
+      });
+    }, { threshold: 0.18 });
+
+    videos.forEach((video) => observer.observe(video));
+    return () => observer.disconnect();
+  }, [items]);
 
   return (
     <section id="portfolio" className="relative overflow-hidden bg-[linear-gradient(180deg,#030306_0%,#060610_52%,#030306_100%)] px-4 py-20 md:px-6 md:py-32">
@@ -298,11 +312,11 @@ export function PortfolioCarousel() {
                     item={item}
                     index={index}
                     modeLabel={activeTab === 'format' ? 'Content format' : 'Business type'}
-                    active={previewIndex === index}
+                    active={activeIndex === index || previewIndex === index}
                     setVideoRef={(node) => { videoRefs.current[String(index)] = node; }}
                     onTap={() => openModalPreview(index)}
-                    onMouseEnter={() => { if (!modalItem) { setPreviewIndex(index); playVideo(index); } }}
-                    onMouseLeave={() => { setPreviewIndex((current) => current === index ? null : current); pauseVideo(index); }}
+                    onMouseEnter={() => setPreviewIndex(index)}
+                    onMouseLeave={() => setPreviewIndex((current) => current === index ? null : current)}
                   />
                 </div>
               ))}
@@ -370,11 +384,12 @@ function ShowcaseCard({
       {item.video && (
         <video
           ref={setVideoRef}
-          className={`portfolio-image absolute inset-0 h-full w-full object-cover saturate-[.9] contrast-110 transition-opacity duration-500 ${active ? 'opacity-82' : 'opacity-0 md:group-hover:opacity-82'}`}
+          className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-82 saturate-[.9] contrast-110 transition-opacity duration-500"
+          autoPlay
           muted
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           poster={item.image}
           aria-hidden="true"
         >
@@ -413,10 +428,12 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
 
     window.addEventListener('keydown', onKeyDown);
 
-    const canAutoplayPreview = window.matchMedia('(min-width: 768px)').matches;
-    if (canAutoplayPreview) {
-      videoRef.current?.play().catch(() => undefined);
-    }
+    requestAnimationFrame(() => {
+      if (!videoRef.current) return;
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      videoRef.current.play().catch(() => undefined);
+    });
 
     return () => {
       document.body.style.overflow = previousOverflow;
@@ -450,11 +467,12 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
               <video
                 ref={videoRef}
                 className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
                 muted
                 playsInline
                 loop
                 controls
-                preload="metadata"
+                preload="auto"
                 poster={item.image}
                 aria-label={`${item.title} sample direction video preview`}
               >
@@ -480,7 +498,7 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/62">
               <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Review the campaign mood, framing, colour, and premium visual direction before contacting us.</div>
-              <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Videos stay muted and touch-friendly, with mobile playback kept manual for performance.</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Videos are muted, playsinline, and start inside the preview so the campaign motion is visible immediately.</div>
             </div>
             <a
               href={ctaHref}
