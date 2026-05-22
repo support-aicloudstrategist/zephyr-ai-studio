@@ -224,11 +224,11 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 function Showreel() {
   return (
     <SectionFlow>
-      <section id="showreel" className="relative overflow-hidden bg-zephyr-black px-4 py-24 md:px-6 md:py-56">
+      <section id="showreel" className="relative overflow-hidden bg-zephyr-black px-4 py-16 md:px-6 md:py-32">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(123,223,229,.06),transparent_30%),radial-gradient(circle_at_68%_58%,rgba(216,111,189,.07),transparent_34%),linear-gradient(180deg,#030306,#070711_48%,#030306)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/78 to-transparent" />
         <div className="relative">
-          <Reveal className="mx-auto mb-9 max-w-6xl text-center md:mb-20">
+          <Reveal className="mx-auto mb-7 max-w-6xl text-center md:mb-12">
             <p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">Showreel</p>
             <h2 className="text-glow mx-auto max-w-5xl font-display text-[clamp(2rem,7.2vw,3rem)] font-black uppercase leading-[0.94] tracking-[-0.055em] md:text-[clamp(3.2rem,5vw,5.2rem)]">
               A Cinematic Preview of What Your Brand Can Become

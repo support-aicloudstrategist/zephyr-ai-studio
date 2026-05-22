@@ -24,7 +24,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
       modalVideoRef.current?.play().catch(() => {
         // Some browsers still require the user to press the native play control.
       });
-    }, 80);
+    }, 20);
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsOpen(false);
@@ -46,7 +46,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
     <>
       <style>{`
         @keyframes showreelFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes showreelLiftIn { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes showreelLiftIn { from { opacity: 0; transform: translateY(10px) scale(.992); } to { opacity: 1; transform: translateY(0) scale(1); } }
       `}</style>
       <div className="mx-auto max-w-7xl">
         <div className="relative">
@@ -54,7 +54,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="group relative block w-full overflow-hidden rounded-[1.65rem] bg-[linear-gradient(135deg,rgba(123,223,229,.82),rgba(216,111,189,.76))] p-px text-left shadow-[0_28px_110px_rgba(0,0,0,.66)] outline-none transition duration-300 hover:scale-[1.006] focus-visible:ring-2 focus-visible:ring-zephyr-cyan/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:rounded-[2.3rem]"
+            className="group relative block w-full overflow-hidden rounded-[1.65rem] bg-[linear-gradient(135deg,rgba(123,223,229,.82),rgba(216,111,189,.76))] p-px text-left shadow-[0_28px_110px_rgba(0,0,0,.66)] outline-none transition duration-200 hover:scale-[1.003] focus-visible:ring-2 focus-visible:ring-zephyr-cyan/80 focus-visible:ring-offset-4 focus-visible:ring-offset-black sm:rounded-[2.3rem]"
             aria-haspopup="dialog"
             aria-label="Open cinematic showreel preview"
           >
@@ -67,7 +67,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
                   decoding="async"
                   width="1600"
                   height="900"
-                  className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-110 contrast-110 transition duration-700 group-hover:scale-[1.025]"
+                  className="absolute inset-0 h-full w-full object-cover opacity-90 saturate-110 contrast-110 transition duration-300 group-hover:scale-[1.012]"
                 />
                 <span className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,7,.36),rgba(3,3,7,.20)_38%,rgba(3,3,7,.72)),radial-gradient(circle_at_50%_45%,rgba(0,0,0,.05),rgba(0,0,0,.52)_76%)]" />
                 <span className="absolute inset-0 shadow-[inset_0_0_90px_rgba(0,0,0,.78)] md:shadow-[inset_0_0_150px_rgba(0,0,0,.84)]" />
@@ -116,7 +116,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
       {isOpen && (
         <div
           className="fixed inset-0 z-[80] flex items-center justify-center bg-black/82 px-3 py-6 backdrop-blur-xl sm:px-6"
-          style={{ animation: 'showreelFadeIn .18s ease-out' }}
+          style={{ animation: 'showreelFadeIn .12s ease-out' }}
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
@@ -124,7 +124,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
             if (event.target === event.currentTarget) setIsOpen(false);
           }}
         >
-          <div className="relative w-full max-w-6xl overflow-hidden rounded-[1.5rem] border border-white/12 bg-[#05050b] p-2 shadow-[0_32px_120px_rgba(0,0,0,.78)] sm:rounded-[2rem] sm:p-3" style={{ animation: 'showreelLiftIn .22s cubic-bezier(.16,1,.3,1)' }}>
+          <div className="relative w-full max-w-6xl overflow-hidden rounded-[1.5rem] border border-white/12 bg-[#05050b] p-2 shadow-[0_32px_120px_rgba(0,0,0,.78)] sm:rounded-[2rem] sm:p-3" style={{ animation: 'showreelLiftIn .14s cubic-bezier(.16,1,.3,1)' }}>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
