@@ -9,6 +9,7 @@ export const portfolioAssets = [
     create: 'We create luxury skincare visuals, product reels, and ingredient-story ads.',
     bestFor: 'Best for skincare launches, D2C beauty brands, and product pages.',
     image: `${basePath}/images/video-posters/portfolio-skincare.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-skincare.mp4`,
     gradient: 'from-cyan-200/18 via-black/10 to-fuchsia-500/14',
   },
   {
@@ -17,6 +18,7 @@ export const portfolioAssets = [
     create: 'We create makeup ads, beauty launch reels, and social campaign visuals.',
     bestFor: 'Best for makeup drops, beauty offers, and Instagram campaigns.',
     image: `${basePath}/images/video-posters/portfolio-cosmetics.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-cosmetics.mp4`,
     gradient: 'from-fuchsia-400/18 via-black/10 to-violet-300/12',
   },
   {
@@ -25,6 +27,7 @@ export const portfolioAssets = [
     create: 'We create jewellery glow shots, festive ads, and luxury product reels.',
     bestFor: 'Best for jewellery drops, festive promotions, and premium socials.',
     image: `${basePath}/images/video-posters/portfolio-jewellery.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-jewellery.mp4`,
     gradient: 'from-amber-200/18 via-black/10 to-fuchsia-400/14',
   },
   {
@@ -33,6 +36,7 @@ export const portfolioAssets = [
     create: 'We create model-led fashion visuals, lookbook reels, and campaign ads.',
     bestFor: 'Best for collections, launches, editorials, and social campaigns.',
     image: `${basePath}/images/video-posters/portfolio-fashion-brands.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-fashion-brands.mp4`,
     gradient: 'from-violet-400/16 via-black/10 to-cyan-300/14',
   },
   {
@@ -41,6 +45,7 @@ export const portfolioAssets = [
     create: 'We create boutique collection reels, sale creatives, and outfit campaigns.',
     bestFor: 'Best for boutiques, seasonal drops, offers, and Instagram selling.',
     image: `${basePath}/images/video-posters/portfolio-clothing-boutiques.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-clothing-boutiques.mp4`,
     gradient: 'from-fuchsia-300/16 via-black/10 to-cyan-300/12',
   },
   {
@@ -49,6 +54,7 @@ export const portfolioAssets = [
     create: 'We create marketplace visuals, product commercials, and ad creatives.',
     bestFor: 'Best for Amazon, Flipkart, D2C products, and paid ads.',
     image: `${basePath}/images/video-posters/portfolio-luxury-product.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-luxury-product.mp4`,
     gradient: 'from-cyan-300/16 via-black/10 to-white/10',
   },
   {
@@ -57,6 +63,7 @@ export const portfolioAssets = [
     create: 'We create moody perfume films, launch visuals, and premium bottle shots.',
     bestFor: 'Best for fragrance launches, gifting campaigns, and luxury socials.',
     image: `${basePath}/images/video-posters/portfolio-perfume-brands.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-perfume-brands.mp4`,
     gradient: 'from-violet-300/16 via-black/10 to-fuchsia-400/14',
   },
   {
@@ -65,6 +72,7 @@ export const portfolioAssets = [
     create: 'We create cinematic product detail shots, hero ads, and brand visuals.',
     bestFor: 'Best for watches, gifting, premium accessories, and launch pages.',
     image: `${basePath}/images/video-posters/portfolio-luxury-products.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-luxury-products.mp4`,
     gradient: 'from-white/14 via-black/10 to-cyan-300/12',
   },
   {
@@ -73,6 +81,7 @@ export const portfolioAssets = [
     create: 'We create food reels, menu visuals, festive offers, and product ads.',
     bestFor: 'Best for packaged food, cloud kitchens, offers, and launches.',
     image: `${basePath}/images/video-posters/portfolio-food-brands.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-food-brands.mp4`,
     gradient: 'from-amber-300/18 via-black/10 to-fuchsia-400/12',
   },
   {
@@ -81,6 +90,7 @@ export const portfolioAssets = [
     create: 'We create ambience reels, opening launch ads, and offer creatives.',
     bestFor: 'Best for cafes, restaurants, local launches, and promotions.',
     image: `${basePath}/images/video-posters/portfolio-restaurant.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-restaurant.mp4`,
     gradient: 'from-cyan-200/14 via-black/10 to-amber-200/12',
   },
   {
@@ -89,6 +99,7 @@ export const portfolioAssets = [
     create: 'We create personal brand reels, cinematic intros, and profile visuals.',
     bestFor: 'Best for creators, coaches, founders, and premium personal brands.',
     image: `${basePath}/images/video-posters/portfolio-influencers-creators.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-influencers-creators.mp4`,
     gradient: 'from-fuchsia-400/16 via-black/10 to-cyan-300/14',
   },
   {
@@ -97,6 +108,7 @@ export const portfolioAssets = [
     create: 'We create launch teasers, website banners, and founder campaign visuals.',
     bestFor: 'Best for new products, apps, landing pages, and launch offers.',
     image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-cyan-300/16 via-black/10 to-violet-300/12',
   },
   {
@@ -105,6 +117,7 @@ export const portfolioAssets = [
     create: 'We create fitness reels, transformation ads, and cinematic workout visuals.',
     bestFor: 'Best for gyms, trainers, yoga studios, and wellness brands.',
     image: `${basePath}/images/video-posters/portfolio-fitness.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-fitness.mp4`,
     gradient: 'from-emerald-300/16 via-black/10 to-cyan-300/14',
   },
   {
@@ -113,6 +126,7 @@ export const portfolioAssets = [
     create: 'We create room-style visuals, product reels, and premium catalogue ads.',
     bestFor: 'Best for furniture stores, decor brands, and home product launches.',
     image: `${basePath}/images/video-posters/portfolio-restaurant.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-restaurant.mp4`,
     gradient: 'from-amber-200/14 via-black/10 to-cyan-200/12',
   },
   {
@@ -121,6 +135,7 @@ export const portfolioAssets = [
     create: 'We create cinematic interiors, property teasers, and walkthrough-style ads.',
     bestFor: 'Best for interiors, studios, real estate launches, and premium spaces.',
     image: `${basePath}/images/video-posters/portfolio-restaurant.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-restaurant.mp4`,
     gradient: 'from-cyan-200/12 via-black/10 to-white/10',
   },
   {
@@ -129,6 +144,7 @@ export const portfolioAssets = [
     create: 'We create event promos, wedding brand reels, and festive campaign visuals.',
     bestFor: 'Best for planners, decorators, venues, makeup artists, and studios.',
     image: `${basePath}/images/video-posters/portfolio-events-wedding-brands.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-events-wedding-brands.mp4`,
     gradient: 'from-fuchsia-300/16 via-black/10 to-amber-200/14',
   },
   {
@@ -137,6 +153,7 @@ export const portfolioAssets = [
     create: 'We create tech product ads, feature reels, and launch visuals.',
     bestFor: 'Best for gadgets, accessories, D2C electronics, and online sellers.',
     image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-cyan-300/16 via-black/10 to-violet-300/12',
   },
   {
@@ -145,6 +162,7 @@ export const portfolioAssets = [
     create: 'We create full cinematic campaign worlds for premium brand perception.',
     bestFor: 'Best for launches, brand identity, hero campaigns, and repositioning.',
     image: `${basePath}/images/video-posters/portfolio-neon-brand.jpg`,
+    video: `${basePath}/video/portfolio/portfolio-neon-brand.mp4`,
     gradient: 'from-fuchsia-400/16 via-black/10 to-cyan-300/14',
   },
 ] as const;
