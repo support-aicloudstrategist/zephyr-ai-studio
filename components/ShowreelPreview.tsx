@@ -134,7 +134,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
               ×
             </button>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.1rem] bg-black sm:rounded-[1.55rem] md:aspect-video">
-              <video ref={modalVideoRef} className="h-full w-full object-cover" controls autoPlay playsInline preload="auto" poster={posterSrc} aria-label="Zephyr AI Studio showreel preview">
+              <video ref={modalVideoRef} className="h-full w-full object-cover" controls autoPlay muted playsInline preload="auto" poster={posterSrc} aria-label="Zephyr AI Studio showreel preview">
                 {videoWebmSrc && <source src={videoWebmSrc} type="video/webm" />}
                 <source src={videoSrc} type="video/mp4" />
               </video>
