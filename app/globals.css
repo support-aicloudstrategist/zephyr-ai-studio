@@ -517,3 +517,26 @@ body:has(.light-zephyr) header a:hover { color: #111116 !important; }
     max-width: 100% !important;
   }
 }
+/* Final mobile guardrails against any visual clipping */
+html, body { max-width: 100%; overflow-x: hidden; }
+@media (max-width: 767px) {
+  .light-zephyr [class*="max-w-7xl"],
+  .light-zephyr [class*="max-w-6xl"],
+  .light-zephyr [class*="max-w-5xl"],
+  .light-zephyr [class*="max-w-4xl"] {
+    max-width: calc(100vw - 2rem) !important;
+  }
+  .light-zephyr #showreel h2 {
+    max-width: 9ch !important;
+    font-size: 1.48rem !important;
+    line-height: .98 !important;
+    letter-spacing: -0.035em !important;
+    white-space: normal !important;
+  }
+  .light-zephyr #showreel .cinema-frame,
+  .light-zephyr #portfolio .portfolio-card {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+}
