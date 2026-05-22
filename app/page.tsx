@@ -177,17 +177,17 @@ function Hero() {
         className="relative z-30 mx-auto w-full max-w-[24rem] rounded-[1.8rem] border border-white/10 bg-black/30 p-5 shadow-[0_22px_80px_rgba(0,0,0,.42)] backdrop-blur-[2px] sm:max-w-[30rem] sm:p-7 md:mx-0 md:ml-[4vw] md:max-w-5xl md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0"
       >
         <p
-          className="hero-badge-shimmer mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/90 sm:text-[0.65rem] md:mb-6 md:tracking-[0.32em]"
+          className="hero-badge-shimmer mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.55rem] font-medium uppercase tracking-[0.2em] text-zephyr-cyan/90 sm:text-[0.62rem] md:mb-6 md:tracking-[0.28em]"
         >
           Premium AI Ad Studio
         </p>
         <h1
-          className="text-glow max-w-[12ch] font-display text-[clamp(2.55rem,13vw,4.55rem)] font-black uppercase leading-[0.88] tracking-[-0.07em] md:max-w-[13ch] md:text-[clamp(4.2rem,7.2vw,7.4rem)]"
+          className="text-glow max-w-[12ch] font-display text-[clamp(1.9rem,9.4vw,2.15rem)] font-extrabold uppercase leading-[0.94] tracking-[-0.055em] md:max-w-[13ch] md:text-[clamp(2.65rem,4.6vw,3.5rem)]"
         >
           Cinematic AI Ads for Brands That Want to Look Premium
         </h1>
         <p
-          className="mt-5 max-w-[21rem] text-[1rem] leading-7 text-white/82 sm:max-w-md sm:text-lg md:mt-7 md:max-w-2xl md:text-2xl md:leading-9"
+          className="mt-5 max-w-[21rem] text-[0.94rem] leading-6 text-white/80 sm:max-w-md sm:text-base md:mt-7 md:max-w-2xl md:text-lg md:leading-8"
         >
           We create AI-powered product commercials, fashion campaigns, reels, and launch visuals for modern businesses.
         </p>
@@ -198,7 +198,7 @@ function Hero() {
           <a href="#portfolio" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Work</a>
         </div>
         <p
-          className="mt-5 max-w-[22rem] text-xs font-medium leading-6 text-white/58 sm:text-sm md:mt-6 md:max-w-2xl md:text-base"
+          className="mt-5 max-w-[22rem] text-[0.72rem] font-medium leading-5 text-white/58 sm:text-xs md:mt-6 md:max-w-2xl md:text-sm"
         >
           For fashion, skincare, jewelry, ecommerce, influencers, and premium local brands.
         </p>
