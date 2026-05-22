@@ -163,9 +163,9 @@ function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_36%_20%,rgba(123,223,229,.07),transparent_34%),linear-gradient(135deg,#050509,#100914_48%,#030306)]" />
-      <video className="absolute inset-0 h-full w-full object-cover object-center opacity-88 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="metadata" poster={heroPosterSrc} aria-hidden="true">
-        <source src={heroVideoWebmSrc} type="video/webm" />
+      <video className="absolute inset-0 h-full w-full object-cover object-center opacity-88 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="auto" poster={heroPosterSrc} aria-hidden="true">
         <source src={heroVideoSrc} type="video/mp4" />
+        <source src={heroVideoWebmSrc} type="video/webm" />
       </video>
       <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_18%_30%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_26%),radial-gradient(circle_at_52%_76%,rgba(255,255,255,.025),transparent_24%)]" />
       <div className="absolute left-1/2 top-[58%] h-[58vmin] w-[58vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/[.035] blur-[72px] md:left-[30%] md:h-[46vmin] md:w-[46vmin]" />
