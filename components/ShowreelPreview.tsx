@@ -73,15 +73,15 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
                   </span>
                 </span>
 
-                <span className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-8 md:right-8">
-                  <span className="mb-4 flex flex-wrap gap-2 md:mb-5">
+                <span className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-8">
+                  <span className="mb-0 flex flex-wrap gap-1.5 sm:mb-4 sm:gap-2 md:mb-5">
                     {labels.map((label) => (
-                      <span key={label} className="rounded-full border border-white/12 bg-black/42 px-3 py-2 text-[0.55rem] font-black uppercase tracking-[0.14em] text-white/70 backdrop-blur-md sm:text-[0.62rem]">
+                      <span key={label} className="rounded-full border border-white/12 bg-black/48 px-2.5 py-1.5 text-[0.5rem] font-black uppercase tracking-[0.1em] text-white/74 backdrop-blur-md sm:px-3 sm:py-2 sm:text-[0.62rem] sm:tracking-[0.14em]">
                         {label}
                       </span>
                     ))}
                   </span>
-                  <span className="block max-w-3xl font-display text-[clamp(1.7rem,7vw,4.1rem)] font-black uppercase leading-[0.92] tracking-[-0.06em] text-white">
+                  <span className="hidden max-w-3xl font-display text-[clamp(1.7rem,7vw,4.1rem)] font-black uppercase leading-[0.92] tracking-[-0.06em] text-white sm:block">
                     Press play on your next premium campaign.
                   </span>
                 </span>

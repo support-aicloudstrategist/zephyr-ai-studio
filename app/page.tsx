@@ -228,11 +228,15 @@ function Showreel() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(123,223,229,.06),transparent_30%),radial-gradient(circle_at_68%_58%,rgba(216,111,189,.07),transparent_34%),linear-gradient(180deg,#030306,#070711_48%,#030306)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/78 to-transparent" />
         <div className="relative">
-          <SectionTitle
-            kicker="Showreel"
-            title="A Cinematic Preview of What Your Brand Can Become"
-            copy="See how products, fashion, food, and lifestyle brands can be transformed into premium ad content, reels, launch visuals, and campaign stories."
-          />
+          <Reveal className="mx-auto mb-9 max-w-6xl text-center md:mb-20">
+            <p className="mb-4 text-[0.64rem] font-semibold uppercase tracking-[0.32em] text-zephyr-cyan sm:text-xs sm:tracking-[0.45em]">Showreel</p>
+            <h2 className="text-glow mx-auto max-w-5xl font-display text-[clamp(2rem,7.2vw,3rem)] font-black uppercase leading-[0.94] tracking-[-0.055em] md:text-[clamp(3.2rem,5vw,5.2rem)]">
+              A Cinematic Preview of What Your Brand Can Become
+            </h2>
+            <p className="mx-auto mt-5 max-w-sm text-sm leading-7 text-white/62 md:mt-7 md:max-w-3xl md:text-xl">
+              See how products, fashion, food, and lifestyle brands can be transformed into premium ad content, reels, launch visuals, and campaign stories.
+            </p>
+          </Reveal>
           <Reveal>
             <ShowreelPreview
               posterSrc={showreelPosterSrc}
