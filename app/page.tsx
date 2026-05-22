@@ -143,11 +143,15 @@ export default function Home() {
 
 function MobileBottomCTA() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 lg:hidden">
-      <div className="mx-auto grid max-w-xl grid-cols-[1.15fr_.85fr] gap-2 rounded-[1.35rem] border border-white/10 bg-black/78 p-2 shadow-[0_-18px_60px_rgba(0,0,0,.48)] backdrop-blur-xl">
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-4 py-3 text-[0.72rem] font-black uppercase tracking-[0.13em] text-black shadow-[0_0_24px_rgba(37,211,102,.15)]">WhatsApp Us</a>
-        <a href="#pricing" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-[0.72rem] font-black uppercase tracking-[0.13em] text-white/86">View Pricing</a>
-      </div>
+    <div className="fixed inset-x-0 bottom-0 z-50 px-4 pb-[calc(env(safe-area-inset-bottom)+0.8rem)] pt-3 md:hidden">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="premium-button mx-auto flex min-h-12 max-w-md items-center justify-center rounded-full border border-zephyr-cyan/18 bg-[linear-gradient(135deg,rgba(5,5,12,.94),rgba(18,9,22,.92))] px-5 py-3 text-center text-[0.72rem] font-black uppercase tracking-[0.13em] text-white shadow-[0_0_20px_rgba(123,223,229,.10),0_0_28px_rgba(216,111,189,.08),0_14px_42px_rgba(0,0,0,.42)] backdrop-blur-xl active:scale-[.985]"
+      >
+        Let’s Build Your Campaign
+      </a>
     </div>
   );
 }
