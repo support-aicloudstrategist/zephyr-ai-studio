@@ -540,17 +540,3 @@ html, body { max-width: 100%; overflow-x: hidden; }
     max-width: calc(100vw - 2rem) !important;
   }
 }
-@media (max-width: 767px) {
-  .light-zephyr #hero .relative.z-30 {
-    max-width: calc(100vw - 3rem) !important;
-    width: calc(100vw - 3rem) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  .light-zephyr #hero .premium-button {
-    padding-left: .75rem !important;
-    padding-right: .75rem !important;
-    font-size: .64rem !important;
-    letter-spacing: .075em !important;
-  }
-}
