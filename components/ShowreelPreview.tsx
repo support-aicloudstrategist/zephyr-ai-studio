@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 type ShowreelPreviewProps = {
   posterSrc: string;
@@ -14,10 +14,17 @@ const labels = ['AI Product Film', 'Fashion Campaign', 'Launch Reel', 'Premium V
 
 export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref, secondaryHref }: ShowreelPreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const modalVideoRef = useRef<HTMLVideoElement>(null);
   const titleId = useId();
 
   useEffect(() => {
     if (!isOpen) return;
+
+    const playTimer = window.setTimeout(() => {
+      modalVideoRef.current?.play().catch(() => {
+        // Some browsers still require the user to press the native play control.
+      });
+    }, 80);
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsOpen(false);
@@ -28,6 +35,8 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
     document.body.style.overflow = 'hidden';
 
     return () => {
+      window.clearTimeout(playTimer);
+      modalVideoRef.current?.pause();
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = previousOverflow;
     };
@@ -125,7 +134,7 @@ export function ShowreelPreview({ posterSrc, videoSrc, videoWebmSrc, primaryHref
               ×
             </button>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.1rem] bg-black sm:rounded-[1.55rem] md:aspect-video">
-              <video className="h-full w-full object-cover" controls playsInline preload="metadata" poster={posterSrc} aria-label="Zephyr AI Studio showreel preview">
+              <video ref={modalVideoRef} className="h-full w-full object-cover" controls autoPlay playsInline preload="auto" poster={posterSrc} aria-label="Zephyr AI Studio showreel preview">
                 {videoWebmSrc && <source src={videoWebmSrc} type="video/webm" />}
                 <source src={videoSrc} type="video/mp4" />
               </video>
