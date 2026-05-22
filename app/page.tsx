@@ -3,12 +3,15 @@ import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
 import { Navigation } from '@/components/Navigation';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
+import { ShowreelPreview } from '@/components/ShowreelPreview';
 import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero-mixkit-44541.mp4`;
 const heroVideoWebmSrc = `${basePath}/video/zephyr-hero-mixkit-44541.webm`;
 const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541.jpg`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
+const showreelVideoSrc = `${basePath}/video/cinematic-fashion-campaign-preview.mp4`;
+const showreelVideoWebmSrc = `${basePath}/video/cinematic-fashion-campaign-preview.webm`;
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
 const emailUrl = 'mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief';
 const instagramUrl = 'https://www.instagram.com/aicloudstrategist/';
@@ -219,7 +222,30 @@ function SectionFlow({ children, className = '' }: { children: ReactNode; classN
 }
 
 function Showreel() {
-  return <SectionFlow><section id="showreel" className="relative bg-zephyr-black px-4 py-20 md:px-6 md:py-56"><SectionTitle kicker="Showreel" title="Luxury trailer montage" copy="A cinematic fashion campaign preview." /><Reveal><div className="mx-auto max-w-7xl overflow-hidden cinema-frame rounded-[1.6rem] border border-white/12 bg-white/[.035] p-2 sm:rounded-[2.4rem] sm:p-3"><div className="relative aspect-[4/5] overflow-hidden rounded-[1.2rem] bg-[linear-gradient(135deg,#07070d,#100914_46%,#030306)] sm:rounded-[1.8rem] md:aspect-video"><img src={showreelPosterSrc} alt="Fashion studio showreel poster" loading="lazy" decoding="async" width="900" height="1200" className="absolute inset-0 h-full w-full object-cover opacity-86 saturate-110 contrast-105" /><div className="absolute inset-0 bg-gradient-to-tr from-black/54 via-black/10 to-black/16" /><div className="absolute left-0 top-0 h-full w-28 bg-gradient-to-r from-black/55 to-transparent" /><div className="absolute right-5 top-5 rounded-full border border-white/12 bg-black/35 px-4 py-2 text-[0.58rem] font-bold uppercase tracking-[0.2em] text-white/60 backdrop-blur-md">Cinematic fashion campaign preview</div><div className="absolute bottom-6 left-5 right-5 md:bottom-8 md:left-8"><p className="text-[0.65rem] uppercase tracking-[0.26em] text-zephyr-cyan sm:text-xs sm:tracking-[0.35em]">Campaign Reel 001</p><h3 className="mt-2 max-w-4xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] md:text-[clamp(2.4rem,5vw,5.2rem)]">Fashion. Product. Story. Motion.</h3><p className="mt-5 max-w-md text-base leading-7 text-white/62 md:text-lg">Luxury campaign direction for product, fashion, and social-first storytelling.</p></div></div></div></Reveal></section></SectionFlow>;
+  return (
+    <SectionFlow>
+      <section id="showreel" className="relative overflow-hidden bg-zephyr-black px-4 py-24 md:px-6 md:py-56">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(123,223,229,.06),transparent_30%),radial-gradient(circle_at_68%_58%,rgba(216,111,189,.07),transparent_34%),linear-gradient(180deg,#030306,#070711_48%,#030306)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/78 to-transparent" />
+        <div className="relative">
+          <SectionTitle
+            kicker="Showreel"
+            title="A Cinematic Preview of What Your Brand Can Become"
+            copy="See how products, fashion, food, and lifestyle brands can be transformed into premium ad content, reels, launch visuals, and campaign stories."
+          />
+          <Reveal>
+            <ShowreelPreview
+              posterSrc={showreelPosterSrc}
+              videoSrc={showreelVideoSrc}
+              videoWebmSrc={showreelVideoWebmSrc}
+              primaryHref={whatsappUrl}
+              secondaryHref="#portfolio"
+            />
+          </Reveal>
+        </div>
+      </section>
+    </SectionFlow>
+  );
 }
 
 function Portfolio() {
