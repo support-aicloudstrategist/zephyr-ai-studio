@@ -257,12 +257,12 @@ select option { background: #05050c; color: #f7f7fb; }
   .hero-badge-shimmer::after { animation-duration: 7.5s; }
 }
 
-/* Light cyber-luxury theme override for Zephyr AI Studio — restrained, premium, non-neon */
+/* Light cyber-luxury theme override for Zephyr AI Studio */
 :root {
   --background: #f7f5f2;
-  --foreground: #15151b;
-  --zephyr-ink: #15151b;
-  --zephyr-muted: #62616c;
+  --foreground: #14141b;
+  --zephyr-ink: #14141b;
+  --zephyr-muted: #60606c;
   --zephyr-pearl: #f7f5f2;
   --zephyr-mist: #f1f4f8;
   --zephyr-lavender: #efeaf7;
@@ -274,246 +274,191 @@ select option { background: #05050c; color: #f7f7fb; }
 html { background: var(--zephyr-pearl); }
 body {
   background:
-    radial-gradient(circle at 16% 0%, rgba(0,217,255,.10), transparent 28%),
-    radial-gradient(circle at 90% 8%, rgba(255,63,216,.075), transparent 30%),
-    linear-gradient(180deg, #fbfaf8 0%, #f7f5f2 48%, #f1f4f8 100%);
+    radial-gradient(circle at 14% 8%, rgba(0,217,255,.14), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(255,63,216,.10), transparent 30%),
+    radial-gradient(circle at 62% 52%, rgba(123,97,255,.08), transparent 34%),
+    linear-gradient(180deg, #fbfaf8 0%, #f7f5f2 45%, #f1f4f8 100%);
   color: var(--zephyr-ink);
 }
-::selection { background: rgba(0,217,255,.22); color: #111116; }
-select option { background: #fff; color: var(--zephyr-ink); }
+::selection { background: rgba(0,217,255,.24); color: #111116; }
+select option { background: #ffffff; color: var(--zephyr-ink); }
 
 .light-zephyr {
+  position: relative;
   background:
-    radial-gradient(circle at 12% 3%, rgba(0,217,255,.10), transparent 25%),
-    radial-gradient(circle at 92% 7%, rgba(255,63,216,.075), transparent 27%),
-    linear-gradient(180deg, #fbfaf8 0%, #f7f5f2 44%, #f1f4f8 100%) !important;
+    radial-gradient(circle at 12% 4%, rgba(0,217,255,.15), transparent 28%),
+    radial-gradient(circle at 92% 6%, rgba(255,63,216,.10), transparent 30%),
+    linear-gradient(180deg, #fbfaf8 0%, #f7f5f2 46%, #f1f4f8 100%) !important;
   color: var(--zephyr-ink) !important;
 }
-.light-zephyr.cinema-noise::before { opacity: .010; mix-blend-mode: multiply; }
-.light-zephyr section,
-.light-zephyr footer { color: var(--zephyr-ink); }
-.light-zephyr section[class*="bg-zephyr-black"],
-.light-zephyr section[class*="bg-black"],
-.light-zephyr section[class*="bg-[#04"],
-.light-zephyr section[class*="bg-[#05"],
-.light-zephyr [class*="bg-zephyr-black"] { background: transparent !important; }
-.light-zephyr section:nth-of-type(even) {
-  background: linear-gradient(180deg, rgba(239,234,247,.34), rgba(241,244,248,.54)) !important;
+.light-zephyr.cinema-noise::before {
+  opacity: .018;
+  mix-blend-mode: multiply;
 }
 .light-zephyr .text-glow,
-.light-zephyr .magenta-glow { text-shadow: none; }
+.light-zephyr .magenta-glow { text-shadow: 0 1px 0 rgba(255,255,255,.72), 0 0 18px rgba(0,217,255,.08); }
 .light-zephyr .luxury-gradient {
-  background: linear-gradient(90deg, #111116 0%, #18556a 44%, #7a2d91 80%, #111116 100%);
+  background: linear-gradient(90deg, #111116 0%, #1c4d69 42%, #7b2b91 78%, #111116 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* Global light readability, with media overlays restored below */
+/* Light surfaces without changing markup/content */
+.light-zephyr section,
+.light-zephyr footer { color: var(--zephyr-ink); }
+.light-zephyr section[class*="bg-zephyr-black"],
+.light-zephyr section[class*="bg-black"],
+.light-zephyr [class*="bg-zephyr-black"] {
+  background: transparent !important;
+}
 .light-zephyr [class*="text-white"] { color: var(--zephyr-ink) !important; }
-.light-zephyr [class*="text-white/"] { color: rgba(27,27,34,.68) !important; }
-.light-zephyr [class*="text-zephyr-cyan"] { color: #087e95 !important; }
+.light-zephyr [class*="text-white/"] { color: rgba(27,27,34,.70) !important; }
 .light-zephyr [class*="border-white"] { border-color: rgba(20,20,30,.10) !important; }
-.light-zephyr [class*="bg-white/"] { background-color: rgba(255,255,255,.64) !important; }
-.light-zephyr [class*="bg-black/"] { background-color: rgba(255,255,255,.58) !important; }
-
+.light-zephyr [class*="bg-white/"] { background-color: rgba(255,255,255,.68) !important; }
+.light-zephyr [class*="bg-black/"] { background-color: rgba(255,255,255,.62) !important; }
+.light-zephyr [class*="shadow-[0_"],
+.light-zephyr .premium-card,
 .light-zephyr .glass,
+.light-zephyr .cinema-frame {
+  box-shadow: 0 22px 70px rgba(40,38,55,.10), 0 0 32px rgba(0,217,255,.055) !important;
+}
+.light-zephyr .glass,
+.light-zephyr .cinema-frame,
 .light-zephyr .premium-card,
 .light-zephyr details,
-.light-zephyr article:not(.portfolio-card),
-.light-zephyr .cinema-frame {
-  background: rgba(255,255,255,.74) !important;
-  border-color: rgba(20,20,30,.11) !important;
-  box-shadow: 0 18px 56px rgba(43,39,58,.10), 0 0 0 1px rgba(255,255,255,.48) inset !important;
-  backdrop-filter: blur(14px);
+.light-zephyr article:not(.portfolio-card) {
+  background: linear-gradient(135deg, rgba(255,255,255,.78), rgba(239,234,247,.48), rgba(255,255,255,.64)) !important;
+  border-color: rgba(20,20,30,.10) !important;
+  backdrop-filter: blur(16px);
 }
-.light-zephyr .premium-card:hover { box-shadow: 0 24px 70px rgba(43,39,58,.14), 0 0 30px rgba(0,217,255,.07) !important; }
 
-/* Clean light navbar */
+/* Navbar */
 body:has(.light-zephyr) header {
-  background: rgba(255,255,255,.78) !important;
+  background: rgba(255,255,255,.70) !important;
   border-bottom: 1px solid rgba(20,20,30,.08);
-  box-shadow: 0 10px 30px rgba(35,32,50,.06);
+  box-shadow: 0 10px 34px rgba(35,32,50,.07);
   backdrop-filter: blur(18px) !important;
 }
-body:has(.light-zephyr) header > div { height: 4rem; }
-body:has(.light-zephyr) header img { max-height: 2.45rem; filter: drop-shadow(0 4px 14px rgba(123,97,255,.11)); }
-body:has(.light-zephyr) header nav { color: rgba(20,20,27,.70) !important; font-weight: 700; }
-body:has(.light-zephyr) header a { color: rgba(20,20,27,.72) !important; }
+body:has(.light-zephyr) header a { color: rgba(20,20,27,.76) !important; }
 body:has(.light-zephyr) header a:hover { color: #111116 !important; }
+body:has(.light-zephyr) header img {
+  filter: drop-shadow(0 4px 14px rgba(123,97,255,.12));
+}
 
-/* Hero: bright, cinematic, not muddy */
+/* Hero: light cinematic mesh with readable ink text */
 .light-zephyr #hero {
-  min-height: 88svh;
-  align-items: center;
-  padding-top: 5.25rem;
-  padding-bottom: 3rem;
   background:
-    radial-gradient(circle at 19% 22%, rgba(0,217,255,.14), transparent 30%),
-    radial-gradient(circle at 83% 25%, rgba(255,63,216,.10), transparent 32%),
-    linear-gradient(135deg, #fbfaf8 0%, #f1f4f8 52%, #efeaf7 100%) !important;
+    radial-gradient(circle at 17% 24%, rgba(0,217,255,.20), transparent 31%),
+    radial-gradient(circle at 84% 20%, rgba(255,63,216,.12), transparent 32%),
+    radial-gradient(circle at 58% 76%, rgba(123,97,255,.12), transparent 34%),
+    linear-gradient(135deg, #fbfaf8 0%, #f1f4f8 50%, #efeaf7 100%) !important;
 }
-.light-zephyr #hero video {
-  opacity: .36 !important;
-  filter: saturate(1.02) contrast(1.04) brightness(1.06);
-}
+.light-zephyr #hero video { opacity: .18 !important; filter: saturate(.92) contrast(1.02) brightness(1.12); }
 .light-zephyr #hero > div[class*="absolute inset-0 bg-[linear-gradient"] {
-  background:
-    linear-gradient(90deg, rgba(247,245,242,.86), rgba(247,245,242,.64) 42%, rgba(247,245,242,.32) 72%, rgba(247,245,242,.18)),
-    linear-gradient(180deg, rgba(255,255,255,.22), rgba(247,245,242,.30) 58%, rgba(247,245,242,.92) 100%) !important;
+  background: linear-gradient(180deg, rgba(247,245,242,.22), rgba(247,245,242,.62) 58%, #f7f5f2 100%) !important;
 }
-.light-zephyr #hero > div[class*="shadow-[inset"] { box-shadow: inset 0 0 120px rgba(255,255,255,.38) !important; }
-.light-zephyr #hero > div[class*="from-black"] { background: transparent !important; }
-.light-zephyr #hero .relative.z-30 {
-  max-width: 26rem !important;
-  border-radius: 1.45rem !important;
-  background: rgba(255,255,255,.84) !important;
-  border: 1px solid rgba(20,20,30,.10) !important;
-  box-shadow: 0 24px 70px rgba(43,39,58,.14), 0 0 0 1px rgba(255,255,255,.52) inset !important;
-  backdrop-filter: blur(16px) !important;
-}
-.light-zephyr #hero h1 { color: #111116 !important; text-shadow: none; }
+.light-zephyr #hero > div[class*="shadow-[inset"] { box-shadow: inset 0 0 160px rgba(255,255,255,.52) !important; }
+.light-zephyr #hero h1 { color: #111116 !important; text-shadow: 0 1px 0 rgba(255,255,255,.75); }
 .light-zephyr #hero p { color: rgba(27,27,34,.72) !important; }
-.light-zephyr #hero .hero-badge-shimmer {
-  background: rgba(255,255,255,.72) !important;
+.light-zephyr #hero p:first-of-type,
+.light-zephyr [class*="text-zephyr-cyan"] { color: #087b91 !important; }
+.light-zephyr .hero-badge-shimmer {
+  background: rgba(255,255,255,.62) !important;
   border-color: rgba(0,217,255,.22) !important;
-  color: #087e95 !important;
-  box-shadow: 0 0 18px rgba(0,217,255,.06);
+  box-shadow: 0 0 26px rgba(0,217,255,.08);
 }
-.light-zephyr #hero .hero-badge-shimmer::after { background: linear-gradient(90deg, transparent, rgba(0,217,255,.14), transparent); }
+.light-zephyr .hero-badge-shimmer::after { background: linear-gradient(90deg, transparent, rgba(0,217,255,.16), transparent); }
 
-/* Buttons: premium, restrained */
+/* Buttons */
 .light-zephyr .premium-button {
   border-color: rgba(20,20,30,.12) !important;
-  box-shadow: 0 12px 34px rgba(35,32,50,.08);
+  box-shadow: 0 12px 36px rgba(35,32,50,.08);
 }
 .light-zephyr a.premium-button[class*="bg-[#25D366]"],
 .light-zephyr a.premium-button[class*="bg-white"] {
-  background: linear-gradient(135deg, #111116, #2a2440 58%, #44315d) !important;
+  background: linear-gradient(135deg, #111116, #2a2440 58%, #40345d) !important;
   color: #fff !important;
   border-color: rgba(20,20,30,.20) !important;
 }
 .light-zephyr a.premium-button[class*="border"]:not([class*="bg-[#25D366]"]) {
-  background: rgba(255,255,255,.76) !important;
+  background: rgba(255,255,255,.68) !important;
   color: #171720 !important;
-  border-color: rgba(123,97,255,.22) !important;
+  border-color: rgba(123,97,255,.18) !important;
 }
-.light-zephyr .premium-button:hover { box-shadow: 0 0 22px rgba(0,217,255,.13), 0 0 30px rgba(255,63,216,.09), 0 18px 48px rgba(35,32,50,.12) !important; }
+.light-zephyr .premium-button:hover {
+  box-shadow: 0 0 24px rgba(0,217,255,.14), 0 0 34px rgba(255,63,216,.10), 0 18px 50px rgba(35,32,50,.12) !important;
+}
 
-/* Media sections keep cinematic contrast */
-.light-zephyr #showreel .cinema-frame,
-.light-zephyr .portfolio-card,
-.light-zephyr figure,
-.light-zephyr .cinema-frame [class*="bg-[linear-gradient"] {
-  background: #090911 !important;
-  border-color: rgba(20,20,30,.14) !important;
-}
-.light-zephyr #showreel .absolute,
-.light-zephyr #showreel .absolute *,
-.light-zephyr .portfolio-card,
-.light-zephyr .portfolio-card *,
-.light-zephyr figure figcaption,
-.light-zephyr figure figcaption * {
-  color: #fff !important;
-}
-.light-zephyr #showreel [class*="text-zephyr-cyan"],
-.light-zephyr .portfolio-card [class*="text-zephyr-cyan"],
-.light-zephyr figure figcaption[class*="text-zephyr-cyan"] { color: #9ff5ff !important; }
-.light-zephyr #showreel [class*="bg-black/"],
-.light-zephyr .portfolio-card [class*="bg-black/"],
-.light-zephyr figure [class*="bg-black/"] { background-color: rgba(0,0,0,.48) !important; }
+/* Portfolio keeps strong cinematic media while cards become lighter glass */
 .light-zephyr #portfolio {
   background:
-    radial-gradient(circle at 22% 10%, rgba(0,217,255,.08), transparent 30%),
-    radial-gradient(circle at 82% 50%, rgba(255,63,216,.06), transparent 32%),
+    radial-gradient(circle at 22% 10%, rgba(0,217,255,.10), transparent 30%),
+    radial-gradient(circle at 82% 50%, rgba(255,63,216,.08), transparent 32%),
     linear-gradient(180deg, #f7f5f2 0%, #efeaf7 52%, #f1f4f8 100%) !important;
 }
-.light-zephyr .portfolio-card { box-shadow: 0 24px 80px rgba(35,32,50,.17), 0 0 32px rgba(0,217,255,.06) !important; }
+.light-zephyr .portfolio-card {
+  background: rgba(255,255,255,.72) !important;
+  border-color: rgba(20,20,30,.12) !important;
+  box-shadow: 0 24px 80px rgba(35,32,50,.16), 0 0 38px rgba(0,217,255,.07) !important;
+}
+.light-zephyr .portfolio-card h3,
+.light-zephyr .portfolio-card p,
+.light-zephyr .portfolio-card span,
+.light-zephyr .portfolio-card button { color: #fff !important; }
+.light-zephyr .portfolio-card [class*="bg-black/"] { background-color: rgba(0,0,0,.46) !important; }
+.light-zephyr .portfolio-card [class*="bg-white/"] { background-color: rgba(255,255,255,.12) !important; }
+.light-zephyr .portfolio-card [class*="border-white"] { border-color: rgba(255,255,255,.18) !important; }
+.light-zephyr .portfolio-card button.premium-button {
+  background: rgba(255,255,255,.12) !important;
+  color: #fff !important;
+}
 .light-zephyr .portfolio-carousel-track + button,
-.light-zephyr button[aria-label*="visual concept"] { background: rgba(255,255,255,.82) !important; color: #111116 !important; }
+.light-zephyr button[aria-label*="visual concept"] {
+  background: rgba(255,255,255,.72) !important;
+  color: #111116 !important;
+}
 
-/* Forms, FAQ, pricing and contact */
+/* Forms, FAQ, pricing and regular cards */
 .light-zephyr input,
 .light-zephyr textarea,
 .light-zephyr select {
-  background: rgba(255,255,255,.82) !important;
+  background: rgba(255,255,255,.78) !important;
   color: var(--zephyr-ink) !important;
   border-color: rgba(20,20,30,.12) !important;
 }
 .light-zephyr input::placeholder,
 .light-zephyr textarea::placeholder { color: rgba(27,27,34,.45); }
-.light-zephyr .faq-item[open] { box-shadow: 0 20px 64px rgba(35,32,50,.10), 0 0 24px rgba(0,217,255,.05) !important; }
-.light-zephyr footer { background: rgba(255,255,255,.55) !important; border-color: rgba(20,20,30,.10) !important; }
-.light-zephyr > div.fixed a { background: linear-gradient(135deg, #111116, #30284c 62%, #493567) !important; color: #fff !important; border-color: rgba(0,217,255,.22) !important; }
-
-@media (min-width: 768px) {
-  .light-zephyr #hero .relative.z-30 { max-width: 36rem !important; margin-left: 4vw !important; padding: 2.2rem !important; }
-}
-@media (max-width: 767px) {
-  .light-zephyr #hero {
-    min-height: auto;
-    padding-top: 5.25rem;
-    padding-bottom: 2.4rem;
-  }
-  .light-zephyr #hero video { opacity: .30 !important; }
-  .light-zephyr #hero > div[class*="absolute inset-0 bg-[linear-gradient"] {
-    background: linear-gradient(180deg, rgba(247,245,242,.66), rgba(247,245,242,.50) 42%, rgba(247,245,242,.92) 100%) !important;
-  }
-  .light-zephyr #hero .relative.z-30 { padding: 1.25rem !important; }
-  .light-zephyr [class*="text-white/"] { color: rgba(27,27,34,.70) !important; }
-  .light-zephyr #showreel .absolute,
-  .light-zephyr #showreel .absolute *,
-  .light-zephyr .portfolio-card,
-  .light-zephyr .portfolio-card *,
-  .light-zephyr figure figcaption,
-  .light-zephyr figure figcaption * { color: #fff !important; }
+.light-zephyr .faq-item[open] { box-shadow: 0 20px 64px rgba(35,32,50,.10), 0 0 30px rgba(0,217,255,.06) !important; }
+.light-zephyr footer {
+  background: rgba(255,255,255,.46) !important;
+  border-color: rgba(20,20,30,.10) !important;
 }
 
-/* Mobile cleanup: prevent clipped CTAs/headlines in light theme */
-.light-zephyr,
-.light-zephyr section { overflow-x: clip; }
-.light-zephyr .premium-button { min-width: 0; }
-@media (max-width: 767px) {
-  .light-zephyr #hero .premium-button {
-    width: 100%;
-    padding-left: .95rem !important;
-    padding-right: .95rem !important;
-    font-size: .68rem !important;
-    letter-spacing: .095em !important;
-    white-space: normal;
-  }
-  .light-zephyr #hero h1 {
-    font-size: clamp(1.75rem, 8.4vw, 2rem) !important;
-    line-height: .96 !important;
-  }
-  .light-zephyr h2 {
-    max-width: 100%;
-    overflow-wrap: normal;
-    font-size: clamp(1.85rem, 7.2vw, 3rem) !important;
-    line-height: .94 !important;
-  }
+/* Mobile sticky CTA */
+.light-zephyr > div.fixed a {
+  background: linear-gradient(135deg, #111116, #30284c 62%, #493567) !important;
+  color: #fff !important;
+  border-color: rgba(0,217,255,.22) !important;
 }
+
 @media (max-width: 767px) {
-  .light-zephyr section h2 {
-    font-size: clamp(1.6rem, 6.5vw, 2.45rem) !important;
-    letter-spacing: -0.045em !important;
-    overflow-wrap: break-word;
-    word-break: normal;
-  }
-  .light-zephyr #showreel h2 { max-width: 11.5ch; margin-left: auto; margin-right: auto; }
+  .light-zephyr [class*="text-white/"] { color: rgba(27,27,34,.72) !important; }
+  .light-zephyr .portfolio-card h3,
+  .light-zephyr .portfolio-card p,
+  .light-zephyr .portfolio-card span,
+  .light-zephyr .portfolio-card button { color: #fff !important; }
+  .light-zephyr #hero video { opacity: .14 !important; }
+  .light-zephyr.cinema-noise::before { opacity: .010; }
 }
-@media (max-width: 767px) {
-  .light-zephyr #hero .relative.z-30,
-  .light-zephyr .glass,
-  .light-zephyr .premium-card,
-  .light-zephyr .cinema-frame {
-    max-width: calc(100vw - 2rem) !important;
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-  .light-zephyr section h2,
-  .light-zephyr #hero h1,
-  .light-zephyr .premium-button {
-    max-width: 100% !important;
-  }
+
+/* Keep text readable on cinematic media overlays in the light theme */
+.light-zephyr .cinema-frame .absolute,
+.light-zephyr .cinema-frame .absolute *,
+.light-zephyr figcaption[class*="absolute"],
+.light-zephyr [class*="absolute"][class*="text-white"] {
+  color: #fff !important;
 }
+.light-zephyr .cinema-frame [class*="text-zephyr-cyan"] { color: #9ff5ff !important; }
+.light-zephyr .cinema-frame [class*="bg-black/"] { background-color: rgba(0,0,0,.42) !important; }
+.light-zephyr figcaption[class*="bg-black/"] { background-color: rgba(0,0,0,.58) !important; }
