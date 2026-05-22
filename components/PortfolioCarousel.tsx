@@ -12,6 +12,7 @@ type ShowcaseItem = {
   copy: string;
   image: string;
   video?: string;
+  videoWebm?: string;
   gradient: string;
 };
 
@@ -385,14 +386,14 @@ function ShowcaseCard({
         <video
           ref={setVideoRef}
           className="portfolio-image absolute inset-0 h-full w-full object-cover opacity-82 saturate-[.9] contrast-110 transition-opacity duration-500"
-          autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           poster={item.image}
           aria-hidden="true"
         >
+          {item.videoWebm && <source src={item.videoWebm} type="video/webm" />}
           <source src={item.video} type="video/mp4" />
         </video>
       )}
@@ -462,7 +463,7 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
           ×
         </button>
         <div className="grid max-h-[100svh] overflow-y-auto md:max-h-[92vh] md:grid-cols-[1.22fr_.78fr]">
-          <div className="relative min-h-[52svh] bg-black md:min-h-[78vh]">
+          <div className="relative min-h-[52svh] bg-[radial-gradient(circle_at_30%_20%,rgba(123,223,229,.08),transparent_32%),linear-gradient(135deg,#050509,#100914)] md:min-h-[78vh]">
             {item.video ? (
               <video
                 ref={videoRef}
@@ -472,10 +473,11 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
                 playsInline
                 loop
                 controls
-                preload="auto"
+                preload="metadata"
                 poster={item.image}
                 aria-label={`${item.title} sample direction video preview`}
               >
+                {item.videoWebm && <source src={item.videoWebm} type="video/webm" />}
                 <source src={item.video} type="video/mp4" />
               </video>
             ) : (

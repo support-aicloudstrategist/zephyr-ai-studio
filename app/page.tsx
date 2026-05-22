@@ -6,6 +6,7 @@ import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { basePath } from '@/lib/siteLinks';
 const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero-mixkit-44541.mp4`;
+const heroVideoWebmSrc = `${basePath}/video/zephyr-hero-mixkit-44541.webm`;
 const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541.jpg`;
 const showreelPosterSrc = `${basePath}/images/cinematic-fashion-campaign-preview.jpg`;
 const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
@@ -161,7 +162,9 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_36%_20%,rgba(123,223,229,.07),transparent_34%),linear-gradient(135deg,#050509,#100914_48%,#030306)]" />
       <video className="absolute inset-0 h-full w-full object-cover object-center opacity-88 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="metadata" poster={heroPosterSrc} aria-hidden="true">
+        <source src={heroVideoWebmSrc} type="video/webm" />
         <source src={heroVideoSrc} type="video/mp4" />
       </video>
       <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_18%_30%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_26%),radial-gradient(circle_at_52%_76%,rgba(255,255,255,.025),transparent_24%)]" />
