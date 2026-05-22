@@ -161,50 +161,47 @@ const heroEase = [0.16, 1, 0.3, 1] as const;
 
 function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-[94svh] items-center justify-center overflow-hidden bg-black px-4 pb-8 pt-24 text-left sm:px-6 md:min-h-screen md:px-10 md:py-28">
+    <section id="hero" className="relative flex min-h-[94svh] items-end justify-center overflow-hidden bg-black px-4 pb-10 pt-24 text-left sm:px-6 md:min-h-screen md:items-center md:justify-start md:px-10 md:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_36%_20%,rgba(123,223,229,.07),transparent_34%),linear-gradient(135deg,#050509,#100914_48%,#030306)]" />
-      <video className="absolute inset-0 h-full w-full object-cover object-center opacity-74 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="metadata" poster={heroPosterSrc} aria-hidden="true">
+      <video className="absolute inset-0 h-full w-full object-cover object-center opacity-88 saturate-[.9] contrast-110" autoPlay muted loop playsInline preload="metadata" poster={heroPosterSrc} aria-hidden="true">
         <source src={heroVideoWebmSrc} type="video/webm" />
         <source src={heroVideoSrc} type="video/mp4" />
       </video>
-      <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_16%_26%,rgba(123,223,229,.045),transparent_28%),radial-gradient(circle_at_78%_20%,rgba(216,111,189,.04),transparent_28%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.46),rgba(3,3,6,.58)_38%,rgba(3,3,6,.88)_86%,#030306_100%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.90),rgba(3,3,6,.68)_42%,rgba(3,3,6,.35)_76%,rgba(3,3,6,.18)),linear-gradient(180deg,rgba(3,3,6,.22),rgba(3,3,6,.16)_42%,rgba(3,3,6,.54)_88%,#030306_100%)]" />
-      <div className="absolute inset-0 shadow-[inset_0_0_135px_rgba(0,0,0,.78)] md:shadow-[inset_0_0_210px_rgba(0,0,0,.82)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/82 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/88 to-transparent" />
-      <div className="relative z-30 mx-auto grid w-full max-w-7xl gap-7 md:grid-cols-[1.04fr_.96fr] md:items-center md:gap-10 lg:gap-16">
-        <div className="max-w-[38rem] rounded-[1.45rem] border border-white/10 bg-black/28 p-5 shadow-[0_20px_70px_rgba(0,0,0,.34)] backdrop-blur-[2px] sm:p-7 md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0">
-          <p className="mb-4 inline-flex rounded-full border border-zephyr-cyan/16 bg-white/[.045] px-3.5 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/88 sm:text-[0.66rem] md:mb-5 md:tracking-[0.28em]">
-            AI Creative Studio for Modern Brands
-          </p>
-          <h1 className="text-glow max-w-[13.5ch] font-display text-[clamp(2rem,9.5vw,2.38rem)] font-semibold leading-[1.03] tracking-[-0.055em] text-white sm:text-[clamp(2.4rem,7vw,3.15rem)] md:max-w-[14ch] md:text-[clamp(2.65rem,4.4vw,4rem)]">
-            Cinematic Ads & Launch Visuals for Brands That Want to Look Premium
-          </h1>
-          <p className="mt-4 max-w-[34rem] text-[0.98rem] leading-7 text-white/76 sm:text-[1.05rem] md:mt-6 md:text-[1.15rem] md:leading-8">
-            We create AI-powered product films, reels, campaign visuals, and social ads without expensive shoots, models, studios, or production teams.
-          </p>
-          <div className="mt-6 grid w-full grid-cols-2 gap-3 sm:max-w-md md:mt-8 md:flex md:max-w-none md:items-center md:gap-4">
-            <a href="#portfolio" className="premium-button flex min-h-12 items-center justify-center rounded-full bg-white px-5 py-3.5 text-center text-[0.72rem] font-black uppercase tracking-[0.14em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.18)] md:min-w-44 md:text-sm">View Work</a>
-            <a href="#contact" className="premium-button flex min-h-12 items-center justify-center rounded-full border border-white/18 bg-white/[.065] px-5 py-3.5 text-center text-[0.72rem] font-black uppercase tracking-[0.14em] text-white/90 backdrop-blur-md hover:border-zephyr-magenta/50 hover:text-white md:min-w-44 md:text-sm">Start a Project</a>
-          </div>
-          <p className="mt-4 max-w-[33rem] text-xs font-medium leading-6 text-white/58 sm:text-sm md:mt-5 md:text-[0.95rem]">
-            For skincare, jewellery, fashion, food, ecommerce, creators, and luxury brands.
-          </p>
+      <div className="absolute inset-[-3%] bg-[radial-gradient(circle_at_18%_30%,rgba(123,223,229,.055),transparent_28%),radial-gradient(circle_at_78%_18%,rgba(216,111,189,.05),transparent_26%),radial-gradient(circle_at_52%_76%,rgba(255,255,255,.025),transparent_24%)]" />
+      <div className="absolute left-1/2 top-[58%] h-[58vmin] w-[58vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zephyr-cyan/[.035] blur-[72px] md:left-[30%] md:h-[46vmin] md:w-[46vmin]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,3,6,.34),rgba(3,3,6,.50)_34%,rgba(3,3,6,.86)_76%,#030306_100%)] md:bg-[linear-gradient(90deg,rgba(3,3,6,.92),rgba(3,3,6,.62)_36%,rgba(3,3,6,.24)_68%,rgba(3,3,6,.10)),linear-gradient(180deg,rgba(3,3,6,.18),rgba(3,3,6,.10)_34%,rgba(3,3,6,.42)_74%,#030306_99%)]" />
+      <div className="absolute inset-0 shadow-[inset_0_0_145px_rgba(0,0,0,.80)] md:shadow-[inset_0_0_230px_rgba(0,0,0,.84)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/78 to-transparent md:h-24" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/92 to-transparent md:h-36" />
+      <div
+        className="relative z-30 mx-auto w-full max-w-[24rem] rounded-[1.8rem] border border-white/10 bg-black/30 p-5 shadow-[0_22px_80px_rgba(0,0,0,.42)] backdrop-blur-[2px] sm:max-w-[30rem] sm:p-7 md:mx-0 md:ml-[4vw] md:max-w-5xl md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0"
+      >
+        <p
+          className="hero-badge-shimmer mb-4 inline-flex rounded-full border border-zephyr-cyan/20 bg-zephyr-cyan/[.055] px-4 py-2 text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-zephyr-cyan/90 sm:text-[0.65rem] md:mb-6 md:tracking-[0.32em]"
+        >
+          Premium AI Ad Studio
+        </p>
+        <h1
+          className="text-glow max-w-[12ch] font-display text-[clamp(2.55rem,13vw,4.55rem)] font-black uppercase leading-[0.88] tracking-[-0.07em] md:max-w-[13ch] md:text-[clamp(4.2rem,7.2vw,7.4rem)]"
+        >
+          Cinematic AI Ads for Brands That Want to Look Premium
+        </h1>
+        <p
+          className="mt-5 max-w-[21rem] text-[1rem] leading-7 text-white/82 sm:max-w-md sm:text-lg md:mt-7 md:max-w-2xl md:text-2xl md:leading-9"
+        >
+          We create AI-powered product commercials, fashion campaigns, reels, and launch visuals for modern businesses.
+        </p>
+        <div
+          className="mt-7 grid w-full grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 md:mt-9 md:flex md:max-w-none md:items-center md:gap-4"
+        >
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_26px_rgba(37,211,102,.18)] hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.20)] md:min-w-56">Start on WhatsApp</a>
+          <a href="#portfolio" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Work</a>
         </div>
-        <div className="relative mx-auto w-full max-w-[22rem] md:max-w-[31rem]">
-          <div className="absolute -inset-5 rounded-[2.2rem] bg-[radial-gradient(circle_at_22%_18%,rgba(123,223,229,.13),transparent_34%),radial-gradient(circle_at_82%_76%,rgba(216,111,189,.12),transparent_34%)] blur-2xl" />
-          <div className="relative overflow-hidden rounded-[1.45rem] border border-white/12 bg-black/42 p-2 shadow-[0_26px_90px_rgba(0,0,0,.42)] backdrop-blur-md sm:rounded-[1.8rem]">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.05rem] bg-[linear-gradient(135deg,#07070d,#120914_50%,#030306)] sm:rounded-[1.35rem] md:aspect-[5/4]">
-              <img src={showreelPosterSrc} alt="Cinematic AI campaign visual preview" loading="eager" decoding="async" width="900" height="1200" className="absolute inset-0 h-full w-full object-cover opacity-88 saturate-110 contrast-105" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.18)_45%,rgba(0,0,0,.72))]" />
-              <div className="absolute left-4 top-4 rounded-full border border-white/12 bg-black/42 px-3 py-2 text-[0.56rem] font-bold uppercase tracking-[0.18em] text-white/68 backdrop-blur-md">Visual proof</div>
-              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/12 bg-black/46 p-4 backdrop-blur-md">
-                <p className="text-[0.58rem] font-bold uppercase tracking-[0.22em] text-zephyr-cyan/86">Before → Cinematic campaign</p>
-                <p className="mt-2 text-sm leading-6 text-white/72">Premium launch-ready mood, lighting, and story direction for social ads and product films.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p
+          className="mt-5 max-w-[22rem] text-xs font-medium leading-6 text-white/58 sm:text-sm md:mt-6 md:max-w-2xl md:text-base"
+        >
+          For fashion, skincare, jewelry, ecommerce, influencers, and premium local brands.
+        </p>
       </div>
     </section>
   );
