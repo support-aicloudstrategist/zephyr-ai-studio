@@ -135,6 +135,7 @@ export function PortfolioCarousel() {
   const [activeTab, setActiveTab] = useState<TabKey>('format');
   const [activeIndex, setActiveIndex] = useState(0);
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
+  const [modalItem, setModalItem] = useState<ShowcaseItem | null>(null);
 
   const items = useMemo(() => (activeTab === 'format' ? formatItems : businessItems), [activeTab]);
 
@@ -214,16 +215,10 @@ export function PortfolioCarousel() {
     requestAnimationFrame(() => trackRef.current?.scrollTo({ left: 0, behavior: 'smooth' }));
   };
 
-  const togglePreview = (index: number) => {
-    setPreviewIndex((current) => {
-      if (current === index) {
-        pauseVideo(index);
-        return null;
-      }
-      if (current !== null) pauseVideo(current);
-      playVideo(index);
-      return index;
-    });
+  const openModalPreview = (index: number) => {
+    if (previewIndex !== null) pauseVideo(previewIndex);
+    setPreviewIndex(null);
+    setModalItem(items[index]);
     scrollToIndex(index);
   };
 
@@ -305,8 +300,8 @@ export function PortfolioCarousel() {
                     modeLabel={activeTab === 'format' ? 'Content format' : 'Business type'}
                     active={previewIndex === index}
                     setVideoRef={(node) => { videoRefs.current[String(index)] = node; }}
-                    onTap={() => togglePreview(index)}
-                    onMouseEnter={() => { setPreviewIndex(index); playVideo(index); }}
+                    onTap={() => openModalPreview(index)}
+                    onMouseEnter={() => { if (!modalItem) { setPreviewIndex(index); playVideo(index); } }}
                     onMouseLeave={() => { setPreviewIndex((current) => current === index ? null : current); pauseVideo(index); }}
                   />
                 </div>
@@ -338,6 +333,7 @@ export function PortfolioCarousel() {
           <p className="mt-5 text-center text-xs font-black uppercase tracking-[0.22em] text-zephyr-cyan/70 md:hidden">Swipe to explore</p>
         </Reveal>
       </div>
+      {modalItem && <PortfolioLightbox item={modalItem} onClose={() => setModalItem(null)} />}
     </section>
   );
 }
@@ -361,8 +357,6 @@ function ShowcaseCard({
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }) {
-  const href = whatsappProjectUrl(`Hi Zephyr AI Studio, I want this campaign style for my brand: ${item.title}.`);
-
   return (
     <article
       className={`portfolio-card premium-card group relative h-[390px] overflow-hidden rounded-[1.35rem] border bg-black text-left shadow-[0_18px_70px_rgba(0,0,0,.34)] transition duration-500 md:h-[460px] md:rounded-[1.65rem] ${active ? 'scale-[1.012] border-zephyr-cyan/28 shadow-[0_24px_82px_rgba(123,223,229,.10)]' : 'border-white/10'}`}
@@ -397,10 +391,108 @@ function ShowcaseCard({
       <div className="absolute bottom-0 left-0 right-0 z-20 flex min-h-[50%] flex-col justify-end p-5 md:p-6">
         <h3 className="font-display text-[clamp(1.65rem,6.2vw,2.55rem)] font-black uppercase leading-[0.9] tracking-[-0.055em] text-white md:text-[clamp(1.65rem,2vw,2.45rem)]">{item.title}</h3>
         <p className="mt-4 text-sm leading-6 text-white/70 md:text-[0.92rem] md:leading-6">{item.copy}</p>
-        <a href={href} target="_blank" rel="noopener noreferrer" className="premium-button relative z-30 mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/16 bg-white/[.075] px-5 py-3 text-center text-[0.64rem] font-black uppercase tracking-[0.14em] text-white/86 backdrop-blur-sm hover:border-zephyr-cyan/36 hover:text-zephyr-cyan">
-          Create this for my brand
-        </a>
+        <button type="button" onClick={onTap} className="premium-button relative z-30 mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full border border-white/16 bg-white/[.075] px-5 py-3 text-center text-[0.64rem] font-black uppercase tracking-[0.14em] text-white/86 backdrop-blur-sm hover:border-zephyr-cyan/36 hover:text-zephyr-cyan">
+          Preview campaign style
+        </button>
       </div>
     </article>
+  );
+}
+
+function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const ctaHref = whatsappProjectUrl(`Hi Zephyr AI Studio, I want a similar campaign style for my brand: ${item.title}.`);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    const canAutoplayPreview = window.matchMedia('(min-width: 768px)').matches;
+    if (canAutoplayPreview) {
+      videoRef.current?.play().catch(() => undefined);
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+      videoRef.current?.pause();
+    };
+  }, [onClose, item.title]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[80] flex items-end justify-center bg-black/82 p-0 backdrop-blur-xl animate-[portfolioFade_.18s_ease-out] md:items-center md:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="portfolio-lightbox-title"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div className="relative max-h-[100svh] w-full overflow-hidden rounded-t-[1.6rem] border border-white/12 bg-[linear-gradient(145deg,#050509,#100914_48%,#030306)] shadow-[0_30px_110px_rgba(0,0,0,.62)] animate-[portfolioLift_.22s_ease-out] md:max-h-[92vh] md:max-w-6xl md:rounded-[2rem]">
+        <button
+          type="button"
+          onClick={onClose}
+          className="premium-button absolute right-3 top-3 z-30 grid h-12 w-12 place-items-center rounded-full border border-white/14 bg-black/62 text-2xl leading-none text-white/82 backdrop-blur-md hover:border-zephyr-cyan hover:text-zephyr-cyan md:right-5 md:top-5"
+          aria-label="Close portfolio preview"
+        >
+          ×
+        </button>
+        <div className="grid max-h-[100svh] overflow-y-auto md:max-h-[92vh] md:grid-cols-[1.22fr_.78fr]">
+          <div className="relative min-h-[52svh] bg-black md:min-h-[78vh]">
+            {item.video ? (
+              <video
+                ref={videoRef}
+                className="absolute inset-0 h-full w-full object-cover"
+                muted
+                playsInline
+                loop
+                controls
+                preload="metadata"
+                poster={item.image}
+                aria-label={`${item.title} sample direction video preview`}
+              >
+                <source src={item.video} type="video/mp4" />
+              </video>
+            ) : (
+              <img src={item.image} alt={`${item.title} campaign style preview`} className="absolute inset-0 h-full w-full object-cover" loading="eager" decoding="async" />
+            )}
+            <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${item.gradient}`} />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.16)_42%,rgba(0,0,0,.72))]" />
+            <div className="absolute bottom-5 left-5 right-20 rounded-2xl border border-white/12 bg-black/46 p-4 backdrop-blur-md md:hidden">
+              <p className="text-[0.58rem] font-black uppercase tracking-[0.22em] text-zephyr-cyan/86">Visual concept preview</p>
+              <h3 className="mt-2 font-display text-3xl font-black uppercase leading-none tracking-[-0.055em] text-white">{item.title}</h3>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center p-6 sm:p-8 md:p-10">
+            <p className="text-[0.62rem] font-black uppercase tracking-[0.28em] text-zephyr-cyan/86">Campaign style preview</p>
+            <h3 id="portfolio-lightbox-title" className="mt-4 font-display text-[clamp(2.4rem,7vw,4.7rem)] font-black uppercase leading-[0.86] tracking-[-0.065em] text-white">
+              {item.title}
+            </h3>
+            <p className="mt-6 text-base leading-8 text-white/68 md:text-lg">
+              {item.copy} This is a sample direction / visual concept to show the kind of premium campaign world Zephyr can create for your brand.
+            </p>
+            <div className="mt-7 grid gap-3 text-sm text-white/62">
+              <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Review the campaign mood, framing, colour, and premium visual direction before contacting us.</div>
+              <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Videos stay muted and touch-friendly, with mobile playback kept manual for performance.</div>
+            </div>
+            <a
+              href={ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="premium-button mt-8 inline-flex min-h-14 w-full items-center justify-center rounded-full bg-white px-6 py-4 text-center text-sm font-black uppercase tracking-[0.14em] text-black hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.20)]"
+            >
+              Create similar campaign
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

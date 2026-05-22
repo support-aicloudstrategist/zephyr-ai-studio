@@ -187,6 +187,16 @@ select option { background: #05050c; color: #f7f7fb; }
   78% { left: 112%; opacity: 0; }
 }
 
+@keyframes portfolioFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes portfolioLift {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @media (max-width: 767px) {
   .cinema-noise::before { opacity: .012; }
   .text-glow { text-shadow: 0 0 3px rgba(128,225,230,.07); }
