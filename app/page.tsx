@@ -1,11 +1,9 @@
 import { type ReactNode } from 'react';
 import { Reveal } from '@/components/Reveal';
 import { ContactForm } from '@/components/ContactForm';
-import { Navigation } from '@/components/Navigation';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { ShowreelPreview } from '@/components/ShowreelPreview';
 import { basePath } from '@/lib/siteLinks';
-const logoSrc = `${basePath}/brand/zephyr-ai-studio-logo.jpg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero-mixkit-44541.mp4`;
 const heroVideoWebmSrc = `${basePath}/video/zephyr-hero-mixkit-44541.webm`;
 const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541.jpg`;
@@ -125,7 +123,6 @@ const beforeAfterExamples = [
 export default function Home() {
   return (
     <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
-      <Navigation />
       <Hero />
       <ProofStrip />
       <Showreel />
@@ -139,7 +136,6 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <Contact />
-      <Footer />
       <MobileBottomCTA />
     </main>
   );
@@ -464,8 +460,4 @@ function Contact() {
       </section>
     </SectionFlow>
   );
-}
-
-function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="AI Creative Studio logo" loading="lazy" decoding="async" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">AI Creative Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link inline-flex min-h-11 items-center rounded-full border border-white/10 px-4 hover:border-zephyr-cyan hover:text-zephyr-cyan" href={emailUrl}>Start a private brief</a></div></footer>;
 }
