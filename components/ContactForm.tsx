@@ -7,7 +7,7 @@ export function ContactForm() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const message = [
-      'Hi Zephyr AI Studio, I want to discuss a cinematic brand campaign.',
+      'Hi AI Creative Studio, I want to discuss a cinematic brand campaign.',
       `Name: ${data.get('name') || ''}`,
       `Brand / Business: ${data.get('brand') || ''}`,
       `WhatsApp Number: ${data.get('phone') || ''}`,

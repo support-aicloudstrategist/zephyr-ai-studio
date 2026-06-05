@@ -279,7 +279,7 @@ export function PortfolioCarousel() {
                 </p>
                 <p className="mt-3 text-sm leading-6 text-white/62 md:text-base">
                   {activeTab === 'format'
-                    ? 'Swipe through clear ad, reel, film, and visual formats Zephyr can create.'
+                    ? 'Swipe through clear ad, reel, film, and visual formats AI Creative Studio can create.'
                     : 'Swipe through brand categories and pick the closest style for your business.'}
                 </p>
               </div>
@@ -417,7 +417,7 @@ function ShowcaseCard({
 
 function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const ctaHref = whatsappProjectUrl(`Hi Zephyr AI Studio, I want a similar campaign style for my brand: ${item.title}.`);
+  const ctaHref = whatsappProjectUrl(`Hi AI Creative Studio, I want a similar campaign style for my brand: ${item.title}.`);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -496,7 +496,7 @@ function PortfolioLightbox({ item, onClose }: { item: ShowcaseItem; onClose: () 
               {item.title}
             </h3>
             <p className="mt-6 text-base leading-8 text-white/68 md:text-lg">
-              {item.copy} This is a sample direction / visual concept to show the kind of premium campaign world Zephyr can create for your brand.
+              {item.copy} This is a sample direction / visual concept to show the kind of premium campaign world AI Creative Studio can create for your brand.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/62">
               <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4">Review the campaign mood, framing, colour, and premium visual direction before contacting us.</div>

@@ -12,8 +12,8 @@ const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541
 const showreelPosterSrc = `${basePath}/images/zephyr-showreel-camaro-44554.jpg`;
 const showreelVideoSrc = `${basePath}/video/zephyr-showreel-camaro-44554.mp4`;
 const showreelVideoWebmSrc = `${basePath}/video/zephyr-showreel-camaro-44554.webm`;
-const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20Zephyr%20AI%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
-const emailUrl = 'mailto:support@aicloudstrategist.com?subject=Zephyr%20AI%20Studio%20Campaign%20Brief';
+const whatsappUrl = 'https://wa.me/918796302608?text=Hi%20AI%20Creative%20Studio%2C%20I%20want%20premium%20AI%20ads%20for%20my%20brand.';
+const emailUrl = 'mailto:support@aicloudstrategist.com?subject=AI%20Creative%20Studio%20Campaign%20Brief';
 const instagramUrl = 'https://www.instagram.com/aicloudstrategist/';
 
 const services = [
@@ -210,7 +210,7 @@ function Hero() {
   );
 }
 function ProofStrip() {
-  return <section aria-label="Zephyr creative promise" className="relative border-y border-white/10 bg-black/30 px-4 py-9 md:py-10 md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/8 bg-white/[.025] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
+  return <section aria-label="AI Creative Studio creative promise" className="relative border-y border-white/10 bg-black/30 px-4 py-9 md:py-10 md:px-6"><div className="mx-auto grid max-w-7xl gap-3 text-center sm:grid-cols-2 lg:grid-cols-4">{[['01','Cinematic first frame'], ['02','AI-native art direction'], ['03','Luxury product mood'], ['04','Launch-ready social cuts']].map(([num, label]) => <div key={label} className="rounded-full border border-white/8 bg-white/[.025] px-5 py-4"><span className="mr-3 text-zephyr-cyan">{num}</span><span className="text-[0.68rem] font-bold uppercase tracking-[0.22em] text-white/70">{label}</span></div>)}</div></section>;
 }
 
 function SectionTitle({ kicker, title, copy }: { kicker: string; title: string; copy?: string }) {
@@ -365,7 +365,7 @@ function About() {
         <div className="relative mx-auto grid max-w-7xl gap-14 md:grid-cols-[1.05fr_.95fr] md:items-end md:gap-20">
           <Reveal>
             <div>
-              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-zephyr-cyan/82 md:text-xs">About Zephyr</p>
+              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.42em] text-zephyr-cyan/82 md:text-xs">About AI Creative Studio</p>
               <h2 className="mt-8 max-w-5xl font-display text-[clamp(2rem,8vw,4.2rem)] font-black uppercase leading-[0.9] tracking-[-0.065em] text-white md:text-[clamp(2.4rem,5vw,5.2rem)]">
                 We design the world your brand deserves.
               </h2>
@@ -374,7 +374,7 @@ function About() {
           <Reveal delay={0.18}>
             <div className="space-y-8 border-l border-white/12 pl-6 md:pl-8">
               <p className="text-xl font-semibold leading-tight tracking-[-0.035em] text-white/82 md:text-3xl">
-                Zephyr is a cinematic studio for brands that want to be felt before they are understood.
+                AI Creative Studio is a cinematic studio for brands that want to be felt before they are understood.
               </p>
               <p className="text-base leading-7 text-white/62 md:text-lg">Built for brands that need premium-looking ads without a traditional photoshoot.</p>
               <div className="grid gap-3">
@@ -467,5 +467,5 @@ function Contact() {
 }
 
 function Footer() {
-  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="Zephyr AI Studio logo" loading="lazy" decoding="async" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">Zephyr AI Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link inline-flex min-h-11 items-center rounded-full border border-white/10 px-4 hover:border-zephyr-cyan hover:text-zephyr-cyan" href={emailUrl}>Start a private brief</a></div></footer>;
+  return <footer className="border-t border-white/10 px-4 py-10 md:px-6"><div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 text-sm text-white/50 md:flex-row md:items-center"><div className="flex items-center gap-3"><img src={logoSrc} alt="AI Creative Studio logo" loading="lazy" decoding="async" className="h-12 w-12 rounded-full border border-white/10 object-cover shadow-[0_0_18px_rgba(216,111,189,.12)]" /><p className="uppercase tracking-[0.3em] text-white/70">AI Creative Studio</p></div><p>Luxury AI advertising and cinematic brand storytelling.</p><a className="premium-link inline-flex min-h-11 items-center rounded-full border border-white/10 px-4 hover:border-zephyr-cyan hover:text-zephyr-cyan" href={emailUrl}>Start a private brief</a></div></footer>;
 }

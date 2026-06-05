@@ -3,7 +3,7 @@ import './globals.css';
 
 const siteUrl = 'https://support-aicloudstrategist.github.io/zephyr-ai-studio/';
 const socialImage = 'https://support-aicloudstrategist.github.io/zephyr-ai-studio/images/cinematic-fashion-campaign-preview.jpg';
-const socialTitle = 'Zephyr AI Studio — Cinematic AI Ads & Premium Brand Visuals';
+const socialTitle = 'AI Creative Studio — Cinematic AI Ads & Premium Brand Visuals';
 const socialDescription = 'Premium AI-powered ads, reels, product visuals, and launch campaigns for modern brands without expensive shoots.';
 
 export const metadata: Metadata = {
@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     title: socialTitle,
     description: socialDescription,
     url: siteUrl,
-    siteName: 'Zephyr AI Studio',
+    siteName: 'AI Creative Studio',
     images: [
       {
         url: socialImage,
         width: 1200,
         height: 630,
-        alt: 'Zephyr AI Studio cinematic AI brand visuals preview',
+        alt: 'AI Creative Studio cinematic AI brand visuals preview',
       },
     ],
     type: 'website',

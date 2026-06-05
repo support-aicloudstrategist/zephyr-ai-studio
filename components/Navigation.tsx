@@ -30,10 +30,10 @@ export function Navigation() {
       }`}
     >
       <div className="flex h-[4.5rem] w-full items-center justify-between px-4 sm:px-5 md:px-8 lg:px-10 xl:px-12">
-        <a href="#hero" aria-label="Zephyr AI Studio home" className="flex shrink-0 items-center">
+        <a href="#hero" aria-label="AI Creative Studio home" className="flex shrink-0 items-center">
           <img
             src={logoSrc}
-            alt="Zephyr AI Studio logo"
+            alt="AI Creative Studio logo"
             className="h-10 w-auto object-contain md:h-12 lg:h-14"
           />
         </a>
