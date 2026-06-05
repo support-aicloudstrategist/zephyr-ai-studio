@@ -6,12 +6,12 @@ const config: Config = {
     extend: {
       colors: {
         zephyr: {
-          black: '#030306',
-          ink: '#070812',
-          cyan: '#7bdfe5',
+          black: '#071827',
+          ink: '#0f2438',
+          cyan: '#2de2c5',
           magenta: '#d86fbd',
-          violet: '#7562b5',
-          gold: '#f8d58c',
+          violet: '#7aa7ff',
+          gold: '#f6b94b',
         },
       },
       fontFamily: {

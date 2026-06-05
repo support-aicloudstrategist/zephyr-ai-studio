@@ -4,6 +4,7 @@ import { ContactForm } from '@/components/ContactForm';
 import { PortfolioCarousel } from '@/components/PortfolioCarousel';
 import { ShowreelPreview } from '@/components/ShowreelPreview';
 import { basePath } from '@/lib/siteLinks';
+const aicsLogoSrc = `${basePath}/assets/brand/aics-logo.svg`;
 const heroVideoSrc = `${basePath}/video/zephyr-hero-mixkit-44541.mp4`;
 const heroVideoWebmSrc = `${basePath}/video/zephyr-hero-mixkit-44541.webm`;
 const heroPosterSrc = `${basePath}/images/video-posters/zephyr-hero-mixkit-44541.jpg`;
@@ -123,6 +124,7 @@ const beforeAfterExamples = [
 export default function Home() {
   return (
     <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
+      <AicsNavbar />
       <Hero />
       <ProofStrip />
       <Showreel />
@@ -136,8 +138,42 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <Contact />
+      <AicsFooter />
       <MobileBottomCTA />
     </main>
+  );
+}
+
+function AicsNavbar() {
+  const navItems = [
+    ['Work', '#portfolio'],
+    ['Services', '#services'],
+    ['Pricing', '#pricing'],
+    ['Contact', '#contact'],
+  ] as const;
+
+  return (
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#071827]/86 shadow-[0_18px_70px_rgba(3,9,18,.28)] backdrop-blur-2xl">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
+        <a href="#hero" aria-label="AICloudStrategist home" className="flex min-w-0 items-center gap-3">
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/12 bg-white/95 p-1 shadow-[0_0_28px_rgba(45,226,197,.14)]">
+            <img src={aicsLogoSrc} alt="AICloudStrategist logo" className="h-full w-full object-contain" />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-sm font-black uppercase tracking-[0.18em] text-white sm:text-base">AICloudStrategist</span>
+            <span className="hidden text-[0.62rem] font-semibold uppercase tracking-[0.24em] text-[#2de2c5]/86 sm:block">AI Creative Studio</span>
+          </span>
+        </a>
+        <nav aria-label="AICS service navigation" className="hidden items-center gap-7 text-[0.68rem] font-black uppercase tracking-[0.22em] text-white/72 md:flex">
+          {navItems.map(([label, href]) => (
+            <a key={label} href={href} className="premium-link hover:text-[#2de2c5]">{label}</a>
+          ))}
+        </nav>
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button hidden min-h-11 items-center justify-center rounded-full bg-[#2de2c5] px-5 text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#071827] shadow-[0_10px_30px_rgba(45,226,197,.18)] hover:bg-white sm:inline-flex">
+          Send enquiry
+        </a>
+      </div>
+    </header>
   );
 }
 
@@ -426,6 +462,55 @@ function FAQ() {
         </div>
       </section>
     </SectionFlow>
+  );
+}
+
+function AicsFooter() {
+  const serviceLinks = [
+    ['Website & Digital Presence', 'https://aicloudstrategist.com/'],
+    ['Lead Capture & Follow-up', 'https://aicloudstrategist.com/'],
+    ['Trust & Compliance', 'https://aicloudstrategist.com/'],
+    ['AI Creative Studio', '#hero'],
+  ] as const;
+
+  return (
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#071827] px-4 py-14 text-white sm:px-6 md:py-16">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(45,226,197,.13),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(122,167,255,.12),transparent_34%)]" />
+      <div className="relative mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.1fr_.9fr_.9fr] md:items-start">
+        <div>
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/12 bg-white p-1.5">
+              <img src={aicsLogoSrc} alt="AICloudStrategist logo" className="h-full w-full object-contain" />
+            </span>
+            <div>
+              <p className="text-base font-black uppercase tracking-[0.18em]">AICloudStrategist</p>
+              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#2de2c5]/86">Digital Growth System</p>
+            </div>
+          </div>
+          <p className="mt-6 max-w-md text-sm leading-7 text-white/64 md:text-base">
+            AI Creative Studio is the campaign-creative layer inside AICloudStrategist’s website, lead, trust, and growth operating system.
+          </p>
+        </div>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-[#2de2c5]">Services</p>
+          <div className="mt-5 grid gap-3 text-sm font-semibold text-white/70">
+            {serviceLinks.map(([label, href]) => <a key={label} href={href} className="premium-link hover:text-white">{label}</a>)}
+          </div>
+        </div>
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.28em] text-[#2de2c5]">Start</p>
+          <p className="mt-5 text-sm leading-7 text-white/64">Send your product, campaign idea, or brand reference. We’ll suggest the best creative direction.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button inline-flex min-h-12 items-center justify-center rounded-full bg-[#2de2c5] px-5 text-xs font-black uppercase tracking-[0.16em] text-[#071827] hover:bg-white">WhatsApp</a>
+            <a href={emailUrl} className="premium-button inline-flex min-h-12 items-center justify-center rounded-full border border-white/14 bg-white/[.055] px-5 text-xs font-black uppercase tracking-[0.16em] text-white hover:border-[#2de2c5] hover:text-[#2de2c5]">Email</a>
+          </div>
+        </div>
+      </div>
+      <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/42 md:flex-row md:items-center md:justify-between">
+        <p>© AICloudStrategist. AI Creative Studio is the 4th service in the AICS growth system.</p>
+        <a href="https://aicloudstrategist.com/" className="premium-link hover:text-[#2de2c5]">aicloudstrategist.com</a>
+      </div>
+    </footer>
   );
 }
 
