@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: socialTitle,
   description: socialDescription,
   alternates: { canonical: siteUrl },
+  icons: {
+    icon: '/zephyr-ai-studio/assets/brand/aics-logo.svg',
+    shortcut: '/zephyr-ai-studio/assets/brand/aics-logo.svg',
+    apple: '/zephyr-ai-studio/assets/brand/aics-logo.svg',
+  },
   openGraph: {
     title: socialTitle,
     description: socialDescription,

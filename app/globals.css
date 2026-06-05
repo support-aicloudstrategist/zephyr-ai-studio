@@ -1364,3 +1364,63 @@ body,
     width: min(78vw, 320px) !important;
   }
 }
+
+/* Final QA shell alignment: match current AICloudStrategist homepage header/footer container rhythm */
+.aics-site-shell .container,
+.aics-creative-page footer.premium-footer .container {
+  max-width: 1180px !important;
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+}
+.aics-site-shell .topbar {
+  background: rgba(7, 11, 22, .6) !important;
+  backdrop-filter: blur(8px);
+}
+.aics-site-shell .topbar-inner {
+  min-height: unset !important;
+  padding: 8px 0 !important;
+  gap: 14px !important;
+  flex-wrap: wrap;
+}
+.aics-site-shell .nav-inner {
+  height: auto !important;
+  min-height: unset !important;
+  padding: 14px 0 !important;
+  gap: 18px !important;
+}
+.aics-site-shell .brand {
+  gap: 11px !important;
+  font-size: 18px !important;
+  letter-spacing: -.02em !important;
+}
+.aics-site-shell .brand .mark {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+}
+@media (max-width: 560px) {
+  .aics-site-shell .topbar-inner {
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px 10px !important;
+  }
+  .aics-site-shell .topbar-inner span {
+    display: inline !important;
+    max-width: 100%;
+  }
+}
+
+/* Final QA shell details: match homepage wordmark and mobile toggle */
+.aics-site-shell .brand b,
+.aics-creative-page footer.premium-footer .footer-brand b {
+  color: #34d9f0 !important;
+}
+.aics-site-shell .aics-mobile-menu summary {
+  background: transparent !important;
+  border: 1px solid rgba(148, 163, 184, .28) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #f1f5fb !important;
+}

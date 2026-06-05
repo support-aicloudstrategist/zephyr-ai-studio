@@ -145,24 +145,23 @@ export default function Home() {
 
 function AicsNavbar() {
   const navItems = [
-    ['Home', 'https://aicloudstrategist.com/'],
-    ['Services', 'https://aicloudstrategist.com/#services'],
-    ['Industries', 'https://aicloudstrategist.com/industries.html'],
-    ['Pricing', 'https://aicloudstrategist.com/pricing.html'],
+    ['AI & Cloud Cost', 'https://aicloudstrategist.com/ai-cloud-cost/'],
+    ['Web & SEO', 'https://aicloudstrategist.com/web-seo/'],
+    ['Pricing', 'https://aicloudstrategist.com/pricing/'],
     ['About', 'https://aicloudstrategist.com/about/'],
-    ['Contact', 'https://aicloudstrategist.com/contact.html'],
+    ['Contact', 'https://aicloudstrategist.com/contact/'],
   ] as const;
-  const reviewUrl = 'https://aicloudstrategist.com/free-business-review/';
+  const teardownUrl = 'https://aicloudstrategist.com/cost-teardown/';
 
   return (
     <header className="aics-site-shell">
       <div className="topbar">
         <div className="container topbar-inner">
-          <span>Websites · Automation · Trust · AI Creatives — for businesses worldwide.</span>
+          <span>AI &amp; cloud cost optimization · Premium AI websites &amp; SEO — built and run by AI.</span>
           <span>
             <a href="tel:+918065480898">Call +91 80654 80898</a>
             <span className="topbar-sep"> · </span>
-            <a href="https://wa.me/918796302608" target="_blank" rel="noopener noreferrer">WA +91 87963 02608</a>
+            <a href="https://wa.me/918796302608" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </span>
         </div>
       </div>
@@ -170,20 +169,17 @@ function AicsNavbar() {
         <div className="container nav-inner">
           <a className="brand" href="https://aicloudstrategist.com/" aria-label="AICloudStrategist home">
             <span className="mark">AI</span>
-            <span>AICloudStrategist</span>
+            <span>AICloud<b>Strategist</b></span>
           </a>
           <div className="nav-links" id="navLinks">
             {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
-            <a className="btn btn-primary nav-cta" href={reviewUrl}>
-              <span className="nav-cta-full">Get free growth review</span>
-              <span className="nav-cta-short">Free review</span>
-            </a>
+            <a className="btn btn-primary nav-cta" href={teardownUrl}>Free Cost Teardown</a>
           </div>
           <details className="aics-mobile-menu">
             <summary aria-label="Open menu">☰</summary>
             <div className="aics-mobile-menu-panel">
               {navItems.map(([label, href]) => <a key={label} href={href}>{label}</a>)}
-              <a className="btn btn-primary nav-cta" href={reviewUrl}>Get free growth review</a>
+              <a className="btn btn-primary nav-cta" href={teardownUrl}>Free Cost Teardown</a>
             </div>
           </details>
         </div>
@@ -488,42 +484,36 @@ function AicsFooter() {
           <div className="footer-brand-block">
             <a className="footer-brand" href="https://aicloudstrategist.com/">
               <span className="mark">AI</span>
-              <span>AICloudStrategist</span>
+              <span>AICloud<b>Strategist</b></span>
             </a>
-            <p>AI Creative Studio is the campaign-creative layer inside AICloudStrategist’s digital growth system.</p>
+            <p>AI-run services that cut cloud &amp; AI costs and build a premium web presence. A DPIIT-recognised startup.</p>
           </div>
           <div className="footer-links-group">
-            <h3>Quick Links</h3>
-            <a href="https://aicloudstrategist.com/">Home</a>
-            <a href="https://aicloudstrategist.com/#services">Services</a>
-            <a href="https://aicloudstrategist.com/industries.html">Industries</a>
-            <a href="https://aicloudstrategist.com/pricing.html">Pricing</a>
-            <a href="https://aicloudstrategist.com/about/">About</a>
-            <a href="https://aicloudstrategist.com/contact.html">Contact</a>
-            <a href="https://aicloudstrategist.com/free-business-review/">Get free Business Growth Review</a>
+            <h3>Line A — Cost</h3>
+            <a href="https://aicloudstrategist.com/ai-cloud-cost/">AI &amp; Cloud Cost</a>
+            <a href="https://aicloudstrategist.com/cost-teardown/">Free Cost Teardown</a>
+            <a href="https://aicloudstrategist.com/pricing/">Pricing</a>
           </div>
           <div className="footer-links-group">
-            <h3>Services</h3>
-            <a href="https://aicloudstrategist.com/website-digital-presence/">Website &amp; Digital Presence</a>
-            <a href="https://aicloudstrategist.com/lead-capture-follow-up/">Lead Capture &amp; Follow-up</a>
-            <a href="https://aicloudstrategist.com/trust-compliance/">Trust &amp; Compliance</a>
+            <h3>Line B — Web/SEO</h3>
+            <a href="https://aicloudstrategist.com/web-seo/">Premium Web &amp; SEO</a>
+            <a href="https://aicloudstrategist.com/website-seo-teardown/">Free Web + SEO Teardown</a>
             <a href="#hero">AI Creative Studio</a>
-            <a href="https://aicloudstrategist.com/cloud-trust-finops/">Cloud Trust &amp; FinOps</a>
           </div>
           <div className="footer-contact-block">
-            <h3>Contact</h3>
+            <h3>Company</h3>
             <div className="footer-contact-pills">
-              <a href="tel:+918065480898">Phone: +91 80654 80898</a>
-              <a href="https://wa.me/918796302608" target="_blank" rel="noopener noreferrer">WhatsApp: +91 87963 02608</a>
-              <a href="mailto:contact@aicloudstrategist.com">Email: contact@aicloudstrategist.com</a>
+              <a href="https://aicloudstrategist.com/about/">About</a>
+              <a href="https://aicloudstrategist.com/contact/">Contact</a>
+              <a href="mailto:contact@aicloudstrategist.com">contact@aicloudstrategist.com</a>
+              <a href="https://wa.me/918796302608" target="_blank" rel="noopener noreferrer">WhatsApp +91 87963 02608</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom-row">
-          <span>© AICloudStrategist</span>
-          <a href="https://aicloudstrategist.com/privacy.html">Privacy</a>
-          <a href="https://aicloudstrategist.com/terms.html">Terms</a>
-          <span>Serving businesses worldwide</span>
+          <span>© 2026 AICloudStrategist</span>
+          <a href="https://aicloudstrategist.com/privacy">Privacy</a>
+          <a href="https://aicloudstrategist.com/terms">Terms</a>
         </div>
       </div>
     </footer>
