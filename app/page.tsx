@@ -122,7 +122,7 @@ const beforeAfterExamples = [
 
 export default function Home() {
   return (
-    <main className="cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
+    <main className="aics-creative-page cinema-noise min-h-screen overflow-hidden bg-zephyr-black pb-28 text-white lg:pb-0">
       <AicsNavbar />
       <Hero />
       <ProofStrip />
