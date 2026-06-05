@@ -199,7 +199,7 @@ function MobileBottomCTA() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="premium-button mx-auto flex min-h-12 max-w-md items-center justify-center rounded-full border border-zephyr-cyan/18 bg-[linear-gradient(135deg,rgba(5,5,12,.94),rgba(18,9,22,.92))] px-5 py-3 text-center text-[0.72rem] font-black uppercase tracking-[0.13em] text-white shadow-[0_0_20px_rgba(123,223,229,.10),0_0_28px_rgba(216,111,189,.08),0_14px_42px_rgba(0,0,0,.42)] backdrop-blur-xl active:scale-[.985]"
+        className="premium-button aics-gradient-cta mx-auto flex min-h-12 max-w-md items-center justify-center rounded-full px-5 py-3 text-center text-[0.72rem] font-black uppercase tracking-[0.13em] active:scale-[.985]"
       >
         Let’s Build Your Campaign
       </a>
@@ -244,7 +244,7 @@ function Hero() {
         <div
           className="mt-7 grid w-full grid-cols-1 gap-3 sm:max-w-md sm:grid-cols-2 md:mt-9 md:flex md:max-w-none md:items-center md:gap-4"
         >
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_26px_rgba(37,211,102,.18)] hover:bg-zephyr-cyan hover:shadow-[0_0_30px_rgba(123,223,229,.20)] md:min-w-56">Start on WhatsApp</a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button aics-gradient-cta flex min-h-14 items-center justify-center rounded-full px-7 py-4 text-sm font-black uppercase tracking-[0.14em] md:min-w-56">Start on WhatsApp</a>
           <a href="#portfolio" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/24 bg-white/7 px-7 py-4 text-sm font-black uppercase tracking-[0.14em] text-white backdrop-blur-md hover:border-zephyr-magenta hover:text-zephyr-magenta hover:shadow-magenta md:min-w-44">View Work</a>
         </div>
         <p
@@ -547,7 +547,7 @@ function Contact() {
                   <p className="mt-5 rounded-2xl border border-white/10 bg-white/[.035] p-4 text-sm leading-6 text-white/62">Fastest reply: WhatsApp. You can also send product photos or references directly on WhatsApp.</p>
                 </div>
                 <div className="grid gap-3">
-                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full bg-[#25D366] px-6 py-4 text-sm font-black uppercase tracking-[0.14em] text-black shadow-[0_0_24px_rgba(37,211,102,.15)]">Start on WhatsApp</a>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="premium-button aics-gradient-cta flex min-h-14 items-center justify-center rounded-full px-6 py-4 text-sm font-black uppercase tracking-[0.14em]">Start on WhatsApp</a>
                   <div className="grid grid-cols-2 gap-3">
                     <a href={emailUrl} className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-xs font-black uppercase tracking-[0.13em] text-white/86 hover:border-zephyr-cyan hover:text-zephyr-cyan">Email</a>
                     <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="premium-button flex min-h-14 items-center justify-center rounded-full border border-white/12 bg-white/[.055] px-4 py-3 text-xs font-black uppercase tracking-[0.13em] text-white/86 hover:border-zephyr-magenta hover:text-zephyr-magenta">Instagram</a>
