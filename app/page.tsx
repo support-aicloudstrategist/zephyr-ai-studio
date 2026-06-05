@@ -507,7 +507,7 @@ function AicsFooter() {
         </div>
       </div>
       <div className="relative mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/42 md:flex-row md:items-center md:justify-between">
-        <p>© AICloudStrategist. AI Creative Studio is the 4th service in the AICS growth system.</p>
+        <p>© AICloudStrategist. AI Creative Studio is the campaign-creative layer inside AICloudStrategist’s digital growth system.</p>
         <a href="https://aicloudstrategist.com/" className="premium-link hover:text-[#2de2c5]">aicloudstrategist.com</a>
       </div>
     </footer>
