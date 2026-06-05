@@ -1424,3 +1424,14 @@ body,
   box-shadow: none !important;
   color: #f1f5fb !important;
 }
+
+/* Final live QA: match homepage mobile topbar vertical rhythm */
+@media (max-width: 560px) {
+  .aics-site-shell .topbar {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+  .aics-site-shell .topbar-inner {
+    padding: 8px 0 !important;
+  }
+}
