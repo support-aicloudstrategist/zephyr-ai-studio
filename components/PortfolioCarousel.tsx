@@ -271,7 +271,7 @@ export function PortfolioCarousel() {
         </Reveal>
 
         <Reveal>
-          <div className="relative rounded-[1.6rem] border border-white/10 bg-black/24 p-3 shadow-[0_24px_90px_rgba(0,0,0,.26)] sm:p-4 md:rounded-[2rem] md:p-5">
+          <div className="showcase-carousel-shell relative overflow-hidden rounded-[1.6rem] border border-white/10 bg-black/24 p-3 shadow-[0_24px_90px_rgba(0,0,0,.26)] sm:p-4 md:rounded-[2rem] md:p-5">
             <div className="mb-4 grid gap-3 md:grid-cols-[.78fr_1.22fr] md:items-center">
               <div className="rounded-[1.25rem] border border-white/10 bg-white/[.035] p-4 md:p-5">
                 <p className="text-[0.62rem] font-black uppercase tracking-[0.24em] text-zephyr-cyan/82">
@@ -304,7 +304,7 @@ export function PortfolioCarousel() {
               ref={trackRef}
               onScroll={updateActiveFromScroll}
               onWheel={handleWheel}
-              className="portfolio-carousel-track -mx-3 flex snap-x snap-mandatory gap-4 overflow-x-auto px-3 pb-4 sm:gap-5 md:mx-0 md:px-1 lg:gap-6"
+              className="portfolio-carousel-track flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-4 sm:gap-5 lg:gap-6"
               aria-label={`${tabs.find((tab) => tab.key === activeTab)?.label} visual concept carousel`}
             >
               {items.map((item, index) => (

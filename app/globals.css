@@ -1064,3 +1064,303 @@ body,
     opacity: .76 !important;
   }
 }
+
+/* Showcase/asset section polish — AICS dark glass system, no asset/content changes */
+.aics-creative-page #showreel,
+.aics-creative-page #portfolio,
+.aics-creative-page #before-after,
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] {
+  position: relative;
+  overflow: hidden;
+}
+.aics-creative-page #showreel > .relative,
+.aics-creative-page #before-after > .relative,
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] > div,
+.aics-creative-page #portfolio > .relative {
+  max-width: var(--aics-max) !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+.aics-creative-page #showreel {
+  border-top: 1px solid rgba(148, 163, 184, .12);
+  border-bottom: 1px solid rgba(148, 163, 184, .12);
+  background:
+    radial-gradient(circle at 18% 8%, rgba(34, 211, 238, .10), transparent 30%),
+    radial-gradient(circle at 82% 20%, rgba(139, 92, 246, .11), transparent 32%),
+    linear-gradient(180deg, #020611 0%, #071827 54%, #020611 100%) !important;
+}
+.aics-creative-page #showreel button[aria-label='Open cinematic showreel preview'] {
+  border-radius: 34px !important;
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, .34), rgba(139, 92, 246, .28), rgba(255, 255, 255, .06)) !important;
+  box-shadow:
+    0 34px 110px rgba(0, 0, 0, .42),
+    0 0 54px rgba(34, 211, 238, .08),
+    inset 0 1px 0 rgba(255, 255, 255, .08) !important;
+}
+.aics-creative-page #showreel button[aria-label='Open cinematic showreel preview']:hover {
+  transform: translateY(-3px) scale(1.003) !important;
+  box-shadow:
+    0 40px 125px rgba(0, 0, 0, .48),
+    0 0 70px rgba(34, 211, 238, .12),
+    0 0 46px rgba(139, 92, 246, .10) !important;
+}
+.aics-creative-page #showreel button[aria-label='Open cinematic showreel preview'] > span {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, .78), rgba(2, 6, 23, .88)) !important;
+}
+.aics-creative-page #showreel img {
+  opacity: .94 !important;
+  filter: saturate(1.04) contrast(1.04);
+}
+.aics-creative-page #showreel .mx-auto.mt-6,
+.aics-creative-page #portfolio .mx-auto.mb-6,
+.aics-creative-page #portfolio .relative.rounded-\[1\.6rem\] {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, .72), rgba(2, 6, 23, .62)) !important;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .24), inset 0 1px 0 rgba(255, 255, 255, .055) !important;
+}
+.aics-creative-page #showreel a.bg-white,
+.aics-creative-page #showreel div.mt-7 a:first-child {
+  background: linear-gradient(135deg, var(--aics-teal-main), #67e8f9 42%, #8b5cf6) !important;
+  color: #04111e !important;
+  box-shadow: 0 18px 45px rgba(37, 230, 200, .22), 0 0 28px rgba(139, 92, 246, .14) !important;
+}
+.aics-creative-page #portfolio {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(34, 211, 238, .10), transparent 30%),
+    radial-gradient(circle at 86% 32%, rgba(139, 92, 246, .10), transparent 34%),
+    linear-gradient(180deg, #071827 0%, #020611 100%) !important;
+}
+.aics-creative-page #portfolio .portfolio-carousel-track {
+  scroll-padding-inline: clamp(14px, 4vw, 34px);
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  padding-bottom: 22px !important;
+}
+.aics-creative-page #portfolio .portfolio-card {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background: #020611 !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .34), 0 0 34px rgba(34, 211, 238, .04) !important;
+}
+.aics-creative-page #portfolio .portfolio-card:hover,
+.aics-creative-page #portfolio .portfolio-card:focus-within {
+  border-color: rgba(103, 232, 249, .35) !important;
+  transform: translateY(-4px) scale(1.012) !important;
+  box-shadow: 0 30px 95px rgba(0, 0, 0, .40), 0 0 48px rgba(34, 211, 238, .09) !important;
+}
+.aics-creative-page #portfolio .portfolio-image {
+  transition: transform .8s ease, opacity .35s ease, filter .35s ease !important;
+}
+.aics-creative-page #portfolio .portfolio-card:hover .portfolio-image {
+  transform: scale(1.045) !important;
+  filter: saturate(1.05) contrast(1.04);
+}
+.aics-creative-page #portfolio button[aria-label^='Previous'],
+.aics-creative-page #portfolio button[aria-label^='Next'] {
+  width: 48px !important;
+  height: 48px !important;
+  border-color: rgba(103, 232, 249, .28) !important;
+  background: rgba(7, 24, 39, .82) !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,.28), 0 0 28px rgba(34,211,238,.08) !important;
+}
+.aics-creative-page #portfolio button[aria-label^='Previous']:hover,
+.aics-creative-page #portfolio button[aria-label^='Next']:hover {
+  color: #04111e !important;
+  background: linear-gradient(135deg, var(--aics-teal-main), #67e8f9 42%, #8b5cf6) !important;
+}
+.aics-creative-page #portfolio button[aria-label^='View '] {
+  transition: width .25s ease, background .18s ease, box-shadow .18s ease;
+}
+.aics-creative-page #before-after {
+  background:
+    radial-gradient(circle at 16% 10%, rgba(34, 211, 238, .09), transparent 30%),
+    radial-gradient(circle at 84% 42%, rgba(139, 92, 246, .09), transparent 32%),
+    #020611 !important;
+}
+.aics-creative-page #before-after article {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, .78), rgba(2, 6, 23, .78)) !important;
+  box-shadow: 0 26px 86px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.055) !important;
+}
+.aics-creative-page #before-after article:hover {
+  border-color: rgba(103, 232, 249, .30) !important;
+}
+.aics-creative-page #before-after figure {
+  border-color: rgba(148, 163, 184, .15) !important;
+  background: rgba(2, 6, 17, .65) !important;
+}
+.aics-creative-page #before-after figure img {
+  transition: transform .75s ease, filter .35s ease;
+}
+.aics-creative-page #before-after article:hover figure img {
+  transform: scale(1.025);
+  filter: saturate(1.04) contrast(1.03);
+}
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] {
+  background:
+    radial-gradient(circle at 20% 12%, rgba(34, 211, 238, .08), transparent 28%),
+    radial-gradient(circle at 82% 74%, rgba(139, 92, 246, .08), transparent 32%),
+    #071827 !important;
+}
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] .premium-card {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background:
+    linear-gradient(145deg, rgba(15, 23, 42, .82), rgba(2, 6, 23, .74)) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, .18), rgba(139, 92, 246, .14), rgba(255, 255, 255, .05)) border-box !important;
+}
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] .grid > div {
+  border-color: rgba(148, 163, 184, .16) !important;
+  background: rgba(15, 23, 42, .56) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] .grid > div:hover {
+  transform: translateY(-2px);
+  border-color: rgba(103, 232, 249, .34) !important;
+  background: rgba(15, 23, 42, .74) !important;
+}
+@media (max-width: 767px) {
+  .aics-creative-page #showreel,
+  .aics-creative-page #portfolio,
+  .aics-creative-page #before-after,
+  .aics-creative-page section[aria-labelledby='product-authenticity-title'] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow-x: hidden !important;
+  }
+  .aics-creative-page #showreel button[aria-label='Open cinematic showreel preview'] {
+    border-radius: 24px !important;
+  }
+  .aics-creative-page #showreel button[aria-label='Open cinematic showreel preview'] > span,
+  .aics-creative-page #showreel button[aria-label='Open cinematic showreel preview'] > span > span {
+    border-radius: 22px !important;
+  }
+  .aics-creative-page #portfolio .portfolio-carousel-track {
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 14px !important;
+  }
+  .aics-creative-page #portfolio .portfolio-carousel-track > div {
+    width: min(82vw, 330px) !important;
+  }
+  .aics-creative-page #portfolio .portfolio-card {
+    height: 360px !important;
+    border-radius: 22px !important;
+  }
+  .aics-creative-page #portfolio .portfolio-card h3 {
+    font-size: clamp(24px, 8vw, 34px) !important;
+  }
+  .aics-creative-page #before-after article {
+    padding: 10px !important;
+    border-radius: 24px !important;
+  }
+  .aics-creative-page #before-after figure,
+  .aics-creative-page #before-after figure img {
+    border-radius: 18px !important;
+  }
+  .aics-creative-page section[aria-labelledby='product-authenticity-title'] .premium-card {
+    padding: 22px !important;
+  }
+}
+
+/* Showcase spacing correction */
+.aics-creative-page #showreel {
+  padding-top: clamp(64px, 6vw, 96px) !important;
+  padding-bottom: clamp(72px, 7vw, 112px) !important;
+}
+.aics-creative-page #portfolio,
+.aics-creative-page #before-after {
+  padding-top: clamp(72px, 7vw, 112px) !important;
+  padding-bottom: clamp(72px, 7vw, 112px) !important;
+}
+.aics-creative-page section[aria-labelledby='product-authenticity-title'] {
+  padding-top: clamp(52px, 5vw, 76px) !important;
+  padding-bottom: clamp(52px, 5vw, 76px) !important;
+}
+.aics-creative-page #showreel .mx-auto.mb-7,
+.aics-creative-page #portfolio .mx-auto.mb-8,
+.aics-creative-page #before-after .mx-auto.mb-9 {
+  margin-bottom: clamp(28px, 4vw, 52px) !important;
+}
+@media (max-width: 767px) {
+  .aics-creative-page #showreel,
+  .aics-creative-page #portfolio,
+  .aics-creative-page #before-after,
+  .aics-creative-page section[aria-labelledby='product-authenticity-title'] {
+    padding-top: 54px !important;
+    padding-bottom: 58px !important;
+  }
+}
+
+/* Remove excessive visual lead-in before Showreel showcase */
+.aics-creative-page #showreel {
+  padding-top: 34px !important;
+}
+.aics-creative-page #showreel .pointer-events-none.absolute.inset-x-0.top-0.h-36 {
+  height: 54px !important;
+  opacity: .55;
+}
+@media (max-width: 767px) {
+  .aics-creative-page #showreel {
+    padding-top: 42px !important;
+  }
+}
+
+/* Final showcase containment pass */
+html,
+body,
+.aics-creative-page {
+  max-width: 100%;
+  overflow-x: clip;
+}
+.aics-creative-page #showreel {
+  padding-top: 0 !important;
+}
+.aics-creative-page #showreel > .relative {
+  padding-top: 18px !important;
+}
+.aics-creative-page #showreel .mx-auto.mb-7 {
+  margin-bottom: 30px !important;
+}
+.aics-creative-page #portfolio .showcase-carousel-shell {
+  contain: layout paint;
+  overflow: hidden !important;
+  max-width: 100%;
+}
+.aics-creative-page #portfolio .portfolio-carousel-track {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, black 18px, black calc(100% - 18px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, black 18px, black calc(100% - 18px), transparent 100%);
+}
+.aics-creative-page #portfolio .portfolio-carousel-track > div {
+  max-width: calc(100vw - 40px);
+}
+@media (max-width: 767px) {
+  .aics-creative-page #showreel {
+    padding-top: 0 !important;
+  }
+  .aics-creative-page #showreel > .relative {
+    padding-top: 24px !important;
+  }
+  .aics-creative-page #portfolio .portfolio-carousel-track {
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .aics-creative-page #portfolio .portfolio-carousel-track > div {
+    width: min(78vw, 320px) !important;
+  }
+}
